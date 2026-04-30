@@ -366,26 +366,31 @@
   .whats-on-event { padding: 8px 0; border-bottom: 1px solid var(--bg3); font-size: 11px; color: var(--text); display: flex; gap: 10px; align-items: center; }
   .whats-on-sport { font-size: 9px; padding: 2px 6px; border-radius: 2px; background: var(--bg3); color: var(--muted); border: 1px solid var(--border); white-space: nowrap; }
 
-  /* FLIGHTS TAB */
-  .flight-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 3px; padding: 14px 16px; margin-bottom: 8px; }
-  .flight-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-  .flight-person { font-family: var(--sans); font-size: 15px; font-weight: 600; color: var(--text); flex: 1; }
-  .flight-fields { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px; }
+  /* SHARED FIELD STYLES */
   .field-group { display: flex; flex-direction: column; gap: 3px; }
   .field-label { font-size: 9px; color: var(--muted); letter-spacing: 1px; }
   .field-input { background: var(--bg3); border: 1px solid var(--border); border-radius: 2px; color: var(--text); font-family: var(--mono); font-size: 11px; padding: 6px 8px; outline: none; width: 100%; transition: border-color 0.2s; }
   .field-input:focus { border-color: var(--orange); }
   .field-input::placeholder { color: var(--muted); opacity: 0.6; }
 
-  /* HOTEL TAB */
-  .hotel-form { background: var(--bg2); border: 1px solid var(--border); border-radius: 3px; padding: 16px 18px; margin-bottom: 16px; }
-  .hotel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; margin-bottom: 12px; }
-  .hotel-notes { width: 100%; background: var(--bg3); border: 1px solid var(--border); border-radius: 2px; color: var(--text); font-family: var(--mono); font-size: 11px; padding: 8px 10px; outline: none; resize: vertical; min-height: 60px; }
-  .hotel-notes:focus { border-color: var(--orange); }
-
-  /* TICKETS TAB */
-  .ticket-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 3px; padding: 14px 16px; margin-bottom: 8px; }
-  .ticket-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
+  /* ADD-A-RECORD CARDS (flights, accommodation, tickets) */
+  .record-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 3px; padding: 14px 16px; margin-bottom: 10px; }
+  .record-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+  .record-card-title { font-family: var(--sans); font-size: 15px; font-weight: 600; color: var(--text); flex: 1; }
+  .record-fields { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px; margin-bottom: 10px; }
+  .record-fields.wide { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+  .record-section-label { font-size: 9px; color: var(--orange); letter-spacing: 2px; margin: 10px 0 6px; }
+  .record-notes { width: 100%; background: var(--bg3); border: 1px solid var(--border); border-radius: 2px; color: var(--text); font-family: var(--mono); font-size: 11px; padding: 8px 10px; outline: none; resize: vertical; min-height: 50px; }
+  .record-notes:focus { border-color: var(--orange); }
+  .add-record-btn { display: flex; align-items: center; gap: 8px; padding: 12px 14px; border: 1px dashed var(--border); border-radius: 3px; cursor: pointer; color: var(--muted); font-family: var(--mono); font-size: 11px; background: none; width: 100%; transition: all 0.2s; margin-top: 4px; }
+  .add-record-btn:hover { border-color: var(--orange); color: var(--orange); }
+  .passenger-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+  .passenger-tag { font-size: 10px; padding: 3px 8px; border-radius: 2px; background: var(--bg3); border: 1px solid var(--border); color: var(--muted); cursor: pointer; transition: all 0.15s; user-select: none; }
+  .passenger-tag.selected { background: var(--orange-dim); border-color: var(--orange); color: var(--orange); }
+  .passenger-tag.everyone { background: var(--green-dim); border-color: var(--green); color: var(--green); }
+  .status-pill { font-size: 9px; padding: 2px 8px; border-radius: 10px; cursor: pointer; white-space: nowrap; }
+  .status-pill.pending { background: var(--bg3); color: var(--muted); border: 1px solid var(--border); }
+  .status-pill.booked { background: var(--green-dim); color: var(--green); border: 1px solid rgba(0,204,102,0.3); }
 
   /* TASKS TAB */
   .task-item { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--bg3); }
@@ -423,6 +428,31 @@
   /* STAGE DOT CLICK */
   .stage-dot { cursor: pointer !important; }
   .stage-dot:hover { opacity: 0.75; }
+
+  /* ADMIN — COLLAPSIBLE SECTIONS */
+  .admin-section { margin-bottom: 12px; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+  .admin-section-toggle { width: 100%; background: var(--bg3); border: none; color: var(--text); font-family: var(--mono); font-size: 14px; font-weight: 500; letter-spacing: 1px; padding: 14px 18px; cursor: pointer; display: flex; align-items: center; gap: 10px; text-align: left; transition: background 0.2s; }
+  .admin-section-toggle:hover { background: var(--bg2); }
+  .admin-section-toggle .toggle-arrow { margin-left: auto; font-size: 12px; transition: transform 0.2s; color: var(--muted); }
+  .admin-section-toggle.open .toggle-arrow { transform: rotate(180deg); }
+  .admin-section-toggle .section-status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); flex-shrink: 0; }
+  .admin-section-toggle .section-status-dot.active { background: var(--orange); }
+  .admin-section-toggle .section-status-dot.done { background: var(--green); }
+  .admin-section-body { display: none; padding: 18px; border-top: 1px solid var(--border); }
+  .admin-section-body.open { display: block; }
+  .admin-sub-title { font-size: 11px; color: var(--orange); letter-spacing: 2px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); margin-top: 20px; }
+  .admin-sub-title:first-child { margin-top: 0; }
+  .setting-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--bg3); font-size: 13px; flex-wrap: wrap; }
+  .setting-label { flex: 1; color: var(--muted); min-width: 160px; font-size: 13px; }
+  .no-data { font-size: 13px; color: var(--muted); padding: 12px 0; }
+  .participant-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--bg3); font-size: 13px; }
+  .participant-name { flex: 1; color: var(--text); font-size: 13px; }
+  .participant-status { font-size: 11px; padding: 3px 8px; border-radius: 2px; }
+  .heatmap-tile .h-week { font-size: 10px; }
+  .heatmap-tile .h-dates { font-size: 12px; }
+  .heatmap-tile .h-count { font-size: 10px; }
+  .game-vote-matchup { font-size: 13px; }
+  .game-vote-count { font-size: 11px; }
   .hidden { display: none !important; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
   .fade-in { animation: fadeIn 0.3s ease; }
@@ -460,7 +490,7 @@
   <p class="name-sub">Select your name to submit your availability, check back on progress, or view results once they're published.</p>
   <div id="name-loading" style="font-size:12px;color:var(--muted);margin-bottom:24px">// Loading...</div>
   <div id="name-not-set" style="display:none;font-size:12px;color:var(--muted);margin-bottom:24px;padding:14px;background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--orange);border-radius:3px">
-    // Names haven't been set up yet — check back soon or contact Chris.
+    // Names haven't been set up yet — check back soon or contact Chints.
   </div>
   <div id="name-select-wrap" style="display:none">
     <div class="name-field">
@@ -509,7 +539,7 @@
 <div id="already-screen" class="container">
   <div style="font-size:48px">👀</div>
   <p class="holding-title">Already submitted!</p>
-  <p class="holding-msg">You're locked in, <span id="already-name"></span>. Results will appear here once everyone's done and Chris has published them.</p>
+  <p class="holding-msg">You're locked in, <span id="already-name"></span>. Results will appear here once everyone's done and Chints has published them.</p>
   <div class="progress-block">
     <div class="progress-label">// WAITING ON THE GANG</div>
     <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progress-fill-2" style="width:0%"></div></div>
@@ -520,8 +550,8 @@
 <!-- STAGE 1: WAITING FOR PUBLISH -->
 <div id="waiting-screen" class="container">
   <div style="font-size:48px;margin-bottom:20px">⏳</div>
-  <p class="holding-title">All in — waiting on Chris</p>
-  <p class="holding-msg">Everyone's submitted. Chris is reviewing the results and will publish them shortly.</p>
+  <p class="holding-title">All in — waiting on Chints</p>
+  <p class="holding-msg">Everyone's submitted. Chints is reviewing the results and will publish them shortly.</p>
   <div class="progress-block">
     <div class="progress-label">// SUBMISSIONS COMPLETE</div>
     <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:100%"></div></div>
@@ -534,7 +564,7 @@
   <div class="section-header">
     <div class="section-tag">// STAGE 01 — RESULTS</div>
     <div class="section-title">Weekend availability</div>
-    <div class="section-sub">Here's how the group stacks up. Chris will pick the best weekends and open Stage 2.</div>
+    <div class="section-sub">Here's how the group stacks up. Chints will pick the best weekends and open Stage 2.</div>
   </div>
   <div class="results-intro" id="results-summary"></div>
   <div id="results-months"></div>
@@ -590,7 +620,7 @@
 <div id="stage2-already" class="container">
   <div style="font-size:48px">🔒</div>
   <p class="holding-title">Shortlist locked!</p>
-  <p class="holding-msg">You've already submitted your Stage 2 shortlist, <span id="s2-already-name"></span>. Chris will announce which games are going to a vote.</p>
+  <p class="holding-msg">You've already submitted your Stage 2 shortlist, <span id="s2-already-name"></span>. Chints will announce which games are going to a vote.</p>
   <div class="progress-block">
     <div class="progress-label">// STAGE 2 PROGRESS</div>
     <div class="progress-bar-wrap"><div class="progress-bar-fill" id="s2-progress-fill-2" style="width:0%"></div></div>
@@ -663,7 +693,7 @@
 <div id="stage3-already" class="container">
   <div style="font-size:48px">🔒</div>
   <p class="holding-title">Already voted!</p>
-  <p class="holding-msg">Your vote is locked in, <span id="s3-already-name"></span>. Chris will publish the result once everyone's done.</p>
+  <p class="holding-msg">Your vote is locked in, <span id="s3-already-name"></span>. Chints will publish the result once everyone's done.</p>
   <div class="progress-block">
     <div class="progress-label">// STAGE 3 PROGRESS</div>
     <div class="progress-bar-wrap"><div class="progress-bar-fill" id="s3-progress-fill-2" style="width:0%"></div></div>
@@ -745,7 +775,7 @@
   <div class="plan-tabs">
     <button class="plan-tab-btn active" onclick="switchPlanTab('city')" id="ptab-city">🗺 CITY</button>
     <button class="plan-tab-btn" onclick="switchPlanTab('flights')" id="ptab-flights">✈ FLIGHTS</button>
-    <button class="plan-tab-btn" onclick="switchPlanTab('hotel')" id="ptab-hotel">🏨 HOTEL</button>
+    <button class="plan-tab-btn" onclick="switchPlanTab('accommodation')" id="ptab-accommodation">🏨 ACCOMMODATION</button>
     <button class="plan-tab-btn" onclick="switchPlanTab('tickets')" id="ptab-tickets">🎟 TICKETS</button>
     <button class="plan-tab-btn" onclick="switchPlanTab('itinerary')" id="ptab-itinerary">📅 ITINERARY</button>
     <button class="plan-tab-btn" onclick="switchPlanTab('tasks')" id="ptab-tasks">✅ TASKS</button>
@@ -769,49 +799,37 @@
   <!-- FLIGHTS TAB -->
   <div class="plan-pane" id="ppane-flights">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
-      <span style="font-size:11px;color:var(--muted)">// Log each person's flight details. Auto-saves as you type.</span>
+      <span style="font-size:11px;color:var(--muted)">// Add each flight. Select who's on it — multiple people can share a flight.</span>
       <span class="save-status" id="flights-save-status">saved ✓</span>
     </div>
     <div id="flights-list"></div>
+    <button class="add-record-btn" onclick="addFlight()">+ ADD FLIGHT</button>
   </div>
 
-  <!-- HOTEL TAB -->
-  <div class="plan-pane" id="ppane-hotel">
+  <!-- ACCOMMODATION TAB -->
+  <div class="plan-pane" id="ppane-accommodation">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
-      <span style="font-size:11px;color:var(--muted)">// Log the hotel details once booked. Auto-saves as you type.</span>
-      <span class="save-status" id="hotel-save-status">saved ✓</span>
+      <span style="font-size:11px;color:var(--muted)">// Add each place you're staying — hotel, AirBnB, VRBO, whatever. Multiple properties supported.</span>
+      <span class="save-status" id="accommodation-save-status">saved ✓</span>
     </div>
-    <div class="hotel-form">
-      <div class="hotel-grid">
-        <div class="field-group"><div class="field-label">HOTEL NAME</div><input class="field-input" id="hotel-name" placeholder="e.g. Marriott Downtown" oninput="autoSavePlan()"></div>
-        <div class="field-group"><div class="field-label">CHECK-IN</div><input class="field-input" id="hotel-checkin" type="date" oninput="autoSavePlan()"></div>
-        <div class="field-group"><div class="field-label">CHECK-OUT</div><input class="field-input" id="hotel-checkout" type="date" oninput="autoSavePlan()"></div>
-        <div class="field-group"><div class="field-label">COST PER PERSON (£)</div><input class="field-input" id="hotel-cost" type="number" placeholder="0" oninput="autoSavePlan()"></div>
-        <div class="field-group"><div class="field-label">BOOKING REF</div><input class="field-input" id="hotel-ref" placeholder="ABC123" oninput="autoSavePlan()"></div>
-        <div class="field-group"><div class="field-label">BOOKED BY</div>
-          <select class="field-input" id="hotel-booked-by" onchange="autoSavePlan()">
-            <option value="">— select —</option>
-          </select>
-        </div>
-      </div>
-      <div class="field-label" style="margin-bottom:4px">NOTES</div>
-      <textarea class="hotel-notes" id="hotel-notes" placeholder="Any useful info — address, parking, breakfast included..." oninput="autoSavePlan()"></textarea>
-    </div>
+    <div id="accommodation-list"></div>
+    <button class="add-record-btn" onclick="addAccommodation()">+ ADD ACCOMMODATION</button>
   </div>
 
   <!-- TICKETS TAB -->
   <div class="plan-pane" id="ppane-tickets">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
-      <span style="font-size:11px;color:var(--muted)">// Log each person's ticket details once purchased. Auto-saves.</span>
+      <span style="font-size:11px;color:var(--muted)">// Add ticket options and track what's been booked. Change status to Booked once confirmed.</span>
       <span class="save-status" id="tickets-save-status">saved ✓</span>
     </div>
     <div id="tickets-list"></div>
+    <button class="add-record-btn" onclick="addTicket()">+ ADD TICKET OPTION</button>
   </div>
 
   <!-- ITINERARY TAB -->
   <div class="plan-pane" id="ppane-itinerary">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
-      <span style="font-size:11px;color:var(--muted)">// Build the trip day by day. Click + to add events to each day.</span>
+      <span style="font-size:11px;color:var(--muted)">// Build the trip day by day. Add events and note who's joining each one.</span>
       <span class="save-status" id="itinerary-save-status">saved ✓</span>
     </div>
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap">
@@ -843,6 +861,252 @@
   </div>
 
 </div>
+<!-- ADMIN LOGIN -->
+<div class="overlay" id="admin-overlay">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title">// ADMIN ACCESS</span>
+      <button class="modal-close" onclick="closeAdminLogin()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="pin-field">
+        <span class="pin-prompt">PIN &gt;</span>
+        <input class="pin-input" id="pin-input" type="password" maxlength="6" placeholder="••••" onkeydown="if(event.key==='Enter')checkPin()">
+      </div>
+      <p class="pin-error" id="pin-error">// incorrect PIN. try again.</p>
+      <button class="pin-btn" onclick="checkPin()">ENTER ADMIN →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN SCREEN -->
+<div id="admin-screen" class="container">
+  <button class="admin-back-btn" onclick="exitAdmin()">← BACK TO APP</button>
+  <div class="section-header">
+    <div class="section-tag">// ADMIN DASHBOARD</div>
+    <div class="section-title">TacoTripz control panel</div>
+  </div>
+
+  <!-- NUCLEAR RESET -->
+  <div style="border:1px solid var(--red);border-radius:4px;padding:16px 18px;background:var(--red-dim);margin-bottom:20px">
+    <div style="font-size:14px;color:var(--red);letter-spacing:1px;margin-bottom:8px;font-weight:500">⚠ NUCLEAR RESET</div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:14px;line-height:1.8">Wipes <strong style="color:var(--text)">everything</strong> — all submissions, votes, names, settings, plan data. Type <strong style="color:var(--red)">RESET</strong> to confirm.</div>
+    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+      <input type="text" id="nuclear-confirm-input" class="field-input" placeholder="type RESET to confirm" style="width:200px;border-color:var(--red)">
+      <button class="action-btn danger" onclick="nuclearReset()" style="background:var(--red);color:#fff;border-color:var(--red)">☢ RESET EVERYTHING</button>
+    </div>
+  </div>
+
+  <!-- SETTINGS -->
+  <div class="admin-section">
+    <button class="admin-section-toggle open" onclick="toggleAdminSection(this)">
+      <div class="section-status-dot active"></div>
+      ⚙ SETTINGS
+      <span class="toggle-arrow">▼</span>
+    </button>
+    <div class="admin-section-body open">
+      <div class="admin-sub-title">PARTICIPANT NAMES</div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:12px;padding:10px 12px;background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--orange);border-radius:3px">// Set these before sharing the link. Users pick from a dropdown — no free-text entry.</div>
+      <div id="names-list" style="margin-bottom:12px"></div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <div class="name-field" style="flex:1;margin:0">
+          <span class="name-prompt" style="padding:8px 12px;font-size:12px">name &gt;</span>
+          <input type="text" id="new-name-input" class="name-input" placeholder="add a name..." maxlength="30" style="padding:8px 12px;font-size:12px" onkeydown="if(event.key==='Enter')addName()">
+        </div>
+        <button class="action-btn" onclick="addName()" style="white-space:nowrap">ADD +</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STAGE 1 -->
+  <div class="admin-section">
+    <button class="admin-section-toggle" onclick="toggleAdminSection(this)">
+      <div class="section-status-dot" id="s1-dot"></div>
+      01 // AVAILABILITY
+      <span style="font-size:11px;color:var(--muted);margin-left:8px" id="s1-header-status"></span>
+      <span class="toggle-arrow">▼</span>
+    </button>
+    <div class="admin-section-body">
+      <div class="setting-row">
+        <span class="setting-label">Status</span>
+        <span id="admin-stage-status"></span>
+      </div>
+      <div class="setting-row">
+        <span class="setting-label">Publish results to group</span>
+        <div>
+          <button class="action-btn primary" id="publish-btn" onclick="publishResults()">PUBLISH RESULTS →</button>
+          <button class="action-btn danger" id="unpublish-btn" style="display:none" onclick="unpublishResults()">UNPUBLISH</button>
+        </div>
+      </div>
+      <div class="setting-row">
+        <span class="setting-label">Reset all submissions</span>
+        <button class="action-btn danger" onclick="resetSubmissions()">RESET STAGE 1</button>
+      </div>
+      <div class="admin-sub-title">SUBMISSIONS (<span id="sub-count">0</span> of <span id="sub-total">5</span>)</div>
+      <div id="participant-list"></div>
+      <div class="admin-sub-title">WEEKEND HEATMAP</div>
+      <div class="threshold-control">
+        <span style="font-size:13px;color:var(--muted)">Show weekends where at least</span>
+        <select id="threshold-select" onchange="renderHeatmap()" style="background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:12px;padding:4px 8px;border-radius:2px;outline:none">
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3" selected>3</option><option value="4">4</option><option value="5">5</option>
+        </select>
+        <span style="font-size:13px;color:var(--muted)">people are available</span>
+      </div>
+      <div class="heatmap-grid" id="heatmap-grid"></div>
+      <div class="admin-sub-title">BEST WEEKENDS (ALL AVAILABLE)</div>
+      <div id="best-weekends"></div>
+    </div>
+  </div>
+
+  <!-- STAGE 2 -->
+  <div class="admin-section">
+    <button class="admin-section-toggle" onclick="toggleAdminSection(this)">
+      <div class="section-status-dot" id="s2-dot"></div>
+      02 // SHORTLIST
+      <span style="font-size:11px;color:var(--muted);margin-left:8px" id="s2-header-status"></span>
+      <span class="toggle-arrow">▼</span>
+    </button>
+    <div class="admin-section-body">
+      <div class="setting-row">
+        <span class="setting-label">Status</span>
+        <span id="admin-s2-status"></span>
+      </div>
+      <div class="setting-row" style="flex-direction:column;align-items:flex-start;gap:10px">
+        <span class="setting-label">NFL schedule</span>
+        <div class="info-box" style="margin:0;width:100%">// Fetch the 2025 schedule to test, or 2026 once released. Only games on shortlisted weekends appear.</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="action-btn primary" onclick="fetchSchedule(2025)">FETCH 2025 SCHEDULE (TEST)</button>
+          <button class="action-btn" onclick="fetchSchedule(2026)">FETCH 2026 SCHEDULE</button>
+          <span id="schedule-status" style="font-size:12px;color:var(--muted);align-self:center"></span>
+        </div>
+      </div>
+      <div class="setting-row" style="flex-direction:column;align-items:flex-start;gap:10px">
+        <span class="setting-label">Shortlisted weekends</span>
+        <div class="info-box" style="margin:0;width:100%">// Select which weekends progress to Stage 2.</div>
+        <div class="weekend-check-grid" id="admin-weekend-checks"></div>
+        <button class="action-btn primary" onclick="saveShortlistedWeekends()">SAVE WEEKENDS →</button>
+        <span id="weekends-save-msg" style="font-size:11px;color:var(--green);display:none">saved ✓</span>
+      </div>
+      <div class="setting-row">
+        <span class="setting-label">Open Stage 2</span>
+        <div>
+          <button class="action-btn success" id="open-s2-btn" onclick="openStage2()">OPEN STAGE 2 →</button>
+          <button class="action-btn danger" id="close-s2-btn" style="display:none" onclick="closeStage2()">CLOSE STAGE 2</button>
+        </div>
+      </div>
+      <div class="setting-row">
+        <span class="setting-label">Shortlist threshold</span>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)">
+          <span>Progress games shortlisted by at least</span>
+          <select id="s2-threshold" style="background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:12px;padding:4px 8px;border-radius:2px;outline:none">
+            <option value="1">1</option><option value="2" selected>2</option>
+            <option value="3">3</option><option value="4">4</option><option value="5">5</option>
+          </select>
+          <span>people</span>
+          <button class="action-btn" style="margin:0" onclick="saveThreshold()">SAVE</button>
+          <span id="threshold-save-msg" style="font-size:11px;color:var(--green);display:none">saved ✓</span>
+        </div>
+      </div>
+      <div class="setting-row">
+        <span class="setting-label">Reset Stage 2 submissions</span>
+        <button class="action-btn danger" onclick="resetStage2()">RESET STAGE 2</button>
+      </div>
+      <div class="admin-sub-title">SUBMISSIONS (<span id="s2-sub-count">0</span> of <span id="s2-sub-total">5</span>)</div>
+      <div id="s2-participant-list"></div>
+      <div class="admin-sub-title">GAME SHORTLIST TALLY</div>
+      <div id="s2-game-tally"></div>
+    </div>
+  </div>
+
+  <!-- STAGE 3 -->
+  <div class="admin-section">
+    <button class="admin-section-toggle" onclick="toggleAdminSection(this)">
+      <div class="section-status-dot" id="s3-dot"></div>
+      03 // VOTE
+      <span style="font-size:11px;color:var(--muted);margin-left:8px" id="s3-header-status"></span>
+      <span class="toggle-arrow">▼</span>
+    </button>
+    <div class="admin-section-body">
+      <div class="setting-row">
+        <span class="setting-label">Status</span>
+        <span id="admin-s3-status"></span>
+      </div>
+      <div class="setting-row" style="flex-direction:column;align-items:flex-start;gap:10px">
+        <span class="setting-label">Games going to a vote</span>
+        <div class="info-box" style="margin:0;width:100%">// Select which shortlisted games go to Stage 3.</div>
+        <div class="weekend-check-grid" id="admin-s3-game-checks" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr))"></div>
+        <button class="action-btn primary" onclick="saveVoteGames()">SAVE GAMES →</button>
+        <span id="votegames-save-msg" style="font-size:11px;color:var(--green);display:none">saved ✓</span>
+      </div>
+      <div class="setting-row">
+        <span class="setting-label">Open Stage 3</span>
+        <div>
+          <button class="action-btn success" id="open-s3-btn" onclick="openStage3()">OPEN STAGE 3 →</button>
+          <button class="action-btn danger" id="close-s3-btn" style="display:none" onclick="closeStage3()">CLOSE STAGE 3</button>
+        </div>
+      </div>
+      <div class="setting-row">
+        <span class="setting-label">Publish Stage 3 results</span>
+        <div>
+          <button class="action-btn primary" id="publish-s3-btn" onclick="publishS3Results()">PUBLISH RESULT →</button>
+          <button class="action-btn danger" id="unpublish-s3-btn" style="display:none" onclick="unpublishS3Results()">UNPUBLISH</button>
+        </div>
+      </div>
+      <div class="setting-row">
+        <span class="setting-label">Sudden Death (Stage 3.1)</span>
+        <div>
+          <button class="action-btn danger" id="open-sudden-btn" onclick="openSuddenDeath()">⚡ TRIGGER SUDDEN DEATH</button>
+          <button class="action-btn" id="close-sudden-btn" style="display:none" onclick="closeSuddenDeath()">CANCEL</button>
+          <button class="action-btn primary" id="publish-sudden-btn" style="display:none" onclick="publishSuddenResults()">PUBLISH SUDDEN RESULT →</button>
+        </div>
+      </div>
+      <div class="setting-row">
+        <span class="setting-label">Reset Stage 3 votes</span>
+        <button class="action-btn danger" onclick="resetStage3()">RESET STAGE 3</button>
+      </div>
+      <div class="admin-sub-title">VOTES (<span id="s3-sub-count">0</span> of <span id="s3-sub-total">5</span>)</div>
+      <div id="s3-participant-list"></div>
+      <div class="admin-sub-title">POINTS TALLY</div>
+      <div id="s3-tally"></div>
+    </div>
+  </div>
+
+  <!-- STAGE 4 -->
+  <div class="admin-section">
+    <button class="admin-section-toggle" onclick="toggleAdminSection(this)">
+      <div class="section-status-dot" id="s4-dot"></div>
+      04 // PLANNING
+      <span style="font-size:11px;color:var(--muted);margin-left:8px" id="s4-header-status"></span>
+      <span class="toggle-arrow">▼</span>
+    </button>
+    <div class="admin-section-body">
+      <div class="setting-row">
+        <span class="setting-label">Status</span>
+        <span id="admin-s4-status"></span>
+      </div>
+      <div class="setting-row">
+        <span class="setting-label">Winning game</span>
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <select id="s4-winner-select" style="background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:12px;padding:5px 8px;border-radius:2px;outline:none;min-width:240px">
+            <option value="">— select winning game —</option>
+          </select>
+          <button class="action-btn" onclick="saveWinnerGame()">SAVE</button>
+          <span id="winner-save-msg" style="font-size:11px;color:var(--green);display:none">saved ✓</span>
+        </div>
+      </div>
+      <div class="setting-row">
+        <span class="setting-label">Open Stage 4 planning</span>
+        <div>
+          <button class="action-btn success" id="open-s4-btn" onclick="openStage4()">OPEN STAGE 4 →</button>
+          <button class="action-btn danger" id="close-s4-btn" style="display:none" onclick="closeStage4()">CLOSE STAGE 4</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
 <!-- ADMIN LOGIN -->
 <div class="overlay" id="admin-overlay">
   <div class="modal">
@@ -1404,8 +1668,8 @@ function renderResultsScreen() {
   });
   const allGood=WEEKENDS.filter(w=>counts[w.key].avail===total&&total>0);
   document.getElementById('results-summary').innerHTML = allGood.length
-    ? `<span>${allGood.length} weekend${allGood.length>1?'s':''} where everyone is available</span> — highlighted in green below. Chris will pick which ones go to Stage 2.`
-    : `No weekends where everyone is fully available yet. Best options below — Chris will pick which go to Stage 2.`;
+    ? `<span>${allGood.length} weekend${allGood.length>1?'s':''} where everyone is available</span> — highlighted in green below. Chints will pick which ones go to Stage 2.`
+    : `No weekends where everyone is fully available yet. Best options below — Chints will pick which go to Stage 2.`;
   const byMonth={};
   WEEKENDS.forEach(w=>{ const c=counts[w.key]; if(c.avail+c.pref===0)return; if(!byMonth[w.monthKey])byMonth[w.monthKey]={label:w.month,weeks:[]}; byMonth[w.monthKey].weeks.push(w); });
   const container=document.getElementById('results-months'); container.innerHTML='';
@@ -1635,6 +1899,31 @@ async function loadAdmin() {
   const total=(appSettings.participantNames||[]).length||appSettings.totalParticipants||5;
   const done=allSubmissions.length;
 
+  // Stage 1 dot + header status
+  const s1done = allSubmissions.length;
+  const s1dot = document.getElementById('s1-dot');
+  const s1hdr = document.getElementById('s1-header-status');
+  if (s1dot) { s1dot.className = 'section-status-dot ' + (appSettings.published ? 'done' : s1done > 0 ? 'active' : ''); }
+  if (s1hdr) s1hdr.textContent = appSettings.published ? '● results published' : `${s1done}/${total} submitted`;
+
+  // Stage 2 dot
+  const s2dot = document.getElementById('s2-dot');
+  const s2hdr = document.getElementById('s2-header-status');
+  if (s2dot) s2dot.className = 'section-status-dot ' + (appSettings.stage2Open ? 'active' : '');
+  if (s2hdr) s2hdr.textContent = appSettings.stage2Open ? `● open · ${s2Submissions.length}/${total} submitted` : '';
+
+  // Stage 3 dot
+  const s3dot = document.getElementById('s3-dot');
+  const s3hdr = document.getElementById('s3-header-status');
+  if (s3dot) s3dot.className = 'section-status-dot ' + (appSettings.s3Published ? 'done' : appSettings.stage3Open ? 'active' : '');
+  if (s3hdr) s3hdr.textContent = appSettings.s3Published ? '● result published' : appSettings.stage3Open ? `● open · ${s3Submissions.length}/${total} voted` : '';
+
+  // Stage 4 dot
+  const s4dot = document.getElementById('s4-dot');
+  const s4hdr = document.getElementById('s4-header-status');
+  if (s4dot) s4dot.className = 'section-status-dot ' + (appSettings.stage4Open ? 'active' : '');
+  if (s4hdr) s4hdr.textContent = appSettings.stage4Open ? '● open' : '';
+
   // Stage 1 status
   const statusEl=document.getElementById('admin-stage-status');
   statusEl.innerHTML = appSettings.published?'<span class="status-badge published">● RESULTS PUBLISHED</span>':done>=total?'<span class="status-badge locked">● ALL SUBMITTED — AWAITING PUBLISH</span>':`<span class="status-badge open">● OPEN — ${done}/${total} submitted</span>`;
@@ -1655,7 +1944,20 @@ async function loadAdmin() {
   renderHeatmap();
   renderBestWeekends();
   renderAdminWeekendChecks();
-  renderS2AdminSection(s2Submissions, total);
+  // S2 status badge
+  const s2El=document.getElementById('admin-s2-status');
+  if(s2El) s2El.innerHTML = appSettings.stage2Open?'<span class="status-badge open">● OPEN</span>':'<span class="status-badge locked">● CLOSED</span>';
+  if(document.getElementById('open-s2-btn')) document.getElementById('open-s2-btn').style.display=appSettings.stage2Open?'none':'inline-block';
+  if(document.getElementById('close-s2-btn')) document.getElementById('close-s2-btn').style.display=appSettings.stage2Open?'inline-block':'none';
+  if(document.getElementById('s2-threshold')) document.getElementById('s2-threshold').value=appSettings.s2Threshold||2;
+  // S2 submissions + tally
+  const s2listEl=document.getElementById('s2-participant-list');
+  const s2pending=Math.max(0,total-s2Submissions.length);
+  if(s2listEl) s2listEl.innerHTML=s2Submissions.map(s=>`<div class="participant-row"><span class="participant-name">${s.name}</span><button class="action-btn danger" style="padding:3px 10px;font-size:10px" onclick="deleteS2Submission('${s.id}','${s.name}')">DELETE</button><span class="participant-status status-done">✓ SUBMITTED</span></div>`).join('')+Array(s2pending).fill(`<div class="participant-row"><span class="participant-name" style="color:var(--muted)">— pending</span><span class="participant-status status-pending">WAITING</span></div>`).join('');
+  document.getElementById('s2-sub-count').textContent=s2Submissions.length;
+  document.getElementById('s2-sub-total').textContent=total;
+  const tallyEl=document.getElementById('s2-game-tally');
+  if(tallyEl){if(!s2Submissions.length){tallyEl.innerHTML='<p class="no-data">No data yet.</p>';}else{const gameCounts={};s2Submissions.forEach(sub=>{try{const games=typeof sub.games==='string'?JSON.parse(sub.games):sub.games;games.forEach(id=>{gameCounts[id]=(gameCounts[id]||0)+1;});}catch(e){}});const threshold=appSettings.s2Threshold||2;const sorted=Object.entries(gameCounts).sort((a,b)=>b[1]-a[1]);if(!sorted.length){tallyEl.innerHTML='<p class="no-data">No votes yet.</p>';}else{tallyEl.innerHTML=sorted.map(([id,count])=>{const game=schedule.find(g=>g.id===id)||{};const pct=Math.round((count/s2Submissions.length)*100);const passes=count>=threshold;return`<div class="game-vote-row"><div class="game-vote-matchup">${game.away||'?'} @ ${game.home||id} ${passes?'<span style="color:var(--green);font-size:9px">● THROUGH</span>':''}</div><div class="game-vote-bar"><div class="game-vote-track"><div class="game-vote-fill" style="width:${pct}%"></div></div><span class="game-vote-count">${count} vote${count>1?'s':''}</span></div></div>`;}).join('');}}}
 
   // Stage 3
   const s3El = document.getElementById('admin-s3-status');
@@ -1954,7 +2256,7 @@ function renderS3Results() {
         <div class="winner-tag" style="color:var(--red)">// IT'S A TIE</div>
         <span class="winner-trophy">⚡</span>
         <div class="winner-game" style="color:var(--red)">SUDDEN DEATH REQUIRED</div>
-        <div class="winner-meta">Chris will trigger Stage 3.1 to settle this.</div>
+        <div class="winner-meta">Chints will trigger Stage 3.1 to settle this.</div>
       </div>`;
   } else {
     const winGame = schedule.find(g => g.id === sorted[0][0]);
@@ -2042,7 +2344,7 @@ function renderSuddenResults() {
   const isTied = sorted.length > 1 && sorted[0][1] === sorted[1][1];
 
   bannerEl.innerHTML = isTied
-    ? `<div class="sudden-header"><div class="sudden-tag">// STILL TIED</div><div class="sudden-title">😱 STILL TIED 😱</div><div class="sudden-sub">Chris decides this one.</div></div>`
+    ? `<div class="sudden-header"><div class="sudden-tag">// STILL TIED</div><div class="sudden-title">😱 STILL TIED 😱</div><div class="sudden-sub">Chints decides this one.</div></div>`
     : `<div class="winner-banner" style="border-color:var(--red);background:var(--red-dim)">
         <div class="winner-tag" style="color:var(--red)">// SUDDEN DEATH WINNER</div>
         <span class="winner-trophy">⚡🏆</span>
@@ -2196,6 +2498,7 @@ function renderPlanningScreen() {
   const cityData = winGame ? findCribCity(winGame.home) : null;
   renderPlanCityCard(cityData, winGame);
   renderFlightsTab();
+  renderAccommodationTab();
   renderTicketsTab();
   renderTasksTab();
   renderItinerary();
@@ -2301,73 +2604,195 @@ function switchPlanTab(tab) {
   document.querySelectorAll('.plan-pane').forEach(p => p.classList.remove('active'));
   document.getElementById(`ptab-${tab}`).classList.add('active');
   document.getElementById(`ppane-${tab}`).classList.add('active');
+  if(tab==='flights') renderFlightsTab();
+  if(tab==='accommodation') renderAccommodationTab();
+  if(tab==='tickets') renderTicketsTab();
+  if(tab==='tasks') renderTasksTab();
+}
+
+// PLAN DATA HELPERS
+function passengerTagsHTML(selectedList, recordId, type) {
+  const names = appSettings.participantNames || [];
+  const allSelected = names.every(n => selectedList.includes(n));
+  return `<div class="passenger-tags">
+    <span class="passenger-tag everyone ${allSelected ? 'selected' : ''}" onclick="toggleEveryone('${recordId}','${type}')">Everyone</span>
+    ${names.map(n => `<span class="passenger-tag ${selectedList.includes(n) ? 'selected' : ''}" onclick="togglePassenger('${recordId}','${n}','${type}')">${n}</span>`).join('')}
+  </div>`;
+}
+
+function togglePassenger(id, name, type) {
+  const arr = type === 'flight' ? planData.flights : type === 'ticket' ? planData.tickets : [];
+  const rec = arr.find(r => r.id === id);
+  if (!rec) return;
+  const idx = rec.passengers.indexOf(name);
+  if (idx > -1) rec.passengers.splice(idx, 1);
+  else rec.passengers.push(name);
+  renderFlightsTab(); renderTicketsTab();
+  autoSavePlan();
+}
+
+function toggleEveryone(id, type) {
+  const arr = type === 'flight' ? planData.flights : type === 'ticket' ? planData.tickets : [];
+  const rec = arr.find(r => r.id === id);
+  if (!rec) return;
+  const names = appSettings.participantNames || [];
+  rec.passengers = names.every(n => rec.passengers.includes(n)) ? [] : [...names];
+  renderFlightsTab(); renderTicketsTab();
+  autoSavePlan();
 }
 
 // FLIGHTS
 function renderFlightsTab() {
-  const names = appSettings.participantNames || [];
+  if (!planData.flights) planData.flights = [];
   const list = document.getElementById('flights-list');
-  list.innerHTML = names.map(name => {
-    const f = (planData.flights || {})[name] || {};
-    return `<div class="flight-card">
-      <div class="flight-card-header"><div class="flight-person">${name}</div></div>
-      <div style="margin-bottom:8px;font-size:10px;color:var(--orange);letter-spacing:1px">OUTBOUND</div>
-      <div class="flight-fields" style="margin-bottom:12px">
-        <div class="field-group"><div class="field-label">AIRLINE</div><input class="field-input" placeholder="e.g. British Airways" value="${f.outAirline||''}" oninput="updateFlight('${name}','outAirline',this.value)"></div>
-        <div class="field-group"><div class="field-label">FLIGHT NO.</div><input class="field-input" placeholder="BA001" value="${f.outFlight||''}" oninput="updateFlight('${name}','outFlight',this.value)"></div>
-        <div class="field-group"><div class="field-label">DEPARTS</div><input class="field-input" type="datetime-local" value="${f.outDeparts||''}" oninput="updateFlight('${name}','outDeparts',this.value)"></div>
-        <div class="field-group"><div class="field-label">ARRIVES</div><input class="field-input" type="datetime-local" value="${f.outArrives||''}" oninput="updateFlight('${name}','outArrives',this.value)"></div>
-        <div class="field-group"><div class="field-label">COST (£)</div><input class="field-input" type="number" placeholder="0" value="${f.outCost||''}" oninput="updateFlight('${name}','outCost',this.value)"></div>
+  list.innerHTML = planData.flights.map((f, i) => `
+    <div class="record-card">
+      <div class="record-card-header">
+        <div class="record-card-title">${f.label || 'Flight ' + (i+1)}</div>
+        <span class="status-pill ${f.status==='confirmed'?'booked':'pending'}" onclick="toggleFlightStatus('${f.id}')">${f.status==='confirmed'?'✓ Confirmed':'Pending'}</span>
+        <button class="action-btn danger" style="padding:3px 8px;font-size:10px" onclick="deleteFlight('${f.id}')">DELETE</button>
       </div>
-      <div style="margin-bottom:8px;font-size:10px;color:var(--orange);letter-spacing:1px">RETURN</div>
-      <div class="flight-fields">
-        <div class="field-group"><div class="field-label">AIRLINE</div><input class="field-input" placeholder="e.g. British Airways" value="${f.retAirline||''}" oninput="updateFlight('${name}','retAirline',this.value)"></div>
-        <div class="field-group"><div class="field-label">FLIGHT NO.</div><input class="field-input" placeholder="BA002" value="${f.retFlight||''}" oninput="updateFlight('${name}','retFlight',this.value)"></div>
-        <div class="field-group"><div class="field-label">DEPARTS</div><input class="field-input" type="datetime-local" value="${f.retDeparts||''}" oninput="updateFlight('${name}','retDeparts',this.value)"></div>
-        <div class="field-group"><div class="field-label">ARRIVES</div><input class="field-input" type="datetime-local" value="${f.retArrives||''}" oninput="updateFlight('${name}','retArrives',this.value)"></div>
-        <div class="field-group"><div class="field-label">COST (£)</div><input class="field-input" type="number" placeholder="0" value="${f.retCost||''}" oninput="updateFlight('${name}','retCost',this.value)"></div>
+      <div class="record-section-label">OUTBOUND</div>
+      <div class="record-fields">
+        <div class="field-group"><div class="field-label">AIRLINE</div><input class="field-input" placeholder="e.g. British Airways" value="${f.outAirline||''}" oninput="updateFlightField('${f.id}','outAirline',this.value)"></div>
+        <div class="field-group"><div class="field-label">FLIGHT NO.</div><input class="field-input" placeholder="BA001" value="${f.outFlight||''}" oninput="updateFlightField('${f.id}','outFlight',this.value)"></div>
+        <div class="field-group"><div class="field-label">DEPARTS</div><input class="field-input" type="datetime-local" value="${f.outDeparts||''}" oninput="updateFlightField('${f.id}','outDeparts',this.value)"></div>
+        <div class="field-group"><div class="field-label">ARRIVES</div><input class="field-input" type="datetime-local" value="${f.outArrives||''}" oninput="updateFlightField('${f.id}','outArrives',this.value)"></div>
       </div>
-    </div>`;
-  }).join('');
+      <div class="record-section-label">RETURN</div>
+      <div class="record-fields">
+        <div class="field-group"><div class="field-label">AIRLINE</div><input class="field-input" placeholder="e.g. British Airways" value="${f.retAirline||''}" oninput="updateFlightField('${f.id}','retAirline',this.value)"></div>
+        <div class="field-group"><div class="field-label">FLIGHT NO.</div><input class="field-input" placeholder="BA002" value="${f.retFlight||''}" oninput="updateFlightField('${f.id}','retFlight',this.value)"></div>
+        <div class="field-group"><div class="field-label">DEPARTS</div><input class="field-input" type="datetime-local" value="${f.retDeparts||''}" oninput="updateFlightField('${f.id}','retDeparts',this.value)"></div>
+        <div class="field-group"><div class="field-label">ARRIVES</div><input class="field-input" type="datetime-local" value="${f.retArrives||''}" oninput="updateFlightField('${f.id}','retArrives',this.value)"></div>
+      </div>
+      <div class="record-section-label">NOTES</div>
+      <textarea class="record-notes" placeholder="Any notes about this flight..." oninput="updateFlightField('${f.id}','notes',this.value)">${f.notes||''}</textarea>
+      <div class="record-section-label" style="margin-top:10px">WHO'S ON THIS FLIGHT?</div>
+      ${passengerTagsHTML(f.passengers||[], f.id, 'flight')}
+    </div>`).join('');
 }
 
-function updateFlight(name, field, value) {
-  if (!planData.flights) planData.flights = {};
-  if (!planData.flights[name]) planData.flights[name] = {};
-  planData.flights[name][field] = value;
-  autoSavePlan();
+function addFlight() {
+  if (!planData.flights) planData.flights = [];
+  planData.flights.push({ id: Date.now().toString(), label: 'New Flight', outAirline:'', outFlight:'', outDeparts:'', outArrives:'', retAirline:'', retFlight:'', retDeparts:'', retArrives:'', notes:'', passengers:[], status:'pending' });
+  renderFlightsTab(); autoSavePlan();
+}
+
+function updateFlightField(id, field, value) {
+  const rec = (planData.flights||[]).find(r => r.id === id);
+  if (rec) { rec[field] = value; if (field === 'outAirline' || field === 'outFlight') rec.label = [rec.outAirline, rec.outFlight].filter(Boolean).join(' · ') || 'New Flight'; autoSavePlan(); }
+}
+
+function toggleFlightStatus(id) {
+  const rec = (planData.flights||[]).find(r => r.id === id);
+  if (rec) { rec.status = rec.status === 'confirmed' ? 'pending' : 'confirmed'; renderFlightsTab(); autoSavePlan(); }
+}
+
+function deleteFlight(id) {
+  if (!confirm('Delete this flight?')) return;
+  planData.flights = (planData.flights||[]).filter(r => r.id !== id);
+  renderFlightsTab(); autoSavePlan();
+}
+
+// ACCOMMODATION
+function renderAccommodationTab() {
+  if (!planData.accommodation) planData.accommodation = [];
+  const list = document.getElementById('accommodation-list');
+  list.innerHTML = planData.accommodation.map((a, i) => `
+    <div class="record-card">
+      <div class="record-card-header">
+        <div class="record-card-title">${a.name || 'Accommodation ' + (i+1)}</div>
+        <span class="status-pill ${a.status==='booked'?'booked':'pending'}" onclick="toggleAccomStatus('${a.id}')">${a.status==='booked'?'✓ Booked':'Pending'}</span>
+        <button class="action-btn danger" style="padding:3px 8px;font-size:10px" onclick="deleteAccom('${a.id}')">DELETE</button>
+      </div>
+      <div class="record-fields wide">
+        <div class="field-group"><div class="field-label">PROPERTY NAME</div><input class="field-input" placeholder="e.g. Downtown AirBnB" value="${a.name||''}" oninput="updateAccomField('${a.id}','name',this.value)"></div>
+        <div class="field-group"><div class="field-label">TYPE</div>
+          <select class="field-input" onchange="updateAccomField('${a.id}','type',this.value)">
+            <option value="hotel" ${(a.type||'hotel')==='hotel'?'selected':''}>Hotel</option>
+            <option value="airbnb" ${a.type==='airbnb'?'selected':''}>AirBnB</option>
+            <option value="vrbo" ${a.type==='vrbo'?'selected':''}>VRBO</option>
+            <option value="other" ${a.type==='other'?'selected':''}>Other</option>
+          </select>
+        </div>
+        <div class="field-group"><div class="field-label">CHECK-IN</div><input class="field-input" type="date" value="${a.checkin||''}" oninput="updateAccomField('${a.id}','checkin',this.value)"></div>
+        <div class="field-group"><div class="field-label">CHECK-OUT</div><input class="field-input" type="date" value="${a.checkout||''}" oninput="updateAccomField('${a.id}','checkout',this.value)"></div>
+        <div class="field-group"><div class="field-label">COST PER PERSON (£)</div><input class="field-input" type="number" placeholder="0" value="${a.cost||''}" oninput="updateAccomField('${a.id}','cost',this.value)"></div>
+        <div class="field-group"><div class="field-label">BOOKING REF</div><input class="field-input" placeholder="ABC123" value="${a.ref||''}" oninput="updateAccomField('${a.id}','ref',this.value)"></div>
+      </div>
+      <div class="field-group" style="margin-top:8px"><div class="field-label">URL / LISTING LINK</div><input class="field-input" placeholder="https://..." value="${a.url||''}" oninput="updateAccomField('${a.id}','url',this.value)"></div>
+      <div style="margin-top:8px"><div class="field-label" style="margin-bottom:4px">NOTES</div><textarea class="record-notes" placeholder="Address, check-in instructions, parking..." oninput="updateAccomField('${a.id}','notes',this.value)">${a.notes||''}</textarea></div>
+    </div>`).join('');
+}
+
+function addAccommodation() {
+  if (!planData.accommodation) planData.accommodation = [];
+  planData.accommodation.push({ id: Date.now().toString(), name:'', type:'hotel', checkin:'', checkout:'', cost:'', ref:'', url:'', notes:'', status:'pending' });
+  renderAccommodationTab(); autoSavePlan();
+}
+
+function updateAccomField(id, field, value) {
+  const rec = (planData.accommodation||[]).find(r => r.id === id);
+  if (rec) { rec[field] = value; if(field==='name') renderAccommodationTab(); autoSavePlan(); }
+}
+
+function toggleAccomStatus(id) {
+  const rec = (planData.accommodation||[]).find(r => r.id === id);
+  if (rec) { rec.status = rec.status === 'booked' ? 'pending' : 'booked'; renderAccommodationTab(); autoSavePlan(); }
+}
+
+function deleteAccom(id) {
+  if (!confirm('Delete this accommodation?')) return;
+  planData.accommodation = (planData.accommodation||[]).filter(r => r.id !== id);
+  renderAccommodationTab(); autoSavePlan();
 }
 
 // TICKETS
 function renderTicketsTab() {
-  const names = appSettings.participantNames || [];
+  if (!planData.tickets) planData.tickets = [];
   const list = document.getElementById('tickets-list');
-  list.innerHTML = names.map(name => {
-    const t = (planData.tickets || {})[name] || {};
-    return `<div class="ticket-card">
-      <div class="flight-card-header" style="margin-bottom:10px"><div class="flight-person">${name}</div></div>
-      <div class="ticket-grid">
-        <div class="field-group"><div class="field-label">SECTION</div><input class="field-input" placeholder="e.g. 114" value="${t.section||''}" oninput="updateTicket('${name}','section',this.value)"></div>
-        <div class="field-group"><div class="field-label">ROW</div><input class="field-input" placeholder="e.g. G" value="${t.row||''}" oninput="updateTicket('${name}','row',this.value)"></div>
-        <div class="field-group"><div class="field-label">SEAT</div><input class="field-input" placeholder="e.g. 12" value="${t.seat||''}" oninput="updateTicket('${name}','seat',this.value)"></div>
-        <div class="field-group"><div class="field-label">COST (£)</div><input class="field-input" type="number" placeholder="0" value="${t.cost||''}" oninput="updateTicket('${name}','cost',this.value)"></div>
-        <div class="field-group"><div class="field-label">PURCHASED VIA</div><input class="field-input" placeholder="e.g. TickPick" value="${t.via||''}" oninput="updateTicket('${name}','via',this.value)"></div>
-        <div class="field-group"><div class="field-label">STATUS</div>
-          <select class="field-input" onchange="updateTicket('${name}','status',this.value)">
-            <option value="pending" ${(t.status||'pending')==='pending'?'selected':''}>Pending</option>
-            <option value="booked" ${t.status==='booked'?'selected':''}>✓ Booked</option>
-          </select>
-        </div>
+  list.innerHTML = planData.tickets.map((t, i) => `
+    <div class="record-card">
+      <div class="record-card-header">
+        <div class="record-card-title">${t.label || 'Ticket Option ' + (i+1)}</div>
+        <span class="status-pill ${t.status==='booked'?'booked':'pending'}" onclick="toggleTicketStatus('${t.id}')">${t.status==='booked'?'✓ Booked':'Pending'}</span>
+        <button class="action-btn danger" style="padding:3px 8px;font-size:10px" onclick="deleteTicket('${t.id}')">DELETE</button>
       </div>
-    </div>`;
-  }).join('');
+      <div class="record-fields">
+        <div class="field-group"><div class="field-label">SECTION</div><input class="field-input" placeholder="e.g. 114" value="${t.section||''}" oninput="updateTicketField('${t.id}','section',this.value)"></div>
+        <div class="field-group"><div class="field-label">ROW</div><input class="field-input" placeholder="e.g. G" value="${t.row||''}" oninput="updateTicketField('${t.id}','row',this.value)"></div>
+        <div class="field-group"><div class="field-label">SEAT</div><input class="field-input" placeholder="e.g. 12" value="${t.seat||''}" oninput="updateTicketField('${t.id}','seat',this.value)"></div>
+        <div class="field-group"><div class="field-label">COST PER TICKET (£)</div><input class="field-input" type="number" placeholder="0" value="${t.cost||''}" oninput="updateTicketField('${t.id}','cost',this.value)"></div>
+        <div class="field-group"><div class="field-label">PURCHASED VIA</div><input class="field-input" placeholder="e.g. TickPick" value="${t.via||''}" oninput="updateTicketField('${t.id}','via',this.value)"></div>
+        <div class="field-group"><div class="field-label">BOOKING REF</div><input class="field-input" placeholder="ABC123" value="${t.ref||''}" oninput="updateTicketField('${t.id}','ref',this.value)"></div>
+      </div>
+      <div class="field-group" style="margin-top:8px"><div class="field-label">URL / LISTING LINK</div><input class="field-input" placeholder="https://..." value="${t.url||''}" oninput="updateTicketField('${t.id}','url',this.value)"></div>
+      <div class="record-section-label" style="margin-top:10px">WHO'S THIS FOR?</div>
+      ${passengerTagsHTML(t.passengers||[], t.id, 'ticket')}
+    </div>`).join('');
 }
 
-function updateTicket(name, field, value) {
-  if (!planData.tickets) planData.tickets = {};
-  if (!planData.tickets[name]) planData.tickets[name] = {};
-  planData.tickets[name][field] = value;
-  autoSavePlan();
+function addTicket() {
+  if (!planData.tickets) planData.tickets = [];
+  planData.tickets.push({ id: Date.now().toString(), label:'New Ticket Option', section:'', row:'', seat:'', cost:'', via:'', ref:'', url:'', passengers:[], status:'pending' });
+  renderTicketsTab(); autoSavePlan();
+}
+
+function updateTicketField(id, field, value) {
+  const rec = (planData.tickets||[]).find(r => r.id === id);
+  if (rec) { rec[field] = value; if(field==='section'||field==='row') rec.label = [rec.section&&('Sec '+rec.section), rec.row&&('Row '+rec.row)].filter(Boolean).join(' · ')||'New Ticket Option'; autoSavePlan(); }
+}
+
+function toggleTicketStatus(id) {
+  const rec = (planData.tickets||[]).find(r => r.id === id);
+  if (rec) { rec.status = rec.status === 'booked' ? 'pending' : 'booked'; renderTicketsTab(); autoSavePlan(); }
+}
+
+function deleteTicket(id) {
+  if (!confirm('Delete this ticket option?')) return;
+  planData.tickets = (planData.tickets||[]).filter(r => r.id !== id);
+  renderTicketsTab(); autoSavePlan();
 }
 
 // TASKS
@@ -2397,18 +2822,13 @@ function addTask() {
 }
 
 function toggleTask(i, done) {
-  if (planData.tasks && planData.tasks[i]) {
-    planData.tasks[i].done = done;
-    renderTasksTab();
-    autoSavePlan();
-  }
+  if (planData.tasks && planData.tasks[i]) { planData.tasks[i].done = done; renderTasksTab(); autoSavePlan(); }
 }
 
 function deleteTask(i) {
   if (!confirm('Delete this task?')) return;
   planData.tasks.splice(i, 1);
-  renderTasksTab();
-  autoSavePlan();
+  renderTasksTab(); autoSavePlan();
 }
 
 // ITINERARY
@@ -2416,85 +2836,96 @@ function renderItinerary() {
   const startInput = document.getElementById('trip-start-date');
   const daysInput = document.getElementById('trip-days');
   if (!startInput || !daysInput) return;
-
   const startStr = startInput.value || planData.tripStartDate || '';
   const days = parseInt(daysInput.value || planData.tripDays || 5);
-  planData.tripStartDate = startStr;
-  planData.tripDays = days;
-
+  planData.tripStartDate = startStr; planData.tripDays = days;
   const container = document.getElementById('itinerary-days');
   if (!container) return;
-
   const startDate = startStr ? new Date(startStr) : null;
-  const dayLabels = ['Thursday','Friday','Saturday','Sunday','Monday','Tuesday','Wednesday'];
-
   container.innerHTML = '';
+  const names = appSettings.participantNames || [];
   for (let d = 0; d < days; d++) {
     const dayKey = `day${d}`;
     const events = (planData.itinerary || {})[dayKey] || [];
-    let dateLabel = '';
-    if (startDate) {
-      const dt = new Date(startDate); dt.setDate(startDate.getDate() + d);
-      dateLabel = dt.toLocaleDateString('en-GB', {weekday:'long', day:'numeric', month:'short'});
-    } else {
-      dateLabel = `Day ${d+1}`;
-    }
-
+    let dateLabel = startDate ? (() => { const dt = new Date(startDate); dt.setDate(startDate.getDate()+d); return dt.toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'short'}); })() : `Day ${d+1}`;
     const dayDiv = document.createElement('div'); dayDiv.className = 'itinerary-day';
     dayDiv.innerHTML = `
-      <div class="itinerary-day-header">
-        <div class="itinerary-day-label">${dateLabel}</div>
-      </div>
+      <div class="itinerary-day-header"><div class="itinerary-day-label">${dateLabel}</div></div>
       <div class="itinerary-events" id="iday-${dayKey}">
         ${events.map((ev, i) => `
           <div class="itinerary-event">
             <div class="itinerary-time">${ev.time||'—'}</div>
-            <div class="itinerary-desc">${ev.desc}</div>
+            <div class="itinerary-desc">
+              <div>${ev.desc}</div>
+              ${ev.who&&ev.who.length ? `<div style="font-size:9px;color:var(--orange);margin-top:2px">${ev.who.join(', ')}</div>` : ''}
+            </div>
             <button class="itinerary-event-delete" onclick="deleteItineraryEvent('${dayKey}',${i})">✕</button>
           </div>`).join('')}
         ${!events.length ? '<div style="font-size:11px;color:var(--muted);padding:6px 0">No events yet</div>' : ''}
       </div>
       <div style="padding:0 14px 10px">
         <div class="add-event-row">
-          <input type="time" class="add-event-time" id="itime-${dayKey}" placeholder="10:00">
+          <input type="time" class="add-event-time" id="itime-${dayKey}">
           <input type="text" class="add-event-input" id="idesc-${dayKey}" placeholder="add an event..." onkeydown="if(event.key==='Enter')addItineraryEvent('${dayKey}')">
           <button class="action-btn" onclick="addItineraryEvent('${dayKey}')">ADD +</button>
+        </div>
+        <div style="margin-top:6px">
+          <div class="field-label" style="margin-bottom:4px">WHO'S JOINING?</div>
+          <div class="passenger-tags" id="iwho-${dayKey}">
+            <span class="passenger-tag everyone selected" onclick="toggleItinEveryone('${dayKey}')">Everyone</span>
+            ${names.map(n=>`<span class="passenger-tag" onclick="toggleItinPerson('${dayKey}','${n}')">${n}</span>`).join('')}
+          </div>
         </div>
       </div>`;
     container.appendChild(dayDiv);
   }
 }
 
+function toggleItinEveryone(dayKey) {
+  const names = appSettings.participantNames || [];
+  const tags = document.querySelectorAll(`#iwho-${dayKey} .passenger-tag:not(.everyone)`);
+  const everyoneTag = document.querySelector(`#iwho-${dayKey} .everyone`);
+  const allSelected = [...tags].every(t => t.classList.contains('selected'));
+  tags.forEach(t => t.classList.toggle('selected', !allSelected));
+  everyoneTag.classList.toggle('selected', !allSelected);
+}
+
+function toggleItinPerson(dayKey, name) {
+  const tag = [...document.querySelectorAll(`#iwho-${dayKey} .passenger-tag:not(.everyone)`)].find(t => t.textContent === name);
+  if (tag) tag.classList.toggle('selected');
+  const names = appSettings.participantNames || [];
+  const tags = document.querySelectorAll(`#iwho-${dayKey} .passenger-tag:not(.everyone)`);
+  const everyoneTag = document.querySelector(`#iwho-${dayKey} .everyone`);
+  everyoneTag.classList.toggle('selected', [...tags].every(t => t.classList.contains('selected')));
+}
+
+function getItinWho(dayKey) {
+  const tags = document.querySelectorAll(`#iwho-${dayKey} .passenger-tag:not(.everyone)`);
+  const selected = [...tags].filter(t => t.classList.contains('selected')).map(t => t.textContent);
+  const names = appSettings.participantNames || [];
+  return selected.length === names.length ? [] : selected; // empty = everyone
+}
+
 function addItineraryEvent(dayKey) {
   const time = document.getElementById(`itime-${dayKey}`)?.value || '';
   const desc = document.getElementById(`idesc-${dayKey}`)?.value.trim() || '';
   if (!desc) return;
+  const who = getItinWho(dayKey);
   if (!planData.itinerary) planData.itinerary = {};
   if (!planData.itinerary[dayKey]) planData.itinerary[dayKey] = [];
-  planData.itinerary[dayKey].push({ time, desc });
+  planData.itinerary[dayKey].push({ time, desc, who });
   planData.itinerary[dayKey].sort((a,b) => (a.time||'').localeCompare(b.time||''));
-  renderItinerary();
-  autoSavePlan();
+  renderItinerary(); autoSavePlan();
 }
 
 function deleteItineraryEvent(dayKey, idx) {
   if (!confirm('Delete this event?')) return;
   planData.itinerary[dayKey].splice(idx, 1);
-  renderItinerary();
-  autoSavePlan();
+  renderItinerary(); autoSavePlan();
 }
 
 // LOAD/SAVE PLAN FIELDS
 function loadPlanFields() {
-  // Hotel
-  const h = planData.hotel || {};
-  ['name','checkin','checkout','cost','ref','notes'].forEach(f => {
-    const el = document.getElementById(`hotel-${f}`);
-    if (el) el.value = h[f] || '';
-  });
-  const bookedBy = document.getElementById('hotel-booked-by');
-  if (bookedBy && h.bookedBy) bookedBy.value = h.bookedBy;
-  // Trip dates
   const sd = document.getElementById('trip-start-date');
   const td = document.getElementById('trip-days');
   if (sd) sd.value = planData.tripStartDate || '';
@@ -2503,38 +2934,19 @@ function loadPlanFields() {
 
 function populatePlanSelects() {
   const names = appSettings.participantNames || [];
-  // Hotel booked-by
-  const hbb = document.getElementById('hotel-booked-by');
-  if (hbb) {
-    hbb.innerHTML = '<option value="">— select —</option>' + names.map(n=>`<option value="${n}">${n}</option>`).join('');
-    if ((planData.hotel||{}).bookedBy) hbb.value = planData.hotel.bookedBy;
-  }
-  // Task owner
   const to = document.getElementById('new-task-owner');
   if (to) to.innerHTML = '<option value="">— owner —</option>' + names.map(n=>`<option value="${n}">${n}</option>`).join('');
 }
 
-// Collect hotel fields into planData
-function collectHotelData() {
-  planData.hotel = {
-    name: document.getElementById('hotel-name')?.value || '',
-    checkin: document.getElementById('hotel-checkin')?.value || '',
-    checkout: document.getElementById('hotel-checkout')?.value || '',
-    cost: document.getElementById('hotel-cost')?.value || '',
-    ref: document.getElementById('hotel-ref')?.value || '',
-    bookedBy: document.getElementById('hotel-booked-by')?.value || '',
-    notes: document.getElementById('hotel-notes')?.value || '',
-  };
-}
+function collectHotelData() {} // No-op: accommodation now uses record model
 
 let savePlanTimer = null;
 function autoSavePlan() {
-  collectHotelData();
   clearTimeout(savePlanTimer);
   savePlanTimer = setTimeout(async () => {
     try {
       await saveSetting('plan_data', planData);
-      ['flights','hotel','tickets','itinerary','tasks'].forEach(tab => {
+      ['flights','accommodation','tickets','itinerary','tasks'].forEach(tab => {
         const el = document.getElementById(`${tab}-save-status`);
         if (el) { el.style.display = 'inline'; setTimeout(() => el.style.display = 'none', 2000); }
       });
@@ -2628,6 +3040,14 @@ async function nuclearReset() {
   } catch(e) {
     alert('Reset failed: ' + e.message);
   }
+}
+
+
+// ADMIN COLLAPSIBLE SECTIONS
+function toggleAdminSection(btn) {
+  btn.classList.toggle('open');
+  const body = btn.nextElementSibling;
+  body.classList.toggle('open');
 }
 
 // ============================================================
