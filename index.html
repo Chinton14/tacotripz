@@ -712,7 +712,9 @@ async function checkPin() {
   if (document.getElementById('pin-input').value.trim() === ADMIN_PIN) {
     closeAdminLogin();
     hideAll();
-    document.getElementById('admin-screen').style.display = 'block';
+    const adminEl = document.getElementById('admin-screen');
+    adminEl.classList.remove('hidden');
+    adminEl.style.display = 'block';
     await loadAdmin();
   } else {
     document.getElementById('pin-error').style.display = 'block';
@@ -721,8 +723,10 @@ async function checkPin() {
 }
 function exitAdmin() {
   hideAll();
-  show('name-screen');
-  nameInput.value = '';
+  const nameScreen = document.getElementById('name-screen');
+  nameScreen.classList.remove('hidden');
+  nameScreen.style.display = 'block';
+  populateNameDropdown();
   proceedBtn.disabled = true;
 }
 
@@ -895,7 +899,7 @@ function setProgress(fillId, doneId, totalId, done, total) {
 }
 
 const ALL_SCREENS = ['name-screen','availability-screen','success-screen','already-screen','waiting-screen','results-screen','admin-screen'];
-function hideAll() { ALL_SCREENS.forEach(id => { const el = document.getElementById(id); if(el){ el.style.display='none'; el.classList.add('hidden'); } }); }
+function hideAll() { ALL_SCREENS.forEach(id => { const el = document.getElementById(id); if(el){ el.style.display='none'; el.classList.add('hidden'); el.classList.remove('fade-in'); } }); }
 function showScreen(id) { hideAll(); const el = document.getElementById(id); if(el){ el.style.display='block'; el.classList.remove('hidden'); el.classList.add('fade-in'); } }
 function show(id) { const el = document.getElementById(id); if(el){ el.style.display='block'; el.classList.remove('hidden'); } }
 
