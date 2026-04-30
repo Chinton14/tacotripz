@@ -36,15 +36,15 @@
   /* CONTAINER */
   .container { max-width: 960px; margin: 0 auto; padding: 32px 24px; }
   .section-header { margin-bottom: 28px; }
-  .section-tag { font-size: 10px; color: var(--orange); letter-spacing: 2px; margin-bottom: 6px; }
+  .section-tag { font-size: 12px; color: var(--orange); letter-spacing: 2px; margin-bottom: 6px; }
   .section-title { font-family: var(--sans); font-size: 28px; font-weight: 700; color: var(--text); letter-spacing: 0.5px; }
-  .section-sub { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.6; }
+  .section-sub { font-size: 14px; color: var(--muted); margin-top: 6px; line-height: 1.6; }
 
   /* NAME SCREEN */
   #name-screen { max-width: 440px; margin: 60px auto; text-align: center; }
   .taco-icon { font-size: 52px; margin-bottom: 24px; display: block; }
   .name-title { font-family: var(--sans); font-size: 34px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
-  .name-sub { font-size: 12px; color: var(--muted); margin-bottom: 32px; line-height: 1.7; }
+  .name-sub { font-size: 14px; color: var(--muted); margin-bottom: 32px; line-height: 1.7; }
   .name-field { display: flex; margin-bottom: 16px; border: 1px solid var(--border); border-radius: 3px; overflow: hidden; transition: border-color 0.2s; }
   .name-field:focus-within { border-color: var(--orange); }
   .name-prompt { background: var(--bg3); padding: 12px 14px; font-size: 13px; color: var(--orange); border-right: 1px solid var(--border); white-space: nowrap; }
@@ -56,18 +56,18 @@
 
   /* LEGEND */
   .legend { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; padding: 12px 14px; background: var(--bg2); border: 1px solid var(--border); border-radius: 3px; }
-  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted); }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); }
   .legend-swatch { width: 12px; height: 12px; border-radius: 2px; }
 
   /* WEEKEND TILES - Stage 1 */
   .month-group { margin-bottom: 24px; }
-  .month-label { font-size: 10px; color: var(--orange); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+  .month-label { font-size: 12px; color: var(--orange); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
   .weekends-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); gap: 8px; }
   .weekend-tile { border: 1px solid var(--border); border-radius: 3px; padding: 10px 12px; cursor: pointer; transition: all 0.15s; user-select: none; position: relative; background: var(--bg2); }
   .weekend-tile:hover { border-color: var(--muted); }
-  .weekend-tile .wk-num { font-size: 9px; color: var(--muted); letter-spacing: 1px; margin-bottom: 3px; }
+  .weekend-tile .wk-num { font-size: 11px; color: var(--muted); letter-spacing: 1px; margin-bottom: 3px; }
   .weekend-tile .wk-dates { font-size: 13px; color: var(--text); }
-  .weekend-tile .wk-status { font-size: 9px; margin-top: 6px; color: var(--muted); transition: color 0.15s; }
+  .weekend-tile .wk-status { font-size: 11px; margin-top: 6px; color: var(--muted); transition: color 0.15s; }
   .weekend-tile .wk-indicator { position: absolute; top: 8px; right: 10px; width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: background 0.15s; }
   .weekend-tile.state-available { border-color: var(--green); background: var(--green-dim); }
   .weekend-tile.state-available .wk-status { color: var(--green); }
@@ -82,49 +82,49 @@
 
   /* SUBMIT AREA */
   .submit-area { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-  .submit-summary { flex: 1; font-size: 11px; color: var(--muted); line-height: 1.8; }
+  .submit-summary { flex: 1; font-size: 13px; color: var(--muted); line-height: 1.8; }
   .submit-btn { background: var(--orange); border: none; color: #fff; font-family: var(--sans); font-size: 14px; font-weight: 700; letter-spacing: 2px; padding: 12px 28px; cursor: pointer; border-radius: 3px; transition: opacity 0.2s; text-transform: uppercase; white-space: nowrap; }
   .submit-btn:hover { opacity: 0.88; }
   .submit-btn:disabled { opacity: 0.3; cursor: not-allowed; }
 
   /* PROGRESS / HOLDING */
   .progress-block { background: var(--bg2); border: 1px solid var(--border); border-radius: 3px; padding: 16px 20px; text-align: left; }
-  .progress-label { font-size: 10px; color: var(--orange); letter-spacing: 2px; margin-bottom: 10px; }
+  .progress-label { font-size: 12px; color: var(--orange); letter-spacing: 2px; margin-bottom: 10px; }
   .progress-bar-wrap { height: 4px; background: var(--bg3); border-radius: 2px; margin-bottom: 8px; overflow: hidden; }
   .progress-bar-fill { height: 100%; background: var(--orange); border-radius: 2px; transition: width 0.6s ease; }
-  .progress-count { font-size: 11px; color: var(--muted); }
+  .progress-count { font-size: 13px; color: var(--muted); }
   .progress-count span { color: var(--text); }
   #success-screen { max-width: 440px; margin: 80px auto; text-align: center; display: none; }
   .success-icon { font-size: 48px; margin-bottom: 20px; }
   .success-title { font-family: var(--sans); font-size: 28px; font-weight: 700; color: var(--green); margin-bottom: 10px; }
-  .success-msg { font-size: 12px; color: var(--muted); line-height: 1.8; margin-bottom: 28px; }
+  .success-msg { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 28px; }
   #already-screen { max-width: 440px; margin: 80px auto; text-align: center; display: none; }
   #waiting-screen { max-width: 440px; margin: 80px auto; text-align: center; display: none; }
   .holding-title { font-family: var(--sans); font-size: 26px; font-weight: 700; color: var(--text); margin-bottom: 10px; margin-top: 24px; }
-  .holding-msg { font-size: 12px; color: var(--muted); line-height: 1.8; margin-bottom: 24px; }
+  .holding-msg { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 24px; }
 
   /* RESULTS - Stage 1 */
   #results-screen { display: none; }
-  .results-intro { background: var(--bg2); border: 1px solid var(--border); border-left: 3px solid var(--orange); border-radius: 3px; padding: 14px 16px; margin-bottom: 24px; font-size: 12px; color: var(--muted); line-height: 1.8; }
+  .results-intro { background: var(--bg2); border: 1px solid var(--border); border-left: 3px solid var(--orange); border-radius: 3px; padding: 14px 16px; margin-bottom: 24px; font-size: 14px; color: var(--muted); line-height: 1.8; }
   .results-intro span { color: var(--text); }
   .results-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; margin-bottom: 8px; }
   .result-tile { border: 1px solid var(--border); border-radius: 3px; padding: 12px 14px; background: var(--bg2); position: relative; }
   .result-tile.all-good { border-color: var(--green); background: var(--green-dim); }
   .result-tile.most-good { border-color: var(--yellow); background: var(--yellow-dim); }
-  .result-tile .r-week { font-size: 9px; color: var(--muted); letter-spacing: 1px; margin-bottom: 3px; }
+  .result-tile .r-week { font-size: 11px; color: var(--muted); letter-spacing: 1px; margin-bottom: 3px; }
   .result-tile .r-dates { font-size: 13px; color: var(--text); margin-bottom: 10px; }
   .result-tile .r-bars { display: flex; flex-direction: column; gap: 4px; }
   .result-tile .r-bar-row { display: flex; align-items: center; gap: 6px; }
-  .result-tile .r-bar-label { font-size: 9px; color: var(--muted); width: 58px; flex-shrink: 0; }
+  .result-tile .r-bar-label { font-size: 11px; width: 68px; color: var(--muted); width: 58px; flex-shrink: 0; }
   .result-tile .r-bar-track { flex: 1; height: 3px; background: var(--bg3); border-radius: 2px; }
   .result-tile .r-bar-fill { height: 100%; border-radius: 2px; }
-  .result-tile .r-count { font-size: 9px; color: var(--muted); min-width: 16px; text-align: right; }
-  .result-tile .r-badge { position: absolute; top: 8px; right: 10px; font-size: 8px; padding: 2px 6px; border-radius: 2px; background: var(--green-dim); color: var(--green); border: 1px solid rgba(0,204,102,0.3); }
+  .result-tile .r-count { font-size: 11px; color: var(--muted); min-width: 16px; text-align: right; }
+  .result-tile .r-badge { position: absolute; top: 8px; right: 10px; font-size: 10px; padding: 2px 6px; border-radius: 2px; background: var(--green-dim); color: var(--green); border: 1px solid rgba(0,204,102,0.3); }
 
   /* STAGE 2 TABS */
   #stage2-screen { display: none; }
   .tab-bar { display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: 28px; }
-  .tab-btn { background: none; border: 1px solid var(--border); border-bottom: 2px solid transparent; color: var(--muted); font-family: var(--mono); font-size: 13px; letter-spacing: 1px; padding: 12px 24px; cursor: pointer; transition: all 0.2s; margin-bottom: -1px; border-radius: 3px 3px 0 0; }
+  .tab-btn { background: none; border: 1px solid var(--border); border-bottom: 2px solid transparent; color: var(--muted); font-family: var(--mono); font-size: 14px; letter-spacing: 1px; padding: 12px 24px; cursor: pointer; transition: all 0.2s; margin-bottom: -1px; border-radius: 3px 3px 0 0; }
   .tab-btn:hover { color: var(--text); }
   .tab-btn.active { color: var(--orange); border-bottom-color: var(--orange); background: var(--bg2); border-color: var(--border); border-bottom-color: var(--orange); }
   .tab-pane { display: none; }
@@ -137,16 +137,16 @@
   .game-card.selected { border-color: var(--orange); background: var(--orange-dim); }
   .game-card.disabled { opacity: 0.4; cursor: not-allowed; }
   .game-card.disabled:hover { border-color: var(--border); }
-  .game-week-badge { font-size: 9px; color: var(--muted); letter-spacing: 1px; white-space: nowrap; min-width: 40px; }
+  .game-week-badge { font-size: 11px; color: var(--muted); letter-spacing: 1px; white-space: nowrap; min-width: 40px; }
   .game-teams { flex: 1; }
   .game-matchup { font-size: 14px; color: var(--text); margin-bottom: 2px; }
-  .game-meta { font-size: 10px; color: var(--muted); }
+  .game-meta { font-size: 12px; color: var(--muted); }
   .game-selector { width: 18px; height: 18px; border-radius: 50%; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 10px; transition: all 0.15s; flex-shrink: 0; }
   .game-card.selected .game-selector { background: var(--orange); border-color: var(--orange); color: #fff; }
-  .game-weekend-header { font-size: 10px; color: var(--orange); letter-spacing: 2px; margin: 20px 0 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+  .game-weekend-header { font-size: 12px; color: var(--orange); letter-spacing: 2px; margin: 20px 0 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
   .game-weekend-header:first-child { margin-top: 0; }
   .shortlist-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding: 12px 14px; background: var(--bg2); border: 1px solid var(--border); border-radius: 3px; }
-  .shortlist-count { font-size: 12px; color: var(--muted); flex: 1; }
+  .shortlist-count { font-size: 14px; color: var(--muted); flex: 1; }
   .shortlist-count span { color: var(--orange); font-size: 14px; }
   .shortlist-dots { display: flex; gap: 4px; }
   .shortlist-dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid var(--border); transition: background 0.15s; }
@@ -157,31 +157,31 @@
   #stage2-already { max-width: 440px; margin: 80px auto; text-align: center; display: none; }
 
   /* CRIB SHEET */
-  .crib-intro { font-size: 11px; color: var(--muted); margin-bottom: 20px; line-height: 1.8; padding: 12px 14px; background: var(--bg2); border: 1px solid var(--border); border-left: 3px solid var(--orange); border-radius: 3px; }
-  .division-header { font-size: 10px; color: var(--orange); letter-spacing: 3px; margin: 24px 0 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+  .crib-intro { font-size: 13px; color: var(--muted); margin-bottom: 20px; line-height: 1.8; padding: 12px 14px; background: var(--bg2); border: 1px solid var(--border); border-left: 3px solid var(--orange); border-radius: 3px; }
+  .division-header { font-size: 12px; color: var(--orange); letter-spacing: 3px; margin: 24px 0 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
   .crib-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; margin-bottom: 8px; }
   .crib-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
   .crib-card-header { padding: 10px 14px; background: var(--bg3); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
   .crib-team { font-family: var(--sans); font-size: 16px; font-weight: 700; color: var(--text); flex: 1; }
-  .crib-city { font-size: 10px; color: var(--muted); }
-  .flight-badge { font-size: 9px; padding: 2px 7px; border-radius: 2px; white-space: nowrap; }
+  .crib-city { font-size: 12px; color: var(--muted); }
+  .flight-badge { font-size: 11px; padding: 2px 7px; border-radius: 2px; white-space: nowrap; }
   .flight-yes { background: var(--green-dim); color: var(--green); border: 1px solid rgba(0,204,102,0.3); }
   .flight-no { background: var(--red-dim); color: var(--red); border: 1px solid rgba(204,34,0,0.3); }
   .flight-partial { background: var(--yellow-dim); color: var(--yellow); border: 1px solid rgba(255,170,0,0.3); }
   .flight-alt { background: var(--orange-dim); color: var(--orange); border: 1px solid var(--orange-mid); }
   .crib-body { padding: 10px 14px; }
   .crib-pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
-  .crib-pc-label { font-size: 9px; color: var(--muted); margin-bottom: 3px; letter-spacing: 1px; }
-  .crib-pc-text { font-size: 11px; color: var(--text); line-height: 1.5; }
+  .crib-pc-label { font-size: 11px; color: var(--muted); margin-bottom: 3px; letter-spacing: 1px; }
+  .crib-pc-text { font-size: 13px; color: var(--text); line-height: 1.5; }
   .crib-pros .crib-pc-label { color: var(--green); }
   .crib-cons .crib-pc-label { color: var(--red); }
   .crib-footer { display: grid; grid-template-columns: repeat(4, 1fr) auto; gap: 6px; align-items: end; }
   .crib-temp { text-align: center; }
-  .crib-temp-month { font-size: 8px; color: var(--muted); margin-bottom: 2px; }
-  .crib-temp-val { font-size: 12px; color: var(--text); }
-  .crib-flight-time { text-align: right; font-size: 10px; color: var(--muted); }
+  .crib-temp-month { font-size: 10px; color: var(--muted); margin-bottom: 2px; }
+  .crib-temp-val { font-size: 14px; color: var(--text); }
+  .crib-flight-time { text-align: right; font-size: 12px; color: var(--muted); }
   .crib-sports { display: flex; flex-wrap: wrap; gap: 3px; margin-bottom: 8px; }
-  .sport-tag { font-size: 9px; padding: 2px 6px; border-radius: 2px; background: var(--bg3); color: var(--muted); border: 1px solid var(--border); }
+  .sport-tag { font-size: 11px; padding: 2px 6px; border-radius: 2px; background: var(--bg3); color: var(--muted); border: 1px solid var(--border); }
 
   /* ADMIN */
   .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 500; display: none; align-items: center; justify-content: center; }
@@ -197,7 +197,7 @@
   .pin-prompt { background: var(--bg3); padding: 11px 12px; font-size: 12px; color: var(--orange); border-right: 1px solid var(--border); white-space: nowrap; }
   .pin-input { flex: 1; background: transparent; border: none; outline: none; color: var(--text); font-family: var(--mono); font-size: 18px; padding: 11px 14px; letter-spacing: 6px; caret-color: var(--orange); }
   .pin-btn { width: 100%; background: var(--orange); border: none; color: #fff; font-family: var(--sans); font-size: 14px; font-weight: 700; letter-spacing: 2px; padding: 11px; cursor: pointer; border-radius: 3px; text-transform: uppercase; }
-  .pin-error { font-size: 11px; color: var(--red); margin-top: 8px; display: none; }
+  .pin-error { font-size: 13px; color: var(--red); margin-top: 8px; display: none; }
   #admin-screen { display: none; }
   .admin-section { margin-bottom: 36px; }
   .admin-section-title { font-size: 10px; color: var(--orange); letter-spacing: 2px; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
@@ -213,7 +213,7 @@
   .action-btn.danger:hover { background: var(--red-dim); }
   .action-btn.success { background: var(--green); border-color: var(--green); color: #fff; }
   .action-btn.success:hover { opacity: 0.85; }
-  .status-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; padding: 4px 10px; border-radius: 2px; }
+  .status-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 4px 10px; border-radius: 2px; }
   .status-badge.open { background: var(--green-dim); color: var(--green); border: 1px solid rgba(0,204,102,0.3); }
   .status-badge.published { background: var(--orange-dim); color: var(--orange); border: 1px solid var(--orange-mid); }
   .status-badge.locked { background: var(--bg3); color: var(--muted); border: 1px solid var(--border); }
@@ -238,7 +238,7 @@
 
   /* Weekend selection checkboxes in admin */
   .weekend-check-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 6px; margin-bottom: 14px; }
-  .weekend-check-item { display: flex; align-items: center; gap: 8px; padding: 8px 10px; background: var(--bg2); border: 1px solid var(--border); border-radius: 3px; cursor: pointer; transition: all 0.15s; font-size: 11px; color: var(--muted); }
+  .weekend-check-item { display: flex; align-items: center; gap: 8px; padding: 8px 10px; background: var(--bg2); border: 1px solid var(--border); border-radius: 3px; cursor: pointer; transition: all 0.15s; font-size: 13px; color: var(--muted); }
   .weekend-check-item:hover { border-color: var(--orange); color: var(--text); }
   .weekend-check-item.checked { border-color: var(--orange); color: var(--text); background: var(--orange-dim); }
   .weekend-check-item input { accent-color: var(--orange); cursor: pointer; }
@@ -251,7 +251,7 @@
   .game-vote-fill { height: 100%; background: var(--orange); border-radius: 2px; }
   .game-vote-count { font-size: 10px; color: var(--muted); min-width: 40px; }
 
-  .info-box { font-size: 11px; color: var(--muted); padding: 10px 12px; background: var(--bg2); border: 1px solid var(--border); border-left: 3px solid var(--orange); border-radius: 3px; line-height: 1.8; margin-bottom: 14px; }
+  .info-box { font-size: 13px; color: var(--muted); padding: 10px 12px; background: var(--bg2); border: 1px solid var(--border); border-left: 3px solid var(--orange); border-radius: 3px; line-height: 1.8; margin-bottom: 14px; }
 
 
   /* STAGE 3 — VOTING */
@@ -267,10 +267,10 @@
   .vote-slot.slot-3 .slot-medal { color: #CD7F32; }
   .vote-slot.drop-target { background: var(--orange-dim); border-color: var(--orange); border-style: solid; }
   .slot-medal { font-size: 26px; margin-bottom: 4px; }
-  .slot-label { font-size: 9px; color: var(--muted); letter-spacing: 2px; margin-bottom: 8px; }
-  .slot-points { font-size: 9px; color: var(--muted); margin-top: 4px; }
+  .slot-label { font-size: 11px; color: var(--muted); letter-spacing: 2px; margin-bottom: 8px; }
+  .slot-points { font-size: 11px; color: var(--muted); margin-top: 4px; }
   .slot-game-name { font-size: 12px; color: var(--text); font-family: var(--sans); font-weight: 600; line-height: 1.3; }
-  .slot-game-date { font-size: 10px; color: var(--muted); margin-top: 3px; }
+  .slot-game-date { font-size: 12px; color: var(--muted); margin-top: 3px; }
   .slot-remove { position: absolute; top: 6px; right: 8px; font-size: 12px; color: var(--muted); cursor: pointer; background: none; border: none; }
   .slot-remove:hover { color: var(--red); }
   .slot-empty-hint { font-size: 10px; color: var(--muted); opacity: 0.6; }
@@ -284,9 +284,9 @@
   .vote-game-drag { font-size: 14px; color: var(--muted); flex-shrink: 0; }
   .vote-game-info { flex: 1; }
   .vote-game-matchup { font-size: 13px; color: var(--text); }
-  .vote-game-meta { font-size: 10px; color: var(--muted); margin-top: 2px; }
+  .vote-game-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
   .vote-game-assign { display: flex; gap: 4px; }
-  .assign-btn { background: none; border: 1px solid var(--border); color: var(--muted); font-family: var(--mono); font-size: 9px; padding: 3px 7px; border-radius: 2px; cursor: pointer; transition: all 0.15s; }
+  .assign-btn { background: none; border: 1px solid var(--border); color: var(--muted); font-family: var(--mono); font-size: 11px; padding: 3px 7px; border-radius: 2px; cursor: pointer; transition: all 0.15s; }
   .assign-btn:hover { border-color: var(--orange); color: var(--orange); }
   .assign-btn.gold { background: rgba(255,215,0,0.15); border-color: #FFD700; color: #FFD700; }
   .assign-btn.silver { background: rgba(192,192,192,0.15); border-color: #C0C0C0; color: #C0C0C0; }
@@ -302,8 +302,8 @@
   .winner-tag { font-size: 10px; color: var(--orange); letter-spacing: 4px; margin-bottom: 12px; position: relative; }
   .winner-trophy { font-size: 64px; margin-bottom: 16px; display: block; position: relative; }
   .winner-game { font-family: var(--sans); font-size: 36px; font-weight: 700; color: var(--text); margin-bottom: 6px; position: relative; }
-  .winner-meta { font-size: 13px; color: var(--muted); position: relative; }
-  .winner-points { font-size: 12px; color: var(--orange); margin-top: 10px; position: relative; }
+  .winner-meta { font-size: 15px; color: var(--muted); position: relative; }
+  .winner-points { font-size: 14px; color: var(--orange); margin-top: 10px; position: relative; }
 
   .results-podium { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; margin-bottom: 32px; }
   .podium-card { border: 1px solid var(--border); border-radius: 3px; padding: 14px 16px; background: var(--bg2); display: flex; align-items: center; gap: 12px; }
@@ -313,8 +313,8 @@
   .podium-medal { font-size: 24px; flex-shrink: 0; }
   .podium-info { flex: 1; }
   .podium-matchup { font-size: 13px; color: var(--text); font-family: var(--sans); font-weight: 600; }
-  .podium-meta { font-size: 10px; color: var(--muted); margin-top: 2px; }
-  .podium-pts { font-size: 11px; color: var(--orange); margin-top: 4px; }
+  .podium-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .podium-pts { font-size: 13px; color: var(--orange); margin-top: 4px; }
   .podium-card.tied { border-color: var(--red); background: var(--red-dim); }
 
   /* SUDDEN DEATH */
@@ -323,12 +323,12 @@
   .sudden-header::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(204,34,0,0.04) 10px, rgba(204,34,0,0.04) 20px); }
   .sudden-tag { font-size: 10px; color: var(--red); letter-spacing: 6px; margin-bottom: 8px; position: relative; }
   .sudden-title { font-family: var(--sans); font-size: 40px; font-weight: 700; color: var(--red); letter-spacing: 2px; position: relative; }
-  .sudden-sub { font-size: 12px; color: var(--muted); margin-top: 8px; position: relative; }
+  .sudden-sub { font-size: 14px; color: var(--muted); margin-top: 8px; position: relative; }
   .sudden-game-item { border: 2px solid var(--border); border-radius: 3px; padding: 16px 18px; background: var(--bg2); cursor: pointer; transition: all 0.15s; margin-bottom: 8px; }
   .sudden-game-item:hover { border-color: var(--red); background: var(--red-dim); }
   .sudden-game-item.selected { border-color: var(--red); background: var(--red-dim); }
   .sudden-game-item .sg-matchup { font-size: 15px; color: var(--text); font-family: var(--sans); font-weight: 600; }
-  .sudden-game-item .sg-meta { font-size: 10px; color: var(--muted); margin-top: 3px; }
+  .sudden-game-item .sg-meta { font-size: 12px; color: var(--muted); margin-top: 3px; }
   #sudden-success { max-width: 440px; margin: 80px auto; text-align: center; display: none; }
   #sudden-already { max-width: 440px; margin: 80px auto; text-align: center; display: none; }
 
@@ -340,11 +340,11 @@
   .plan-header-bar { background: var(--bg2); border: 1px solid var(--border); border-left: 3px solid var(--orange); border-radius: 3px; padding: 16px 18px; margin-bottom: 24px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
   .plan-game-info { flex: 1; }
   .plan-game-title { font-family: var(--sans); font-size: 20px; font-weight: 700; color: var(--text); }
-  .plan-game-meta { font-size: 11px; color: var(--muted); margin-top: 3px; }
+  .plan-game-meta { font-size: 13px; color: var(--muted); margin-top: 3px; }
   .plan-action-btns { display: flex; gap: 8px; flex-wrap: wrap; }
 
   .plan-tabs { display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: 24px; overflow-x: auto; }
-  .plan-tab-btn { background: none; border: 1px solid var(--border); border-bottom: 2px solid transparent; color: var(--muted); font-family: var(--mono); font-size: 12px; letter-spacing: 1px; padding: 10px 16px; cursor: pointer; transition: all 0.2s; margin-bottom: -1px; border-radius: 3px 3px 0 0; white-space: nowrap; }
+  .plan-tab-btn { background: none; border: 1px solid var(--border); border-bottom: 2px solid transparent; color: var(--muted); font-family: var(--mono); font-size: 13px; letter-spacing: 1px; padding: 10px 16px; cursor: pointer; transition: all 0.2s; margin-bottom: -1px; border-radius: 3px 3px 0 0; white-space: nowrap; }
   .plan-tab-btn:hover { color: var(--text); }
   .plan-tab-btn.active { color: var(--orange); border-bottom-color: var(--orange); background: var(--bg2); }
   .plan-pane { display: none; }
@@ -354,22 +354,22 @@
   .plan-city-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 3px; padding: 16px 18px; margin-bottom: 20px; }
   .plan-city-title { font-family: var(--sans); font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
   .plan-city-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 14px; }
-  .plan-city-section { font-size: 11px; color: var(--text); line-height: 1.7; }
-  .plan-city-label { font-size: 9px; color: var(--orange); letter-spacing: 2px; margin-bottom: 4px; }
+  .plan-city-section { font-size: 13px; color: var(--text); line-height: 1.7; }
+  .plan-city-label { font-size: 11px; color: var(--orange); letter-spacing: 2px; margin-bottom: 4px; }
   .plan-city-temps { display: flex; gap: 10px; margin-top: 10px; }
   .plan-city-temp { text-align: center; background: var(--bg3); padding: 6px 10px; border-radius: 3px; }
-  .plan-city-temp-month { font-size: 8px; color: var(--muted); }
-  .plan-city-temp-val { font-size: 13px; color: var(--text); }
+  .plan-city-temp-month { font-size: 10px; color: var(--muted); }
+  .plan-city-temp-val { font-size: 15px; color: var(--text); }
   .whats-on-btn { background: none; border: 1px solid var(--orange); color: var(--orange); font-family: var(--mono); font-size: 11px; padding: 7px 14px; border-radius: 2px; cursor: pointer; transition: all 0.2s; }
   .whats-on-btn:hover { background: var(--orange-dim); }
   .whats-on-results { margin-top: 14px; }
-  .whats-on-event { padding: 8px 0; border-bottom: 1px solid var(--bg3); font-size: 11px; color: var(--text); display: flex; gap: 10px; align-items: center; }
-  .whats-on-sport { font-size: 9px; padding: 2px 6px; border-radius: 2px; background: var(--bg3); color: var(--muted); border: 1px solid var(--border); white-space: nowrap; }
+  .whats-on-event { padding: 8px 0; border-bottom: 1px solid var(--bg3); font-size: 13px; color: var(--text); display: flex; gap: 10px; align-items: center; }
+  .whats-on-sport { font-size: 11px; padding: 2px 6px; border-radius: 2px; background: var(--bg3); color: var(--muted); border: 1px solid var(--border); white-space: nowrap; }
 
   /* SHARED FIELD STYLES */
   .field-group { display: flex; flex-direction: column; gap: 3px; }
-  .field-label { font-size: 9px; color: var(--muted); letter-spacing: 1px; }
-  .field-input { background: var(--bg3); border: 1px solid var(--border); border-radius: 2px; color: var(--text); font-family: var(--mono); font-size: 11px; padding: 6px 8px; outline: none; width: 100%; transition: border-color 0.2s; }
+  .field-label { font-size: 11px; color: var(--muted); letter-spacing: 1px; }
+  .field-input { background: var(--bg3); border: 1px solid var(--border); border-radius: 2px; color: var(--text); font-family: var(--mono); font-size: 13px; padding: 6px 8px; outline: none; width: 100%; transition: border-color 0.2s; }
   .field-input:focus { border-color: var(--orange); }
   .field-input::placeholder { color: var(--muted); opacity: 0.6; }
 
@@ -379,31 +379,31 @@
   .record-card-title { font-family: var(--sans); font-size: 15px; font-weight: 600; color: var(--text); flex: 1; }
   .record-fields { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px; margin-bottom: 10px; }
   .record-fields.wide { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
-  .record-section-label { font-size: 9px; color: var(--orange); letter-spacing: 2px; margin: 10px 0 6px; }
-  .record-notes { width: 100%; background: var(--bg3); border: 1px solid var(--border); border-radius: 2px; color: var(--text); font-family: var(--mono); font-size: 11px; padding: 8px 10px; outline: none; resize: vertical; min-height: 50px; }
+  .record-section-label { font-size: 11px; color: var(--orange); letter-spacing: 2px; margin: 10px 0 6px; }
+  .record-notes { width: 100%; background: var(--bg3); border: 1px solid var(--border); border-radius: 2px; color: var(--text); font-family: var(--mono); font-size: 13px; padding: 8px 10px; outline: none; resize: vertical; min-height: 50px; }
   .record-notes:focus { border-color: var(--orange); }
-  .add-record-btn { display: flex; align-items: center; gap: 8px; padding: 12px 14px; border: 1px dashed var(--border); border-radius: 3px; cursor: pointer; color: var(--muted); font-family: var(--mono); font-size: 11px; background: none; width: 100%; transition: all 0.2s; margin-top: 4px; }
+  .add-record-btn { display: flex; align-items: center; gap: 8px; padding: 12px 14px; border: 1px dashed var(--border); border-radius: 3px; cursor: pointer; color: var(--muted); font-family: var(--mono); font-size: 13px; background: none; width: 100%; transition: all 0.2s; margin-top: 4px; }
   .add-record-btn:hover { border-color: var(--orange); color: var(--orange); }
   .passenger-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
-  .passenger-tag { font-size: 10px; padding: 3px 8px; border-radius: 2px; background: var(--bg3); border: 1px solid var(--border); color: var(--muted); cursor: pointer; transition: all 0.15s; user-select: none; }
+  .passenger-tag { font-size: 12px; padding: 3px 8px; border-radius: 2px; background: var(--bg3); border: 1px solid var(--border); color: var(--muted); cursor: pointer; transition: all 0.15s; user-select: none; }
   .passenger-tag.selected { background: var(--orange-dim); border-color: var(--orange); color: var(--orange); }
   .passenger-tag.everyone { background: var(--green-dim); border-color: var(--green); color: var(--green); }
-  .status-pill { font-size: 9px; padding: 2px 8px; border-radius: 10px; cursor: pointer; white-space: nowrap; }
+  .status-pill { font-size: 11px; padding: 2px 8px; border-radius: 10px; cursor: pointer; white-space: nowrap; }
   .status-pill.pending { background: var(--bg3); color: var(--muted); border: 1px solid var(--border); }
   .status-pill.booked { background: var(--green-dim); color: var(--green); border: 1px solid rgba(0,204,102,0.3); }
 
   /* TASKS TAB */
   .task-item { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--bg3); }
   .task-check { width: 16px; height: 16px; accent-color: var(--orange); cursor: pointer; flex-shrink: 0; }
-  .task-text { flex: 1; font-size: 12px; color: var(--text); }
+  .task-text { flex: 1; font-size: 14px; color: var(--text); }
   .task-text.done { text-decoration: line-through; color: var(--muted); }
-  .task-owner { font-size: 10px; color: var(--muted); padding: 2px 7px; background: var(--bg3); border-radius: 2px; white-space: nowrap; }
+  .task-owner { font-size: 12px; color: var(--muted); padding: 2px 7px; background: var(--bg3); border-radius: 2px; white-space: nowrap; }
   .task-delete { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 13px; padding: 0 4px; }
   .task-delete:hover { color: var(--red); }
   .add-task-row { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
-  .add-task-input { flex: 2; min-width: 140px; background: var(--bg3); border: 1px solid var(--border); border-radius: 2px; color: var(--text); font-family: var(--mono); font-size: 11px; padding: 7px 10px; outline: none; }
+  .add-task-input { flex: 2; min-width: 140px; background: var(--bg3); border: 1px solid var(--border); border-radius: 2px; color: var(--text); font-family: var(--mono); font-size: 13px; padding: 7px 10px; outline: none; }
   .add-task-input:focus { border-color: var(--orange); }
-  .add-task-select { flex: 1; min-width: 100px; background: var(--bg3); border: 1px solid var(--border); border-radius: 2px; color: var(--text); font-family: var(--mono); font-size: 11px; padding: 7px 8px; outline: none; }
+  .add-task-select { flex: 1; min-width: 100px; background: var(--bg3); border: 1px solid var(--border); border-radius: 2px; color: var(--text); font-family: var(--mono); font-size: 13px; padding: 7px 8px; outline: none; }
 
   /* ITINERARY TAB */
   .itinerary-day { background: var(--bg2); border: 1px solid var(--border); border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
@@ -413,13 +413,13 @@
   .itinerary-events { padding: 8px 14px; }
   .itinerary-event { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--bg3); align-items: flex-start; }
   .itinerary-event:last-child { border-bottom: none; }
-  .itinerary-time { font-size: 10px; color: var(--orange); white-space: nowrap; min-width: 44px; margin-top: 2px; }
-  .itinerary-desc { flex: 1; font-size: 11px; color: var(--text); }
+  .itinerary-time { font-size: 12px; color: var(--orange); white-space: nowrap; min-width: 44px; margin-top: 2px; }
+  .itinerary-desc { flex: 1; font-size: 13px; color: var(--text); }
   .itinerary-event-delete { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 12px; }
   .itinerary-event-delete:hover { color: var(--red); }
   .add-event-row { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
-  .add-event-time { width: 80px; background: var(--bg3); border: 1px solid var(--border); border-radius: 2px; color: var(--text); font-family: var(--mono); font-size: 11px; padding: 6px 8px; outline: none; }
-  .add-event-input { flex: 1; min-width: 120px; background: var(--bg3); border: 1px solid var(--border); border-radius: 2px; color: var(--text); font-family: var(--mono); font-size: 11px; padding: 6px 8px; outline: none; }
+  .add-event-time { width: 80px; background: var(--bg3); border: 1px solid var(--border); border-radius: 2px; color: var(--text); font-family: var(--mono); font-size: 13px; padding: 6px 8px; outline: none; }
+  .add-event-input { flex: 1; min-width: 120px; background: var(--bg3); border: 1px solid var(--border); border-radius: 2px; color: var(--text); font-family: var(--mono); font-size: 13px; padding: 6px 8px; outline: none; }
   .add-event-time:focus, .add-event-input:focus { border-color: var(--orange); }
 
   /* SAVE STATUS */
@@ -448,11 +448,11 @@
   .participant-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--bg3); font-size: 13px; }
   .participant-name { flex: 1; color: var(--text); font-size: 13px; }
   .participant-status { font-size: 11px; padding: 3px 8px; border-radius: 2px; }
-  .heatmap-tile .h-week { font-size: 10px; }
-  .heatmap-tile .h-dates { font-size: 12px; }
-  .heatmap-tile .h-count { font-size: 10px; }
-  .game-vote-matchup { font-size: 13px; }
-  .game-vote-count { font-size: 11px; }
+  .heatmap-tile .h-week { font-size: 12px; }
+  .heatmap-tile .h-dates { font-size: 14px; }
+  .heatmap-tile .h-count { font-size: 12px; }
+  .game-vote-matchup { font-size: 14px; }
+  .game-vote-count { font-size: 13px; }
   .hidden { display: none !important; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
   .fade-in { animation: fadeIn 0.3s ease; }
@@ -790,7 +790,7 @@
       <div class="plan-city-temps" id="plan-city-temps"></div>
       <div style="margin-top:14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
         <button class="whats-on-btn" onclick="fetchWhatsOn()">🔍 WHAT'S ON WHILE WE'RE THERE?</button>
-        <span id="whats-on-status" style="font-size:11px;color:var(--muted)"></span>
+        <span id="whats-on-status" style="font-size:13px;color:var(--muted)"></span>
       </div>
       <div class="whats-on-results" id="whats-on-results"></div>
     </div>
@@ -799,7 +799,7 @@
   <!-- FLIGHTS TAB -->
   <div class="plan-pane" id="ppane-flights">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
-      <span style="font-size:11px;color:var(--muted)">// Add each flight. Select who's on it — multiple people can share a flight.</span>
+      <span style="font-size:13px;color:var(--muted)">// Add each flight. Select who's on it — multiple people can share a flight.</span>
       <span class="save-status" id="flights-save-status">saved ✓</span>
     </div>
     <div id="flights-list"></div>
@@ -809,7 +809,7 @@
   <!-- ACCOMMODATION TAB -->
   <div class="plan-pane" id="ppane-accommodation">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
-      <span style="font-size:11px;color:var(--muted)">// Add each place you're staying — hotel, AirBnB, VRBO, whatever. Multiple properties supported.</span>
+      <span style="font-size:13px;color:var(--muted)">// Add each place you're staying — hotel, AirBnB, VRBO, whatever. Multiple properties supported.</span>
       <span class="save-status" id="accommodation-save-status">saved ✓</span>
     </div>
     <div id="accommodation-list"></div>
@@ -819,7 +819,7 @@
   <!-- TICKETS TAB -->
   <div class="plan-pane" id="ppane-tickets">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
-      <span style="font-size:11px;color:var(--muted)">// Add ticket options and track what's been booked. Change status to Booked once confirmed.</span>
+      <span style="font-size:13px;color:var(--muted)">// Add ticket options and track what's been booked. Change status to Booked once confirmed.</span>
       <span class="save-status" id="tickets-save-status">saved ✓</span>
     </div>
     <div id="tickets-list"></div>
@@ -829,13 +829,13 @@
   <!-- ITINERARY TAB -->
   <div class="plan-pane" id="ppane-itinerary">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
-      <span style="font-size:11px;color:var(--muted)">// Build the trip day by day. Add events and note who's joining each one.</span>
+      <span style="font-size:13px;color:var(--muted)">// Build the trip day by day. Add events and note who's joining each one.</span>
       <span class="save-status" id="itinerary-save-status">saved ✓</span>
     </div>
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap">
-      <span style="font-size:11px;color:var(--muted)">Trip start date:</span>
+      <span style="font-size:13px;color:var(--muted)">Trip start date:</span>
       <input type="date" class="field-input" id="trip-start-date" style="width:160px" onchange="renderItinerary();autoSavePlan()">
-      <span style="font-size:11px;color:var(--muted)">Number of days:</span>
+      <span style="font-size:13px;color:var(--muted)">Number of days:</span>
       <select class="field-input" id="trip-days" style="width:80px" onchange="renderItinerary();autoSavePlan()">
         <option value="4">4</option><option value="5" selected>5</option>
         <option value="6">6</option><option value="7">7</option>
@@ -847,7 +847,7 @@
   <!-- TASKS TAB -->
   <div class="plan-pane" id="ppane-tasks">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
-      <span style="font-size:11px;color:var(--muted)">// Shared to-do list. Tick when done, assign to whoever's sorting it.</span>
+      <span style="font-size:13px;color:var(--muted)">// Shared to-do list. Tick when done, assign to whoever's sorting it.</span>
       <span class="save-status" id="tasks-save-status">saved ✓</span>
     </div>
     <div id="tasks-list"></div>
@@ -923,7 +923,7 @@
     <button class="admin-section-toggle" onclick="toggleAdminSection(this)">
       <div class="section-status-dot" id="s1-dot"></div>
       01 // AVAILABILITY
-      <span style="font-size:11px;color:var(--muted);margin-left:8px" id="s1-header-status"></span>
+      <span style="font-size:13px;color:var(--muted);margin-left:8px" id="s1-header-status"></span>
       <span class="toggle-arrow">▼</span>
     </button>
     <div class="admin-section-body">
@@ -964,7 +964,7 @@
     <button class="admin-section-toggle" onclick="toggleAdminSection(this)">
       <div class="section-status-dot" id="s2-dot"></div>
       02 // SHORTLIST
-      <span style="font-size:11px;color:var(--muted);margin-left:8px" id="s2-header-status"></span>
+      <span style="font-size:13px;color:var(--muted);margin-left:8px" id="s2-header-status"></span>
       <span class="toggle-arrow">▼</span>
     </button>
     <div class="admin-section-body">
@@ -986,7 +986,7 @@
         <div class="info-box" style="margin:0;width:100%">// Select which weekends progress to Stage 2.</div>
         <div class="weekend-check-grid" id="admin-weekend-checks"></div>
         <button class="action-btn primary" onclick="saveShortlistedWeekends()">SAVE WEEKENDS →</button>
-        <span id="weekends-save-msg" style="font-size:11px;color:var(--green);display:none">saved ✓</span>
+        <span id="weekends-save-msg" style="font-size:13px;color:var(--green);display:none">saved ✓</span>
       </div>
       <div class="setting-row">
         <span class="setting-label">Open Stage 2</span>
@@ -1005,7 +1005,7 @@
           </select>
           <span>people</span>
           <button class="action-btn" style="margin:0" onclick="saveThreshold()">SAVE</button>
-          <span id="threshold-save-msg" style="font-size:11px;color:var(--green);display:none">saved ✓</span>
+          <span id="threshold-save-msg" style="font-size:13px;color:var(--green);display:none">saved ✓</span>
         </div>
       </div>
       <div class="setting-row">
@@ -1024,7 +1024,7 @@
     <button class="admin-section-toggle" onclick="toggleAdminSection(this)">
       <div class="section-status-dot" id="s3-dot"></div>
       03 // VOTE
-      <span style="font-size:11px;color:var(--muted);margin-left:8px" id="s3-header-status"></span>
+      <span style="font-size:13px;color:var(--muted);margin-left:8px" id="s3-header-status"></span>
       <span class="toggle-arrow">▼</span>
     </button>
     <div class="admin-section-body">
@@ -1037,7 +1037,7 @@
         <div class="info-box" style="margin:0;width:100%">// Select which shortlisted games go to Stage 3.</div>
         <div class="weekend-check-grid" id="admin-s3-game-checks" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr))"></div>
         <button class="action-btn primary" onclick="saveVoteGames()">SAVE GAMES →</button>
-        <span id="votegames-save-msg" style="font-size:11px;color:var(--green);display:none">saved ✓</span>
+        <span id="votegames-save-msg" style="font-size:13px;color:var(--green);display:none">saved ✓</span>
       </div>
       <div class="setting-row">
         <span class="setting-label">Open Stage 3</span>
@@ -1077,7 +1077,7 @@
     <button class="admin-section-toggle" onclick="toggleAdminSection(this)">
       <div class="section-status-dot" id="s4-dot"></div>
       04 // PLANNING
-      <span style="font-size:11px;color:var(--muted);margin-left:8px" id="s4-header-status"></span>
+      <span style="font-size:13px;color:var(--muted);margin-left:8px" id="s4-header-status"></span>
       <span class="toggle-arrow">▼</span>
     </button>
     <div class="admin-section-body">
@@ -1092,7 +1092,7 @@
             <option value="">— select winning game —</option>
           </select>
           <button class="action-btn" onclick="saveWinnerGame()">SAVE</button>
-          <span id="winner-save-msg" style="font-size:11px;color:var(--green);display:none">saved ✓</span>
+          <span id="winner-save-msg" style="font-size:13px;color:var(--green);display:none">saved ✓</span>
         </div>
       </div>
       <div class="setting-row">
@@ -1135,7 +1135,7 @@
 
   <div class="admin-section" style="border:1px solid var(--red);border-radius:3px;padding:16px 18px;background:var(--red-dim);margin-bottom:32px">
     <div class="admin-section-title" style="color:var(--red);border-bottom-color:rgba(204,34,0,0.3)">⚠ NUCLEAR RESET</div>
-    <div style="font-size:11px;color:var(--muted);margin-bottom:14px;line-height:1.8">Wipes <strong style="color:var(--text)">everything</strong> — all submissions, votes, names, settings, plan data. Resets the app completely to a blank slate. Type <strong style="color:var(--red)">RESET</strong> to confirm.</div>
+    <div style="font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.8">Wipes <strong style="color:var(--text)">everything</strong> — all submissions, votes, names, settings, plan data. Resets the app completely to a blank slate. Type <strong style="color:var(--red)">RESET</strong> to confirm.</div>
     <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
       <input type="text" id="nuclear-confirm-input" class="field-input" placeholder="type RESET to confirm" style="width:200px;border-color:var(--red)">
       <button class="action-btn danger" onclick="nuclearReset()" style="background:var(--red);color:#fff;border-color:var(--red)">☢ RESET EVERYTHING</button>
@@ -1175,7 +1175,7 @@
       <div style="display:flex;gap:8px;flex-wrap:wrap">
         <button class="action-btn primary" onclick="fetchSchedule(2025)">FETCH 2025 SCHEDULE (TEST)</button>
         <button class="action-btn" onclick="fetchSchedule(2026)">FETCH 2026 SCHEDULE</button>
-        <span id="schedule-status" style="font-size:11px;color:var(--muted);align-self:center"></span>
+        <span id="schedule-status" style="font-size:13px;color:var(--muted);align-self:center"></span>
       </div>
     </div>
     <div class="setting-row" style="flex-direction:column;align-items:flex-start;gap:10px">
@@ -1183,7 +1183,7 @@
       <div class="info-box" style="margin:0;width:100%">// Select which weekends from Stage 1 progress to Stage 2. Only games on these weekends will appear in the shortlist.</div>
       <div class="weekend-check-grid" id="admin-weekend-checks"></div>
       <button class="action-btn primary" onclick="saveShortlistedWeekends()">SAVE WEEKENDS →</button>
-      <span id="weekends-save-msg" style="font-size:10px;color:var(--green);display:none">saved ✓</span>
+      <span id="weekends-save-msg" style="font-size:12px;color:var(--green);display:none">saved ✓</span>
     </div>
     <div class="setting-row">
       <span class="setting-label">Open Stage 2</span>
@@ -1205,7 +1205,7 @@
         </select>
         <span>people</span>
         <button class="action-btn" style="margin:0" onclick="saveThreshold()">SAVE</button>
-        <span id="threshold-save-msg" style="font-size:10px;color:var(--green);display:none">saved ✓</span>
+        <span id="threshold-save-msg" style="font-size:12px;color:var(--green);display:none">saved ✓</span>
       </div>
     </div>
     <div class="setting-row">
@@ -1227,7 +1227,7 @@
       <div class="info-box" style="margin:0;width:100%">// Select which shortlisted games go to Stage 3. These will appear on the voting screen.</div>
       <div class="weekend-check-grid" id="admin-s3-game-checks" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr))"></div>
       <button class="action-btn primary" onclick="saveVoteGames()">SAVE GAMES →</button>
-      <span id="votegames-save-msg" style="font-size:10px;color:var(--green);display:none">saved ✓</span>
+      <span id="votegames-save-msg" style="font-size:12px;color:var(--green);display:none">saved ✓</span>
     </div>
     <div class="setting-row">
       <span class="setting-label">Open Stage 3</span>
@@ -1282,7 +1282,7 @@
           <option value="">— select winning game —</option>
         </select>
         <button class="action-btn" onclick="saveWinnerGame()">SAVE</button>
-        <span id="winner-save-msg" style="font-size:10px;color:var(--green);display:none">saved ✓</span>
+        <span id="winner-save-msg" style="font-size:12px;color:var(--green);display:none">saved ✓</span>
       </div>
     </div>
     <div class="setting-row">
@@ -1297,7 +1297,7 @@
   <!-- Participant Names -->
   <div class="admin-section">
     <div class="admin-section-title">PARTICIPANT NAMES</div>
-    <div style="font-size:11px;color:var(--muted);margin-bottom:14px;padding:10px 12px;background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--orange);border-radius:3px">
+    <div style="font-size:13px;color:var(--muted);margin-bottom:14px;padding:10px 12px;background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--orange);border-radius:3px">
       // Set these before sharing the link. Users pick from a dropdown — no free-text entry.
     </div>
     <div id="names-list" style="margin-bottom:12px"></div>
@@ -1946,7 +1946,7 @@ async function loadAdmin() {
   // S2 submissions + tally
   const s2listEl=document.getElementById('s2-participant-list');
   const s2pending=Math.max(0,total-s2Submissions.length);
-  if(s2listEl) s2listEl.innerHTML=s2Submissions.map(s=>`<div class="participant-row"><span class="participant-name">${s.name}</span><button class="action-btn danger" style="padding:3px 10px;font-size:10px" onclick="deleteS2Submission('${s.id}','${s.name}')">DELETE</button><span class="participant-status status-done">✓ SUBMITTED</span></div>`).join('')+Array(s2pending).fill(`<div class="participant-row"><span class="participant-name" style="color:var(--muted)">— pending</span><span class="participant-status status-pending">WAITING</span></div>`).join('');
+  if(s2listEl) s2listEl.innerHTML=s2Submissions.map(s=>`<div class="participant-row"><span class="participant-name">${s.name}</span><button class="action-btn danger" style="padding:3px 10px;font-size:12px" onclick="deleteS2Submission('${s.id}','${s.name}')">DELETE</button><span class="participant-status status-done">✓ SUBMITTED</span></div>`).join('')+Array(s2pending).fill(`<div class="participant-row"><span class="participant-name" style="color:var(--muted)">— pending</span><span class="participant-status status-pending">WAITING</span></div>`).join('');
   document.getElementById('s2-sub-count').textContent=s2Submissions.length;
   document.getElementById('s2-sub-total').textContent=total;
   const tallyEl=document.getElementById('s2-game-tally');
@@ -1972,7 +1972,7 @@ async function loadAdmin() {
 function renderParticipantList(subs, total) {
   const el=document.getElementById('participant-list');
   const pending=Math.max(0,total-subs.length);
-  el.innerHTML=subs.map(s=>`<div class="participant-row"><span class="participant-name">${s.name}</span><button class="action-btn danger" style="padding:3px 10px;font-size:10px" onclick="deleteS1Submission('${s.id}','${s.name}')">DELETE</button><span class="participant-status status-done">✓ SUBMITTED</span></div>`).join('')+Array(pending).fill(`<div class="participant-row"><span class="participant-name" style="color:var(--muted)">— pending</span><span class="participant-status status-pending">WAITING</span></div>`).join('');
+  el.innerHTML=subs.map(s=>`<div class="participant-row"><span class="participant-name">${s.name}</span><button class="action-btn danger" style="padding:3px 10px;font-size:12px" onclick="deleteS1Submission('${s.id}','${s.name}')">DELETE</button><span class="participant-status status-done">✓ SUBMITTED</span></div>`).join('')+Array(pending).fill(`<div class="participant-row"><span class="participant-name" style="color:var(--muted)">— pending</span><span class="participant-status status-pending">WAITING</span></div>`).join('');
   if(!el.innerHTML) el.innerHTML='<p class="no-data">No submissions yet.</p>';
 }
 
@@ -2008,7 +2008,7 @@ function renderS2AdminSection(subs, total) {
   document.getElementById('s2-sub-total').textContent=total;
   const listEl=document.getElementById('s2-participant-list');
   const pending=Math.max(0,total-subs.length);
-  listEl.innerHTML=subs.map(s=>`<div class="participant-row"><span class="participant-name">${s.name}</span><button class="action-btn danger" style="padding:3px 10px;font-size:10px" onclick="deleteS2Submission('${s.id}','${s.name}')">DELETE</button><span class="participant-status status-done">✓ SUBMITTED</span></div>`).join('')+Array(pending).fill(`<div class="participant-row"><span class="participant-name" style="color:var(--muted)">— pending</span><span class="participant-status status-pending">WAITING</span></div>`).join('');
+  listEl.innerHTML=subs.map(s=>`<div class="participant-row"><span class="participant-name">${s.name}</span><button class="action-btn danger" style="padding:3px 10px;font-size:12px" onclick="deleteS2Submission('${s.id}','${s.name}')">DELETE</button><span class="participant-status status-done">✓ SUBMITTED</span></div>`).join('')+Array(pending).fill(`<div class="participant-row"><span class="participant-name" style="color:var(--muted)">— pending</span><span class="participant-status status-pending">WAITING</span></div>`).join('');
   if(!listEl.innerHTML) listEl.innerHTML='<p class="no-data">No stage 2 submissions yet.</p>';
 
   // Game tally
@@ -2063,7 +2063,7 @@ function renderBestWeekends() {
 function renderNamesList() {
   const names=appSettings.participantNames||[];
   const el=document.getElementById('names-list');
-  el.innerHTML=names.length?names.map((n,i)=>`<div class="participant-row"><span class="participant-name">${n}</span><button class="action-btn danger" style="padding:3px 10px;font-size:10px" onclick="removeName(${i})">REMOVE</button></div>`).join(''):'<p class="no-data">No names added yet.</p>';
+  el.innerHTML=names.length?names.map((n,i)=>`<div class="participant-row"><span class="participant-name">${n}</span><button class="action-btn danger" style="padding:3px 10px;font-size:12px" onclick="removeName(${i})">REMOVE</button></div>`).join(''):'<p class="no-data">No names added yet.</p>';
 }
 
 async function addName() {
@@ -2390,7 +2390,7 @@ function renderS3AdminTally() {
   listEl.innerHTML = s3Submissions.map(s =>
     `<div class="participant-row">
       <span class="participant-name">${s.name} <span style="color:var(--muted);font-size:10px">· 1st: ${gameLabel(s.first)} · 2nd: ${gameLabel(s.second)} · 3rd: ${gameLabel(s.third)}</span></span>
-      <button class="action-btn danger" style="padding:3px 10px;font-size:10px" onclick="deleteS3Vote('${s.id}','${s.name}')">DELETE</button>
+      <button class="action-btn danger" style="padding:3px 10px;font-size:12px" onclick="deleteS3Vote('${s.id}','${s.name}')">DELETE</button>
       <span class="participant-status status-done">✓ VOTED</span>
     </div>`
   ).join('') + Array(pending).fill(`<div class="participant-row"><span class="participant-name" style="color:var(--muted)">— pending</span><span class="participant-status status-pending">WAITING</span></div>`).join('');
@@ -2850,11 +2850,11 @@ function renderItinerary() {
             <div class="itinerary-time">${ev.time||'—'}</div>
             <div class="itinerary-desc">
               <div>${ev.desc}</div>
-              ${ev.who&&ev.who.length ? `<div style="font-size:9px;color:var(--orange);margin-top:2px">${ev.who.join(', ')}</div>` : ''}
+              ${ev.who&&ev.who.length ? `<div style="font-size:11px;color:var(--orange);margin-top:2px">${ev.who.join(', ')}</div>` : ''}
             </div>
             <button class="itinerary-event-delete" onclick="deleteItineraryEvent('${dayKey}',${i})">✕</button>
           </div>`).join('')}
-        ${!events.length ? '<div style="font-size:11px;color:var(--muted);padding:6px 0">No events yet</div>' : ''}
+        ${!events.length ? '<div style="font-size:13px;color:var(--muted);padding:6px 0">No events yet</div>' : ''}
       </div>
       <div style="padding:0 14px 10px">
         <div class="add-event-row">
