@@ -1932,13 +1932,6 @@ async function loadAdmin() {
   document.getElementById('sub-count').textContent=done;
   document.getElementById('sub-total').textContent=total;
 
-  // Stage 2 status
-  const s2El=document.getElementById('admin-s2-status');
-  s2El.innerHTML = appSettings.stage2Open?'<span class="status-badge open">● OPEN</span>':'<span class="status-badge locked">● CLOSED</span>';
-  document.getElementById('open-s2-btn').style.display=appSettings.stage2Open?'none':'inline-block';
-  document.getElementById('close-s2-btn').style.display=appSettings.stage2Open?'inline-block':'none';
-  document.getElementById('s2-threshold').value=appSettings.s2Threshold||2;
-
   renderNamesList();
   renderParticipantList(allSubmissions, total);
   renderHeatmap();
