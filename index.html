@@ -869,6 +869,15 @@
     <div class="section-title">TacoTripz control panel</div>
   </div>
 
+  <div class="admin-section" style="border:1px solid var(--red);border-radius:3px;padding:16px 18px;background:var(--red-dim);margin-bottom:32px">
+    <div class="admin-section-title" style="color:var(--red);border-bottom-color:rgba(204,34,0,0.3)">⚠ NUCLEAR RESET</div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:14px;line-height:1.8">Wipes <strong style="color:var(--text)">everything</strong> — all submissions, votes, names, settings, plan data. Resets the app completely to a blank slate. Type <strong style="color:var(--red)">RESET</strong> to confirm.</div>
+    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+      <input type="text" id="nuclear-confirm-input" class="field-input" placeholder="type RESET to confirm" style="width:200px;border-color:var(--red)">
+      <button class="action-btn danger" onclick="nuclearReset()" style="background:var(--red);color:#fff;border-color:var(--red)">☢ RESET EVERYTHING</button>
+    </div>
+  </div>
+
   <!-- Stage 1 Settings -->
   <div class="admin-section">
     <div class="admin-section-title">STAGE 1 — AVAILABILITY</div>
@@ -2589,6 +2598,36 @@ function setupDotClicks() {
     const el = document.getElementById(id);
     if (el) el.addEventListener('click', () => { try { action(); } catch(e) { console.warn(e); } });
   });
+}
+
+
+async function nuclearReset() {
+  const input = document.getElementById('nuclear-confirm-input').value.trim();
+  if (input !== 'RESET') {
+    alert('// Type RESET (all caps) to confirm.');
+    return;
+  }
+  if (!confirm('This will permanently delete ALL data across every stage. There is no undo. Are you absolutely sure?')) return;
+
+  try {
+    // Wipe all tables
+    await sb('tt_availability?id=neq.00000000-0000-0000-0000-000000000000', { method:'DELETE' });
+    await sb('tt_shortlist?id=neq.00000000-0000-0000-0000-000000000000', { method:'DELETE' });
+    await sb('tt_votes?id=neq.00000000-0000-0000-0000-000000000000', { method:'DELETE' });
+    await sb('tt_sudden?id=neq.00000000-0000-0000-0000-000000000000', { method:'DELETE' });
+    await sb('tt_settings?key=neq.xxxx', { method:'DELETE' });
+
+    // Reset local state
+    appSettings = { published:false, totalParticipants:5, participantNames:[], stage2Open:false, shortlistedWeekends:[], s2Threshold:2, stage3Open:false, voteGameIds:[], s3Published:false, suddenOpen:false, suddenGameIds:[], suddenPublished:false, stage4Open:false, winnerGameId:null };
+    allSubmissions = []; s2Submissions = []; s3Submissions = []; suddenSubmissions = [];
+    schedule = []; planData = { hotel:{}, flights:{}, tickets:{}, tasks:[], itinerary:{}, tripStartDate:'', tripDays:5 };
+
+    document.getElementById('nuclear-confirm-input').value = '';
+    alert('// Reset complete. TacoTripz is back to a blank slate.');
+    await loadAdmin();
+  } catch(e) {
+    alert('Reset failed: ' + e.message);
+  }
 }
 
 // ============================================================
