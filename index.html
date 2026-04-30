@@ -24,14 +24,20 @@
   .logo-taco { color: var(--orange); font-family: var(--sans); font-size: 28px; font-weight: 700; letter-spacing: 1px; transition: opacity 0.2s; }
   .logo-tripz { color: var(--text); font-family: var(--sans); font-size: 24px; font-weight: 700; letter-spacing: 1px; transition: opacity 0.2s; }
   .logo-year { color: var(--muted); font-size: 12px; font-family: var(--mono); margin-left: 10px; }
-  .header-right { margin-left: auto; display: flex; align-items: center; gap: 16px; }
-  .stage-indicator { display: flex; gap: 6px; align-items: center; }
-  .stage-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border); transition: background 0.3s; cursor: default; }
-  .stage-dot.active { background: var(--orange); }
-  .stage-dot.done { background: var(--muted); }
-  .stage-label { font-size: 12px; color: var(--muted); font-family: var(--mono); margin-left: 8px; }
+  .header-right { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+  .stage-nav { display: flex; gap: 4px; align-items: center; }
+  .stage-nav-btn { background: none; border: 1px solid var(--border); color: var(--muted); font-family: var(--mono); font-size: 11px; padding: 6px 12px; border-radius: 2px; cursor: not-allowed; transition: all 0.2s; display: flex; align-items: center; gap: 6px; white-space: nowrap; opacity: 0.5; }
+  .stage-nav-btn.clickable { cursor: pointer; opacity: 1; }
+  .stage-nav-btn.clickable:hover { border-color: var(--orange); color: var(--orange); }
+  .stage-nav-btn.active { border-color: var(--orange); color: var(--orange); background: var(--orange-dim); opacity: 1; cursor: default; }
+  .stage-nav-btn.done { border-color: var(--green); color: var(--green); opacity: 1; cursor: pointer; }
+  .stage-nav-btn.done:hover { background: var(--green-dim); }
+  .stage-nav-num { font-size: 9px; opacity: 0.7; }
   .admin-btn { background: none; border: 1px solid var(--border); color: var(--muted); font-family: var(--mono); font-size: 12px; padding: 6px 12px; cursor: pointer; border-radius: 2px; transition: all 0.2s; }
   .admin-btn:hover { border-color: var(--orange); color: var(--orange); }
+  /* STAGE DOT — kept for compatibility but hidden */
+  .stage-dot { display: none; }
+  .stage-label { display: none; }
 
   /* CONTAINER */
   .container { max-width: 960px; margin: 0 auto; padding: 32px 24px; }
@@ -456,6 +462,10 @@
   .hidden { display: none !important; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
   .fade-in { animation: fadeIn 0.3s ease; }
+  @media (max-width: 700px) {
+    .stage-nav-btn .stage-nav-num { display: none; }
+    .stage-nav-btn { padding: 5px 8px; font-size: 10px; }
+  }
   @media (max-width: 600px) {
     .header { padding: 12px 16px; }
     .container { padding: 20px 14px; }
@@ -472,13 +482,12 @@
     <span class="logo-year">// 2026</span>
   </a>
   <div class="header-right">
-    <div class="stage-indicator">
-      <div class="stage-dot active" id="dot-1"></div>
-      <div class="stage-dot" id="dot-2"></div>
-      <div class="stage-dot" id="dot-3"></div>
-      <div class="stage-dot" id="dot-4"></div>
-      <span class="stage-label" id="stage-label">01 // AVAILABILITY</span>
-    </div>
+    <nav class="stage-nav">
+      <button class="stage-nav-btn active" id="snav-1" onclick="navToStage(1)"><span class="stage-nav-num">01</span> AVAILABILITY</button>
+      <button class="stage-nav-btn" id="snav-2" onclick="navToStage(2)"><span class="stage-nav-num">02</span> SHORTLIST</button>
+      <button class="stage-nav-btn" id="snav-3" onclick="navToStage(3)"><span class="stage-nav-num">03</span> VOTE</button>
+      <button class="stage-nav-btn" id="snav-4" onclick="navToStage(4)"><span class="stage-nav-num">04</span> PLAN</button>
+    </nav>
     <button class="admin-btn" onclick="openAdminLogin()">ADMIN ⚙</button>
   </div>
 </header>
@@ -1596,15 +1605,92 @@ async function proceed() {
 
   proceedBtn.textContent = 'ENTER →';
   proceedBtn.disabled = !sel.value;
+  // Refresh nav bar to reflect current accessibility
+  const _activeStage = appSettings.stage4Open?4:appSettings.stage3Open||appSettings.suddenOpen?3:appSettings.stage2Open?2:1;
+  updateStageNav(_activeStage);
 }
 
 function updateStageDots(stage) {
-  for(let i=1;i<=4;i++) {
-    const dot = document.getElementById(`dot-${i}`);
-    dot.className = 'stage-dot' + (i===stage?' active':i<stage?' done':'');
+  // Kept for compatibility — delegates to updateStageNav
+  updateStageNav(stage);
+}
+
+function updateStageNav(activeStage) {
+  for (let i = 1; i <= 4; i++) {
+    const btn = document.getElementById(`snav-${i}`);
+    if (!btn) continue;
+    const isActive = i === activeStage;
+    const isDone = i < activeStage;
+    const isClickable = i <= activeStage || isStageAccessible(i);
+    btn.className = 'stage-nav-btn' +
+      (isActive ? ' active' : isDone ? ' done' : isClickable ? ' clickable' : '');
   }
-  const labels = {1:'01 // AVAILABILITY',2:'02 // SHORTLIST',3:'03 // VOTE',4:'04 // PLAN'};
-  document.getElementById('stage-label').textContent = labels[stage]||'';
+}
+
+function isStageAccessible(stage) {
+  if (stage === 1) return true;
+  if (stage === 2) return appSettings.stage2Open || s2Submissions.length > 0;
+  if (stage === 3) return appSettings.stage3Open || s3Submissions.length > 0 || appSettings.s3Published;
+  if (stage === 4) return appSettings.stage4Open;
+  return false;
+}
+
+function navToStage(stage) {
+  if (!isStageAccessible(stage)) return;
+  const total = (appSettings.participantNames||[]).length || appSettings.totalParticipants || 5;
+
+  if (stage === 1) {
+    if (appSettings.published || allSubmissions.length > 0) {
+      updateStageNav(1);
+      showScreen('results-screen');
+      renderResultsScreen();
+    } else {
+      goHome();
+    }
+  } else if (stage === 2) {
+    updateStageNav(2);
+    if (s2Submissions.some(s => s.name.toLowerCase() === (currentUser||'').toLowerCase())) {
+      showScreen('stage2-already');
+      document.getElementById('s2-already-name').textContent = currentUser || '';
+      setProgress('s2-progress-fill-2','s2-progress-done-2','s2-progress-total-2', s2Submissions.length, total);
+    } else if (currentUser && appSettings.stage2Open) {
+      showScreen('stage2-screen');
+      document.getElementById('s2-greeting').textContent = `Hey ${currentUser} — pick your games`;
+      renderGames(); renderCribSheet();
+    } else {
+      showScreen('stage2-already');
+      document.getElementById('s2-already-name').textContent = currentUser || '';
+      setProgress('s2-progress-fill-2','s2-progress-done-2','s2-progress-total-2', s2Submissions.length, total);
+    }
+  } else if (stage === 3) {
+    updateStageNav(3);
+    if (appSettings.suddenOpen) {
+      if (appSettings.suddenPublished) { showScreen('sudden-results'); renderSuddenResults(); }
+      else if (suddenSubmissions.some(s=>s.name.toLowerCase()===(currentUser||'').toLowerCase())) {
+        showScreen('sudden-already');
+        document.getElementById('sd-already-name').textContent = currentUser||'';
+        setProgress('sd-progress-fill-2','sd-progress-done-2','sd-progress-total-2',suddenSubmissions.length,total);
+      } else { showScreen('stage3-sudden'); renderSuddenGames(); }
+    } else if (appSettings.s3Published) {
+      showScreen('stage3-results'); renderS3Results();
+    } else if (s3Submissions.some(s=>s.name.toLowerCase()===(currentUser||'').toLowerCase())) {
+      showScreen('stage3-already');
+      document.getElementById('s3-already-name').textContent = currentUser||'';
+      setProgress('s3-progress-fill-2','s3-progress-done-2','s3-progress-total-2',s3Submissions.length,total);
+    } else if (appSettings.stage3Open && currentUser) {
+      showScreen('stage3-screen');
+      document.getElementById('s3-greeting').textContent = `Hey ${currentUser} — cast your vote`;
+      voteSlots=[null,null,null]; renderVoteScreen();
+    } else {
+      showScreen('stage3-already');
+      document.getElementById('s3-already-name').textContent = currentUser||'';
+      setProgress('s3-progress-fill-2','s3-progress-done-2','s3-progress-total-2',s3Submissions.length,total);
+    }
+  } else if (stage === 4) {
+    updateStageNav(4);
+    showScreen('stage4-screen');
+    renderPlanningScreen();
+  }
 }
 
 // ============================================================
@@ -1967,6 +2053,9 @@ async function loadAdmin() {
   renderAdminS3Games();
   renderS3AdminTally();
   renderAdminS4();
+  // Refresh nav bar
+  const _s = appSettings.stage4Open?4:appSettings.stage3Open||appSettings.suddenOpen?3:appSettings.stage2Open?2:1;
+  updateStageNav(_s);
 }
 
 function renderParticipantList(subs, total) {
@@ -2993,16 +3082,8 @@ async function closeStage4() {
 
 // STAGE DOT CLICKS — show results for each stage
 function setupDotClicks() {
-  const dotActions = [
-    { id:'dot-1', action: () => { if(allSubmissions.length && appSettings.published) { currentUser='admin'; showScreen('results-screen'); renderResultsScreen(); } } },
-    { id:'dot-2', action: () => { if(appSettings.stage2Open || s2Submissions.length) { showScreen('stage2-already'); document.getElementById('s2-already-name').textContent=''; setProgress('s2-progress-fill-2','s2-progress-done-2','s2-progress-total-2',s2Submissions.length,(appSettings.participantNames||[]).length||5); } } },
-    { id:'dot-3', action: () => { if(appSettings.s3Published) { showScreen('stage3-results'); renderS3Results(); } else if(s3Submissions.length) { showScreen('stage3-already'); document.getElementById('s3-already-name').textContent=''; setProgress('s3-progress-fill-2','s3-progress-done-2','s3-progress-total-2',s3Submissions.length,(appSettings.participantNames||[]).length||5); } } },
-    { id:'dot-4', action: () => { if(appSettings.stage4Open) { showScreen('stage4-screen'); renderPlanningScreen(); } } },
-  ];
-  dotActions.forEach(({id, action}) => {
-    const el = document.getElementById(id);
-    if (el) el.addEventListener('click', () => { try { action(); } catch(e) { console.warn(e); } });
-  });
+  // Nav bar accessibility is updated on init and after each data load
+  updateStageNav(1);
 }
 
 
@@ -3053,7 +3134,7 @@ function goHome() {
   const ns=document.getElementById('name-screen'); ns.classList.remove('hidden'); ns.style.display='block';
   document.getElementById('name-select').value='';
   proceedBtn.disabled=true;
-  updateStageDots(1);
+  updateStageNav(1);
 }
 
 // ============================================================
@@ -3070,6 +3151,8 @@ function showScreen(id){hideAll();const el=document.getElementById(id);if(el){el
 renderWeekends();
 updateSummary();
 setupDotClicks();
+// Initial nav state set after data loads
+setTimeout(()=>{ const _s=appSettings.stage4Open?4:appSettings.stage3Open||appSettings.suddenOpen?3:appSettings.stage2Open?2:1; updateStageNav(_s); },500);
 </script>
 </body>
 </html>
