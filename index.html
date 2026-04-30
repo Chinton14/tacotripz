@@ -7,90 +7,49 @@
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0f0f0f;
-    --bg2: #161616;
-    --bg3: #1e1e1e;
-    --border: #2a2a2a;
-    --orange: #ff5500;
-    --orange-dim: rgba(255,85,0,0.15);
-    --orange-mid: rgba(255,85,0,0.35);
-    --text: #e8e8e8;
-    --muted: #666;
-    --mono: 'Share Tech Mono', monospace;
-    --sans: 'Rajdhani', sans-serif;
-    --green: #00cc66;
-    --red: #cc2200;
-    --yellow: #ffaa00;
-    --green-dim: rgba(0,204,102,0.15);
-    --red-dim: rgba(204,34,0,0.15);
-    --yellow-dim: rgba(255,170,0,0.15);
+    --bg: #0f0f0f; --bg2: #161616; --bg3: #1e1e1e; --border: #2a2a2a;
+    --orange: #ff5500; --orange-dim: rgba(255,85,0,0.15); --orange-mid: rgba(255,85,0,0.35);
+    --text: #e8e8e8; --muted: #666; --mono: 'Share Tech Mono', monospace; --sans: 'Rajdhani', sans-serif;
+    --green: #00cc66; --red: #cc2200; --yellow: #ffaa00;
+    --green-dim: rgba(0,204,102,0.15); --red-dim: rgba(204,34,0,0.15); --yellow-dim: rgba(255,170,0,0.15);
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: var(--mono); min-height: 100vh; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; top:0;left:0;right:0;bottom:0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px); pointer-events: none; z-index: 1000; }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--mono);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
-    pointer-events: none;
-    z-index: 1000;
-  }
-
-  .header {
-    border-bottom: 1px solid var(--border);
-    padding: 18px 28px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    position: sticky;
-    top: 0;
-    background: var(--bg);
-    z-index: 100;
-  }
-
-  .logo { display: flex; align-items: baseline; }
-  .logo-taco { color: var(--orange); font-family: var(--sans); font-size: 22px; font-weight: 700; letter-spacing: 1px; }
-  .logo-tripz { color: var(--text); font-family: var(--sans); font-size: 22px; font-weight: 700; letter-spacing: 1px; }
-  .logo-year { color: var(--muted); font-size: 11px; font-family: var(--mono); margin-left: 10px; }
-
-  .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
-  .stage-indicator { display: flex; gap: 4px; align-items: center; }
-  .stage-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: background 0.3s; }
+  /* HEADER */
+  .header { border-bottom: 1px solid var(--border); padding: 16px 28px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; background: var(--bg); z-index: 100; }
+  .logo { display: flex; align-items: baseline; cursor: pointer; text-decoration: none; gap: 0; }
+  .logo:hover .logo-taco, .logo:hover .logo-tripz { opacity: 0.75; }
+  .logo-taco { color: var(--orange); font-family: var(--sans); font-size: 24px; font-weight: 700; letter-spacing: 1px; transition: opacity 0.2s; }
+  .logo-tripz { color: var(--text); font-family: var(--sans); font-size: 24px; font-weight: 700; letter-spacing: 1px; transition: opacity 0.2s; }
+  .logo-year { color: var(--muted); font-size: 12px; font-family: var(--mono); margin-left: 10px; }
+  .header-right { margin-left: auto; display: flex; align-items: center; gap: 16px; }
+  .stage-indicator { display: flex; gap: 6px; align-items: center; }
+  .stage-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border); transition: background 0.3s; cursor: default; }
   .stage-dot.active { background: var(--orange); }
   .stage-dot.done { background: var(--muted); }
-  .stage-label { font-size: 10px; color: var(--muted); font-family: var(--mono); margin-left: 8px; }
-
-  .admin-btn { background: none; border: 1px solid var(--border); color: var(--muted); font-family: var(--mono); font-size: 10px; padding: 4px 10px; cursor: pointer; border-radius: 2px; transition: all 0.2s; }
+  .stage-label { font-size: 12px; color: var(--muted); font-family: var(--mono); margin-left: 8px; }
+  .admin-btn { background: none; border: 1px solid var(--border); color: var(--muted); font-family: var(--mono); font-size: 12px; padding: 6px 12px; cursor: pointer; border-radius: 2px; transition: all 0.2s; }
   .admin-btn:hover { border-color: var(--orange); color: var(--orange); }
 
-  .container { max-width: 900px; margin: 0 auto; padding: 32px 24px; }
-
+  /* CONTAINER */
+  .container { max-width: 960px; margin: 0 auto; padding: 32px 24px; }
   .section-header { margin-bottom: 28px; }
   .section-tag { font-size: 10px; color: var(--orange); letter-spacing: 2px; margin-bottom: 6px; }
   .section-title { font-family: var(--sans); font-size: 28px; font-weight: 700; color: var(--text); letter-spacing: 0.5px; }
   .section-sub { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.6; }
 
   /* NAME SCREEN */
-  #name-screen { max-width: 420px; margin: 60px auto; text-align: center; }
-  .taco-icon { font-size: 48px; margin-bottom: 24px; display: block; }
-  .name-title { font-family: var(--sans); font-size: 32px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+  #name-screen { max-width: 440px; margin: 60px auto; text-align: center; }
+  .taco-icon { font-size: 52px; margin-bottom: 24px; display: block; }
+  .name-title { font-family: var(--sans); font-size: 34px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
   .name-sub { font-size: 12px; color: var(--muted); margin-bottom: 32px; line-height: 1.7; }
-
   .name-field { display: flex; margin-bottom: 16px; border: 1px solid var(--border); border-radius: 3px; overflow: hidden; transition: border-color 0.2s; }
   .name-field:focus-within { border-color: var(--orange); }
   .name-prompt { background: var(--bg3); padding: 12px 14px; font-size: 13px; color: var(--orange); border-right: 1px solid var(--border); white-space: nowrap; }
   .name-input { flex: 1; background: var(--bg2); border: none; outline: none; color: var(--text); font-family: var(--mono); font-size: 14px; padding: 12px 14px; caret-color: var(--orange); }
   .name-input::placeholder { color: var(--muted); }
-
   .proceed-btn { width: 100%; background: var(--orange); border: none; color: #fff; font-family: var(--sans); font-size: 15px; font-weight: 700; letter-spacing: 2px; padding: 13px; cursor: pointer; border-radius: 3px; transition: opacity 0.2s; text-transform: uppercase; }
   .proceed-btn:hover { opacity: 0.88; }
   .proceed-btn:disabled { opacity: 0.3; cursor: not-allowed; }
@@ -100,28 +59,23 @@
   .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted); }
   .legend-swatch { width: 12px; height: 12px; border-radius: 2px; }
 
-  /* MONTH GROUP */
+  /* WEEKEND TILES - Stage 1 */
   .month-group { margin-bottom: 24px; }
   .month-label { font-size: 10px; color: var(--orange); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
   .weekends-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); gap: 8px; }
-
-  /* WEEKEND TILE */
   .weekend-tile { border: 1px solid var(--border); border-radius: 3px; padding: 10px 12px; cursor: pointer; transition: all 0.15s; user-select: none; position: relative; background: var(--bg2); }
   .weekend-tile:hover { border-color: var(--muted); }
   .weekend-tile .wk-num { font-size: 9px; color: var(--muted); letter-spacing: 1px; margin-bottom: 3px; }
   .weekend-tile .wk-dates { font-size: 13px; color: var(--text); }
   .weekend-tile .wk-status { font-size: 9px; margin-top: 6px; color: var(--muted); transition: color 0.15s; }
   .weekend-tile .wk-indicator { position: absolute; top: 8px; right: 10px; width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: background 0.15s; }
-
   .weekend-tile.state-available { border-color: var(--green); background: var(--green-dim); }
   .weekend-tile.state-available .wk-status { color: var(--green); }
   .weekend-tile.state-available .wk-indicator { background: var(--green); }
-
   .weekend-tile.state-unavailable { border-color: var(--red); background: var(--red-dim); opacity: 0.7; }
   .weekend-tile.state-unavailable .wk-status { color: var(--red); }
   .weekend-tile.state-unavailable .wk-indicator { background: var(--red); }
   .weekend-tile.state-unavailable .wk-dates { text-decoration: line-through; color: var(--muted); }
-
   .weekend-tile.state-preferred-not { border-color: var(--yellow); background: var(--yellow-dim); }
   .weekend-tile.state-preferred-not .wk-status { color: var(--yellow); }
   .weekend-tile.state-preferred-not .wk-indicator { background: var(--yellow); }
@@ -133,31 +87,27 @@
   .submit-btn:hover { opacity: 0.88; }
   .submit-btn:disabled { opacity: 0.3; cursor: not-allowed; }
 
-  /* SUCCESS */
-  #success-screen { max-width: 440px; margin: 80px auto; text-align: center; display: none; }
-  .success-icon { font-size: 48px; margin-bottom: 20px; }
-  .success-title { font-family: var(--sans); font-size: 28px; font-weight: 700; color: var(--green); margin-bottom: 10px; }
-  .success-msg { font-size: 12px; color: var(--muted); line-height: 1.8; margin-bottom: 28px; }
-
+  /* PROGRESS / HOLDING */
   .progress-block { background: var(--bg2); border: 1px solid var(--border); border-radius: 3px; padding: 16px 20px; text-align: left; }
   .progress-label { font-size: 10px; color: var(--orange); letter-spacing: 2px; margin-bottom: 10px; }
   .progress-bar-wrap { height: 4px; background: var(--bg3); border-radius: 2px; margin-bottom: 8px; overflow: hidden; }
   .progress-bar-fill { height: 100%; background: var(--orange); border-radius: 2px; transition: width 0.6s ease; }
   .progress-count { font-size: 11px; color: var(--muted); }
   .progress-count span { color: var(--text); }
-
-  /* ALREADY / WAITING */
+  #success-screen { max-width: 440px; margin: 80px auto; text-align: center; display: none; }
+  .success-icon { font-size: 48px; margin-bottom: 20px; }
+  .success-title { font-family: var(--sans); font-size: 28px; font-weight: 700; color: var(--green); margin-bottom: 10px; }
+  .success-msg { font-size: 12px; color: var(--muted); line-height: 1.8; margin-bottom: 28px; }
   #already-screen { max-width: 440px; margin: 80px auto; text-align: center; display: none; }
   #waiting-screen { max-width: 440px; margin: 80px auto; text-align: center; display: none; }
   .holding-title { font-family: var(--sans); font-size: 26px; font-weight: 700; color: var(--text); margin-bottom: 10px; margin-top: 24px; }
   .holding-msg { font-size: 12px; color: var(--muted); line-height: 1.8; margin-bottom: 24px; }
 
-  /* RESULTS */
+  /* RESULTS - Stage 1 */
   #results-screen { display: none; }
   .results-intro { background: var(--bg2); border: 1px solid var(--border); border-left: 3px solid var(--orange); border-radius: 3px; padding: 14px 16px; margin-bottom: 24px; font-size: 12px; color: var(--muted); line-height: 1.8; }
   .results-intro span { color: var(--text); }
   .results-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; margin-bottom: 8px; }
-
   .result-tile { border: 1px solid var(--border); border-radius: 3px; padding: 12px 14px; background: var(--bg2); position: relative; }
   .result-tile.all-good { border-color: var(--green); background: var(--green-dim); }
   .result-tile.most-good { border-color: var(--yellow); background: var(--yellow-dim); }
@@ -171,7 +121,69 @@
   .result-tile .r-count { font-size: 9px; color: var(--muted); min-width: 16px; text-align: right; }
   .result-tile .r-badge { position: absolute; top: 8px; right: 10px; font-size: 8px; padding: 2px 6px; border-radius: 2px; background: var(--green-dim); color: var(--green); border: 1px solid rgba(0,204,102,0.3); }
 
-  /* ADMIN OVERLAY */
+  /* STAGE 2 TABS */
+  #stage2-screen { display: none; }
+  .tab-bar { display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: 28px; }
+  .tab-btn { background: none; border: none; border-bottom: 2px solid transparent; color: var(--muted); font-family: var(--mono); font-size: 11px; letter-spacing: 1px; padding: 10px 18px; cursor: pointer; transition: all 0.2s; margin-bottom: -1px; }
+  .tab-btn:hover { color: var(--text); }
+  .tab-btn.active { color: var(--orange); border-bottom-color: var(--orange); }
+  .tab-pane { display: none; }
+  .tab-pane.active { display: block; }
+
+  /* GAME CARDS */
+  .games-grid { display: flex; flex-direction: column; gap: 8px; }
+  .game-card { border: 1px solid var(--border); border-radius: 3px; padding: 14px 16px; background: var(--bg2); cursor: pointer; transition: all 0.15s; display: flex; align-items: center; gap: 16px; user-select: none; }
+  .game-card:hover { border-color: var(--muted); }
+  .game-card.selected { border-color: var(--orange); background: var(--orange-dim); }
+  .game-card.disabled { opacity: 0.4; cursor: not-allowed; }
+  .game-card.disabled:hover { border-color: var(--border); }
+  .game-week-badge { font-size: 9px; color: var(--muted); letter-spacing: 1px; white-space: nowrap; min-width: 40px; }
+  .game-teams { flex: 1; }
+  .game-matchup { font-size: 14px; color: var(--text); margin-bottom: 2px; }
+  .game-meta { font-size: 10px; color: var(--muted); }
+  .game-selector { width: 18px; height: 18px; border-radius: 50%; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 10px; transition: all 0.15s; flex-shrink: 0; }
+  .game-card.selected .game-selector { background: var(--orange); border-color: var(--orange); color: #fff; }
+  .game-weekend-header { font-size: 10px; color: var(--orange); letter-spacing: 2px; margin: 20px 0 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+  .game-weekend-header:first-child { margin-top: 0; }
+  .shortlist-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding: 12px 14px; background: var(--bg2); border: 1px solid var(--border); border-radius: 3px; }
+  .shortlist-count { font-size: 12px; color: var(--muted); flex: 1; }
+  .shortlist-count span { color: var(--orange); font-size: 14px; }
+  .shortlist-dots { display: flex; gap: 4px; }
+  .shortlist-dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid var(--border); transition: background 0.15s; }
+  .shortlist-dot.filled { background: var(--orange); border-color: var(--orange); }
+
+  /* STAGE 2 SUCCESS */
+  #stage2-success { max-width: 440px; margin: 80px auto; text-align: center; display: none; }
+  #stage2-already { max-width: 440px; margin: 80px auto; text-align: center; display: none; }
+
+  /* CRIB SHEET */
+  .crib-intro { font-size: 11px; color: var(--muted); margin-bottom: 20px; line-height: 1.8; padding: 12px 14px; background: var(--bg2); border: 1px solid var(--border); border-left: 3px solid var(--orange); border-radius: 3px; }
+  .division-header { font-size: 10px; color: var(--orange); letter-spacing: 3px; margin: 24px 0 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+  .crib-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; margin-bottom: 8px; }
+  .crib-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+  .crib-card-header { padding: 10px 14px; background: var(--bg3); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+  .crib-team { font-family: var(--sans); font-size: 16px; font-weight: 700; color: var(--text); flex: 1; }
+  .crib-city { font-size: 10px; color: var(--muted); }
+  .flight-badge { font-size: 9px; padding: 2px 7px; border-radius: 2px; white-space: nowrap; }
+  .flight-yes { background: var(--green-dim); color: var(--green); border: 1px solid rgba(0,204,102,0.3); }
+  .flight-no { background: var(--red-dim); color: var(--red); border: 1px solid rgba(204,34,0,0.3); }
+  .flight-partial { background: var(--yellow-dim); color: var(--yellow); border: 1px solid rgba(255,170,0,0.3); }
+  .flight-alt { background: var(--orange-dim); color: var(--orange); border: 1px solid var(--orange-mid); }
+  .crib-body { padding: 10px 14px; }
+  .crib-pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+  .crib-pc-label { font-size: 9px; color: var(--muted); margin-bottom: 3px; letter-spacing: 1px; }
+  .crib-pc-text { font-size: 11px; color: var(--text); line-height: 1.5; }
+  .crib-pros .crib-pc-label { color: var(--green); }
+  .crib-cons .crib-pc-label { color: var(--red); }
+  .crib-footer { display: grid; grid-template-columns: repeat(4, 1fr) auto; gap: 6px; align-items: end; }
+  .crib-temp { text-align: center; }
+  .crib-temp-month { font-size: 8px; color: var(--muted); margin-bottom: 2px; }
+  .crib-temp-val { font-size: 12px; color: var(--text); }
+  .crib-flight-time { text-align: right; font-size: 10px; color: var(--muted); }
+  .crib-sports { display: flex; flex-wrap: wrap; gap: 3px; margin-bottom: 8px; }
+  .sport-tag { font-size: 9px; padding: 2px 6px; border-radius: 2px; background: var(--bg3); color: var(--muted); border: 1px solid var(--border); }
+
+  /* ADMIN */
   .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 500; display: none; align-items: center; justify-content: center; }
   .overlay.open { display: flex; }
   .modal { background: var(--bg2); border: 1px solid var(--border); border-radius: 4px; width: 100%; max-width: 480px; margin: 16px; overflow: hidden; }
@@ -186,38 +198,32 @@
   .pin-input { flex: 1; background: transparent; border: none; outline: none; color: var(--text); font-family: var(--mono); font-size: 18px; padding: 11px 14px; letter-spacing: 6px; caret-color: var(--orange); }
   .pin-btn { width: 100%; background: var(--orange); border: none; color: #fff; font-family: var(--sans); font-size: 14px; font-weight: 700; letter-spacing: 2px; padding: 11px; cursor: pointer; border-radius: 3px; text-transform: uppercase; }
   .pin-error { font-size: 11px; color: var(--red); margin-top: 8px; display: none; }
-
-  /* ADMIN SCREEN */
   #admin-screen { display: none; }
   .admin-section { margin-bottom: 36px; }
   .admin-section-title { font-size: 10px; color: var(--orange); letter-spacing: 2px; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
   .admin-back-btn { background: none; border: 1px solid var(--border); color: var(--muted); font-family: var(--mono); font-size: 10px; padding: 5px 12px; cursor: pointer; border-radius: 2px; margin-bottom: 24px; transition: all 0.2s; display: inline-flex; align-items: center; gap: 6px; }
   .admin-back-btn:hover { border-color: var(--orange); color: var(--orange); }
-
   .setting-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--bg3); font-size: 12px; flex-wrap: wrap; }
   .setting-label { flex: 1; color: var(--muted); min-width: 160px; }
-
   .action-btn { background: none; border: 1px solid var(--border); color: var(--muted); font-family: var(--mono); font-size: 11px; padding: 7px 14px; cursor: pointer; border-radius: 2px; transition: all 0.2s; margin-right: 6px; }
   .action-btn:hover { border-color: var(--orange); color: var(--orange); }
   .action-btn.primary { background: var(--orange); border-color: var(--orange); color: #fff; }
   .action-btn.primary:hover { opacity: 0.85; }
   .action-btn.danger { border-color: var(--red); color: var(--red); }
   .action-btn.danger:hover { background: var(--red-dim); }
-
+  .action-btn.success { background: var(--green); border-color: var(--green); color: #fff; }
+  .action-btn.success:hover { opacity: 0.85; }
   .status-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; padding: 4px 10px; border-radius: 2px; }
   .status-badge.open { background: var(--green-dim); color: var(--green); border: 1px solid rgba(0,204,102,0.3); }
   .status-badge.published { background: var(--orange-dim); color: var(--orange); border: 1px solid var(--orange-mid); }
   .status-badge.locked { background: var(--bg3); color: var(--muted); border: 1px solid var(--border); }
-
   .participant-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--bg3); font-size: 12px; }
   .participant-name { flex: 1; color: var(--text); }
   .participant-status { font-size: 10px; padding: 3px 8px; border-radius: 2px; }
   .status-done { background: var(--green-dim); color: var(--green); border: 1px solid rgba(0,204,102,0.3); }
   .status-pending { background: var(--bg3); color: var(--muted); border: 1px solid var(--border); }
-
   .threshold-control { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; font-size: 11px; color: var(--muted); flex-wrap: wrap; }
   .threshold-control select { background: var(--bg3); border: 1px solid var(--border); color: var(--text); font-family: var(--mono); font-size: 11px; padding: 4px 8px; border-radius: 2px; outline: none; }
-
   .heatmap-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 6px; }
   .heatmap-tile { border-radius: 3px; padding: 10px 12px; border: 1px solid var(--border); background: var(--bg2); }
   .heatmap-tile.best { border-color: var(--green); background: var(--green-dim); }
@@ -226,37 +232,52 @@
   .heatmap-tile .h-bar-wrap { height: 3px; background: var(--bg3); border-radius: 2px; margin-bottom: 4px; }
   .heatmap-tile .h-bar { height: 100%; border-radius: 2px; background: var(--orange); }
   .heatmap-tile .h-count { font-size: 9px; color: var(--muted); }
-
   .no-data { font-size: 12px; color: var(--muted); padding: 16px 0; }
-
   .count-input { background: var(--bg3); border: 1px solid var(--border); color: var(--text); font-family: var(--mono); font-size: 12px; padding: 5px 8px; border-radius: 2px; outline: none; width: 60px; }
   .count-input:focus { border-color: var(--orange); }
+
+  /* Weekend selection checkboxes in admin */
+  .weekend-check-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 6px; margin-bottom: 14px; }
+  .weekend-check-item { display: flex; align-items: center; gap: 8px; padding: 8px 10px; background: var(--bg2); border: 1px solid var(--border); border-radius: 3px; cursor: pointer; transition: all 0.15s; font-size: 11px; color: var(--muted); }
+  .weekend-check-item:hover { border-color: var(--orange); color: var(--text); }
+  .weekend-check-item.checked { border-color: var(--orange); color: var(--text); background: var(--orange-dim); }
+  .weekend-check-item input { accent-color: var(--orange); cursor: pointer; }
+
+  /* Stage 2 admin submissions */
+  .game-vote-row { padding: 10px 0; border-bottom: 1px solid var(--bg3); }
+  .game-vote-matchup { font-size: 12px; color: var(--text); margin-bottom: 4px; }
+  .game-vote-bar { display: flex; align-items: center; gap: 8px; }
+  .game-vote-track { flex: 1; height: 3px; background: var(--bg3); border-radius: 2px; }
+  .game-vote-fill { height: 100%; background: var(--orange); border-radius: 2px; }
+  .game-vote-count { font-size: 10px; color: var(--muted); min-width: 40px; }
+
+  .info-box { font-size: 11px; color: var(--muted); padding: 10px 12px; background: var(--bg2); border: 1px solid var(--border); border-left: 3px solid var(--orange); border-radius: 3px; line-height: 1.8; margin-bottom: 14px; }
 
   .hidden { display: none !important; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
   .fade-in { animation: fadeIn 0.3s ease; }
-
   @media (max-width: 600px) {
-    .header { padding: 14px 16px; }
-    .container { padding: 24px 14px; }
+    .header { padding: 12px 16px; }
+    .container { padding: 20px 14px; }
     .weekends-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+    .crib-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 
 <header class="header">
-  <div class="logo">
+  <a class="logo" onclick="goHome()" href="#">
     <span class="logo-taco">Taco</span><span class="logo-tripz">Tripz</span>
     <span class="logo-year">// 2026</span>
-  </div>
+  </a>
   <div class="header-right">
     <div class="stage-indicator">
-      <div class="stage-dot active"></div>
-      <div class="stage-dot"></div>
-      <div class="stage-dot"></div>
-      <div class="stage-dot"></div>
-      <span class="stage-label">01 // AVAILABILITY</span>
+      <div class="stage-dot active" id="dot-1"></div>
+      <div class="stage-dot" id="dot-2"></div>
+      <div class="stage-dot" id="dot-3"></div>
+      <div class="stage-dot" id="dot-4"></div>
+      <span class="stage-label" id="stage-label">01 // AVAILABILITY</span>
     </div>
     <button class="admin-btn" onclick="openAdminLogin()">ADMIN ⚙</button>
   </div>
@@ -282,7 +303,7 @@
   </div>
 </div>
 
-<!-- AVAILABILITY SCREEN -->
+<!-- STAGE 1: AVAILABILITY -->
 <div id="availability-screen" class="container hidden fade-in">
   <div class="section-header">
     <div class="section-tag">// STAGE 01 — AVAILABILITY</div>
@@ -302,7 +323,7 @@
   </div>
 </div>
 
-<!-- SUCCESS SCREEN -->
+<!-- STAGE 1: SUCCESS -->
 <div id="success-screen" class="container">
   <div class="success-icon">✓</div>
   <p class="success-title">Submitted!</p>
@@ -314,7 +335,7 @@
   </div>
 </div>
 
-<!-- ALREADY SUBMITTED -->
+<!-- STAGE 1: ALREADY -->
 <div id="already-screen" class="container">
   <div style="font-size:48px">👀</div>
   <p class="holding-title">Already submitted!</p>
@@ -326,7 +347,7 @@
   </div>
 </div>
 
-<!-- WAITING FOR PUBLISH -->
+<!-- STAGE 1: WAITING FOR PUBLISH -->
 <div id="waiting-screen" class="container">
   <div style="font-size:48px;margin-bottom:20px">⏳</div>
   <p class="holding-title">All in — waiting on Chris</p>
@@ -338,7 +359,7 @@
   </div>
 </div>
 
-<!-- RESULTS SCREEN -->
+<!-- STAGE 1: RESULTS -->
 <div id="results-screen" class="container">
   <div class="section-header">
     <div class="section-tag">// STAGE 01 — RESULTS</div>
@@ -347,6 +368,64 @@
   </div>
   <div class="results-intro" id="results-summary"></div>
   <div id="results-months"></div>
+</div>
+
+<!-- STAGE 2: MAIN -->
+<div id="stage2-screen" class="container">
+  <div class="section-header">
+    <div class="section-tag">// STAGE 02 — SHORTLIST</div>
+    <div class="section-title" id="s2-greeting">Pick your games</div>
+    <div class="section-sub">Choose up to 5 games you'd like to go to. Use the City Guide tab to research each destination.</div>
+  </div>
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="switchTab('games')" id="tab-games">GAMES</button>
+    <button class="tab-btn" onclick="switchTab('crib')" id="tab-crib">CITY GUIDE</button>
+  </div>
+  <div class="tab-pane active" id="pane-games">
+    <div class="shortlist-bar">
+      <div class="shortlist-count">Selected: <span id="shortlist-count">0</span> / 5</div>
+      <div class="shortlist-dots" id="shortlist-dots">
+        <div class="shortlist-dot" id="sd0"></div>
+        <div class="shortlist-dot" id="sd1"></div>
+        <div class="shortlist-dot" id="sd2"></div>
+        <div class="shortlist-dot" id="sd3"></div>
+        <div class="shortlist-dot" id="sd4"></div>
+      </div>
+    </div>
+    <div class="games-grid" id="games-list"></div>
+    <div class="submit-area">
+      <div class="submit-summary" id="s2-summary">Select up to 5 games above, then submit.</div>
+      <button class="submit-btn" id="s2-submit-btn" disabled onclick="submitShortlist()">SUBMIT →</button>
+    </div>
+  </div>
+  <div class="tab-pane" id="pane-crib">
+    <div class="crib-intro">Use this guide to research each city before making your shortlist. Temps are average highs in °C. Flight times are approximate from London.</div>
+    <div id="crib-sheet-content"></div>
+  </div>
+</div>
+
+<!-- STAGE 2: SUCCESS -->
+<div id="stage2-success" class="container">
+  <div class="success-icon">🏈</div>
+  <p class="success-title">Shortlist in!</p>
+  <p class="success-msg">Nice work, <span id="s2-success-name"></span>. Check back once everyone's submitted to see which games are going to a vote.</p>
+  <div class="progress-block">
+    <div class="progress-label">// STAGE 2 PROGRESS</div>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="s2-progress-fill" style="width:0%"></div></div>
+    <div class="progress-count"><span id="s2-progress-done">0</span> of <span id="s2-progress-total">5</span> submitted</div>
+  </div>
+</div>
+
+<!-- STAGE 2: ALREADY -->
+<div id="stage2-already" class="container">
+  <div style="font-size:48px">🔒</div>
+  <p class="holding-title">Shortlist locked!</p>
+  <p class="holding-msg">You've already submitted your Stage 2 shortlist, <span id="s2-already-name"></span>. Chris will announce which games are going to a vote.</p>
+  <div class="progress-block">
+    <div class="progress-label">// STAGE 2 PROGRESS</div>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="s2-progress-fill-2" style="width:0%"></div></div>
+    <div class="progress-count"><span id="s2-progress-done-2">0</span> of <span id="s2-progress-total-2">5</span> submitted</div>
+  </div>
 </div>
 
 <!-- ADMIN LOGIN -->
@@ -375,10 +454,11 @@
     <div class="section-title">TacoTripz control panel</div>
   </div>
 
+  <!-- Stage 1 Settings -->
   <div class="admin-section">
-    <div class="admin-section-title">SETTINGS</div>
+    <div class="admin-section-title">STAGE 1 — AVAILABILITY</div>
     <div class="setting-row">
-      <span class="setting-label">Stage 1 status</span>
+      <span class="setting-label">Status</span>
       <span id="admin-stage-status"></span>
     </div>
     <div class="setting-row">
@@ -394,10 +474,63 @@
     </div>
   </div>
 
+  <!-- Stage 2 Settings -->
+  <div class="admin-section">
+    <div class="admin-section-title">STAGE 2 — SHORTLIST</div>
+    <div class="setting-row">
+      <span class="setting-label">Status</span>
+      <span id="admin-s2-status"></span>
+    </div>
+    <div class="setting-row" style="flex-direction:column;align-items:flex-start;gap:10px">
+      <span class="setting-label">NFL schedule</span>
+      <div class="info-box" style="margin:0;width:100%">// Fetch the 2025 NFL schedule to test the flow. When the 2026 schedule drops, fetch again to refresh. Only games on the shortlisted weekends below will be shown.</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="action-btn primary" onclick="fetchSchedule(2025)">FETCH 2025 SCHEDULE (TEST)</button>
+        <button class="action-btn" onclick="fetchSchedule(2026)">FETCH 2026 SCHEDULE</button>
+        <span id="schedule-status" style="font-size:11px;color:var(--muted);align-self:center"></span>
+      </div>
+    </div>
+    <div class="setting-row" style="flex-direction:column;align-items:flex-start;gap:10px">
+      <span class="setting-label">Shortlisted weekends</span>
+      <div class="info-box" style="margin:0;width:100%">// Select which weekends from Stage 1 progress to Stage 2. Only games on these weekends will appear in the shortlist.</div>
+      <div class="weekend-check-grid" id="admin-weekend-checks"></div>
+      <button class="action-btn primary" onclick="saveShortlistedWeekends()">SAVE WEEKENDS →</button>
+      <span id="weekends-save-msg" style="font-size:10px;color:var(--green);display:none">saved ✓</span>
+    </div>
+    <div class="setting-row">
+      <span class="setting-label">Open Stage 2</span>
+      <div>
+        <button class="action-btn success" id="open-s2-btn" onclick="openStage2()">OPEN STAGE 2 →</button>
+        <button class="action-btn danger" id="close-s2-btn" style="display:none" onclick="closeStage2()">CLOSE STAGE 2</button>
+      </div>
+    </div>
+    <div class="setting-row">
+      <span class="setting-label">Shortlist threshold</span>
+      <div style="display:flex;align-items:center;gap:8px;font-size:11px;color:var(--muted)">
+        <span>Progress games shortlisted by at least</span>
+        <select id="s2-threshold" style="background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:11px;padding:4px 8px;border-radius:2px;outline:none">
+          <option value="1">1</option>
+          <option value="2" selected>2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        <span>people</span>
+        <button class="action-btn" style="margin:0" onclick="saveThreshold()">SAVE</button>
+        <span id="threshold-save-msg" style="font-size:10px;color:var(--green);display:none">saved ✓</span>
+      </div>
+    </div>
+    <div class="setting-row">
+      <span class="setting-label">Reset Stage 2 submissions</span>
+      <button class="action-btn danger" onclick="resetStage2()">RESET STAGE 2</button>
+    </div>
+  </div>
+
+  <!-- Participant Names -->
   <div class="admin-section">
     <div class="admin-section-title">PARTICIPANT NAMES</div>
     <div style="font-size:11px;color:var(--muted);margin-bottom:14px;padding:10px 12px;background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--orange);border-radius:3px">
-      // Set these before sharing the link with the group. Users will pick their name from a dropdown — no free-text entry.
+      // Set these before sharing the link. Users pick from a dropdown — no free-text entry.
     </div>
     <div id="names-list" style="margin-bottom:12px"></div>
     <div style="display:flex;gap:8px;align-items:center">
@@ -409,141 +542,187 @@
     </div>
   </div>
 
+  <!-- Stage 1 Submissions -->
   <div class="admin-section">
-    <div class="admin-section-title">SUBMISSIONS (<span id="sub-count">0</span> of <span id="sub-total">5</span>)</div>
+    <div class="admin-section-title">STAGE 1 SUBMISSIONS (<span id="sub-count">0</span> of <span id="sub-total">5</span>)</div>
     <div id="participant-list"></div>
   </div>
 
+  <!-- Heatmap -->
   <div class="admin-section">
     <div class="admin-section-title">WEEKEND HEATMAP</div>
     <div class="threshold-control">
       <span>Show weekends where at least</span>
       <select id="threshold-select" onchange="renderHeatmap()">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3" selected>3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
+        <option value="1">1</option><option value="2">2</option>
+        <option value="3" selected>3</option><option value="4">4</option><option value="5">5</option>
       </select>
       <span>people are available</span>
     </div>
     <div class="heatmap-grid" id="heatmap-grid"></div>
   </div>
 
+  <!-- Best Weekends -->
   <div class="admin-section">
     <div class="admin-section-title">BEST WEEKENDS (ALL AVAILABLE)</div>
     <div id="best-weekends"></div>
   </div>
+
+  <!-- Stage 2 Submissions -->
+  <div class="admin-section">
+    <div class="admin-section-title">STAGE 2 SUBMISSIONS (<span id="s2-sub-count">0</span> of <span id="s2-sub-total">5</span>)</div>
+    <div id="s2-participant-list"></div>
+    <div style="margin-top:20px">
+      <div class="admin-section-title" style="margin-top:0">GAME SHORTLIST TALLY</div>
+      <div id="s2-game-tally"></div>
+    </div>
+  </div>
 </div>
 
 <script>
+// ============================================================
+// CONFIG
+// ============================================================
 const SUPABASE_URL = 'https://ufkhpwweuthndrskdmxi.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_0iWFoBfoGU9p-0swkPJ_9A_AUyu_NJf';
 const ADMIN_PIN = '3729';
 
-// Generate NFL 2026 weekends — Week 1: Thu 10 Sep 2026
+// ============================================================
+// NFL 2026 WEEKENDS
+// ============================================================
 function generateNFLWeekends() {
   const week1Thu = new Date(2026, 8, 10);
   return Array.from({ length: 18 }, (_, w) => {
     const thu = new Date(week1Thu);
     thu.setDate(week1Thu.getDate() + w * 7);
-    const sun = new Date(thu);
-    sun.setDate(thu.getDate() + 3);
+    const sun = new Date(thu); sun.setDate(thu.getDate() + 3);
     const fmt = d => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
-    return {
-      week: w + 1,
-      key: `wk${w + 1}`,
-      label: `${fmt(thu)} – ${fmt(sun)}`,
-      month: sun.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' }),
-      monthKey: `${sun.getFullYear()}-${sun.getMonth()}`,
-    };
+    return { week: w+1, key:`wk${w+1}`, label:`${fmt(thu)} – ${fmt(sun)}`, month:sun.toLocaleDateString('en-GB',{month:'long',year:'numeric'}), monthKey:`${sun.getFullYear()}-${sun.getMonth()}` };
   });
 }
-
 const WEEKENDS = generateNFLWeekends();
+
+// ============================================================
+// CRIB SHEET DATA
+// ============================================================
+const CRIB_DATA = [
+  { div:'AFC East', team:'Bills', city:'Buffalo, NY', pros:'Passionate atmosphere, Bills Mafia culture, short drive to Niagara Falls', cons:'Famous for brutal lake-effect snow later in season', flight:'no', flightNote:'Fly to Toronto (8h) and drive across — about 2h', flightTime:'~8h to Toronto', temps:{sep:22,oct:17,nov:9,dec:3}, nhl:'Buffalo Sabres', nba:'—', mlb:'—', mls:'—', college:'Buffalo Bulls' },
+  { div:'AFC East', team:'Dolphins', city:'Miami, FL', pros:'South Beach, incredible food scene, warm weather guaranteed, buzzing nightlife', cons:'Been there recently', flight:'yes', flightTime:'~9.5h', temps:{sep:32,oct:29,nov:26,dec:26}, nhl:'Florida Panthers', nba:'Miami Heat', mlb:'Miami Marlins', mls:'Inter Miami', college:'Miami Hurricanes' },
+  { div:'AFC East', team:'Patriots', city:'Boston, MA', pros:'World-class city, lobster rolls, history, great walkable neighbourhoods', cons:'Stadium is in Foxborough — 45 min from the city, not a great area', flight:'yes', flightTime:'~7h', temps:{sep:23,oct:17,nov:11,dec:6}, nhl:'Boston Bruins', nba:'Boston Celtics', mlb:'Boston Red Sox', mls:'New England Revolution', college:'BC Eagles' },
+  { div:'AFC East', team:'Jets', city:'New York, NY', pros:'New York City — endless things to do, eat, see', cons:'MetLife Stadium is in New Jersey, miles from the city', flight:'yes', flightTime:'~7.5h', temps:{sep:25,oct:18,nov:13,dec:7}, nhl:'Rangers / Islanders / Devils', nba:'Knicks / Nets', mlb:'Yankees / Mets', mls:'NY Red Bulls / NYCFC', college:'—' },
+  { div:'AFC North', team:'Ravens', city:'Baltimore, MD', pros:'Lamar Jackson live — worth the trip alone. Excellent crab cakes and Inner Harbour', cons:'Somewhat limited nightlife beyond the game day experience', flight:'yes', flightTime:'~8.5h', temps:{sep:27,oct:20,nov:14,dec:9}, nhl:'—', nba:'—', mlb:'Baltimore Orioles', mls:'—', college:'Navy Midshipmen' },
+  { div:'AFC North', team:'Bengals', city:'Cincinnati, OH', pros:'Underrated food and bar scene, compact city easy to navigate, good vibes', cons:'No direct flight, limited things beyond the game', flight:'yes', flightTime:'~8.5h', temps:{sep:26,oct:19,nov:12,dec:6}, nhl:'—', nba:'—', mlb:'Cincinnati Reds', mls:'FC Cincinnati', college:'Cincinnati Bearcats' },
+  { div:'AFC North', team:'Steelers', city:'Pittsburgh, PA', pros:'Great food scene, passionate fans, beautiful hilly city', cons:'Team in a rough spell — may not be a great game', flight:'yes', flightTime:'~8.5h', temps:{sep:24,oct:17,nov:10,dec:5}, nhl:'Pittsburgh Penguins', nba:'—', mlb:'Pittsburgh Pirates', mls:'—', college:'Pitt Panthers' },
+  { div:'AFC North', team:'Browns', city:'Cleveland, OH', pros:'Rock & Roll Hall of Fame, decent food scene, affordable city', cons:'The Browns are the Browns. Consistently tough to watch', flight:'no', flightTime:'~9h (via connect)', temps:{sep:24,oct:17,nov:11,dec:5}, nhl:'—', nba:'Cleveland Cavaliers', mlb:'Cleveland Guardians', mls:'—', college:'Ohio State nearby' },
+  { div:'AFC South', team:'Texans', city:'Houston, TX', pros:'CJ Stroud era is exciting, diverse food scene, Space Center nearby', cons:'Houston can feel sprawling and lacking in a city centre vibe', flight:'yes', flightTime:'~10.5h', temps:{sep:32,oct:26,nov:21,dec:19}, nhl:'—', nba:'Houston Rockets', mlb:'Houston Astros', mls:'Houston Dynamo', college:'Houston Cougars' },
+  { div:'AFC South', team:'Colts', city:'Indianapolis, IN', pros:'Compact and walkable downtown, home of the Indy 500, great game day atmosphere', cons:'Limited beyond game day — smaller city', flight:'no', flightTime:'~9.5h (via connect)', temps:{sep:26,oct:18,nov:11,dec:5}, nhl:'—', nba:'Indiana Pacers', mlb:'—', mls:'—', college:'Notre Dame nearby' },
+  { div:'AFC South', team:'Jaguars', city:'Jacksonville, FL', pros:'Beach city, warm weather, pool parties at the stadium', cons:'Shahid Khan owns Fulham — mixed feelings. Limited city beyond the stadium', flight:'no', flightTime:'~10h (via connect)', temps:{sep:31,oct:28,nov:23,dec:20}, nhl:'—', nba:'—', mlb:'—', mls:'—', college:'Florida Gators nearby' },
+  { div:'AFC South', team:'Titans', city:'Nashville, TN', pros:'World-class music scene, incredible food and bars, Broadway strip, bachelorette capital', cons:'Team rebuilding, so may not be a marquee game', flight:'yes', flightTime:'~9.5h', temps:{sep:29,oct:22,nov:16,dec:11}, nhl:'Nashville Predators', nba:'—', mlb:'—', mls:'Nashville SC', college:'Vanderbilt Commodores' },
+  { div:'AFC West', team:'Broncos', city:'Denver, CO', pros:'Beautiful mountain setting, great craft beer scene, outdoor activities', cons:'Team inconsistent in recent years', flight:'yes', flightTime:'~10h', temps:{sep:27,oct:20,nov:14,dec:8}, nhl:'Colorado Avalanche', nba:'Denver Nuggets', mlb:'Colorado Rockies', mls:'Colorado Rapids', college:'Colorado Buffaloes' },
+  { div:'AFC West', team:'Chiefs', city:'Kansas City, MO', pros:'Best BBQ in America, electric atmosphere, best team in the league', cons:'Hard to cheer for them at this point', flight:'no', flightTime:'~10.5h (via connect)', temps:{sep:26,oct:20,nov:12,dec:6}, nhl:'—', nba:'—', mlb:'Kansas City Royals', mls:'Sporting KC', college:'Kansas Jayhawks' },
+  { div:'AFC West', team:'Raiders', city:'Las Vegas, NV', pros:'Stunning Allegiant Stadium, 24hr city, world-class restaurants, entertainment at every turn', cons:'Been to Vegas a lot — can get expensive', flight:'yes', flightTime:'~11h', temps:{sep:35,oct:29,nov:21,dec:14}, nhl:'Vegas Golden Knights', nba:'—', mlb:'—', mls:'Las Vegas FC (2025)', college:'UNLV Rebels' },
+  { div:'AFC West', team:'Chargers', city:'Los Angeles, CA', pros:'SoFi Stadium is stunning, LA food scene is world-class', cons:'Stadium not in the city — Inglewood. LA as a city can feel spread out', flight:'yes', flightTime:'~11h', temps:{sep:28,oct:26,nov:23,dec:20}, nhl:'LA Kings / Ducks', nba:'Lakers / Clippers', mlb:'Dodgers / Angels', mls:'LA Galaxy / LAFC', college:'UCLA / USC' },
+  { div:'NFC East', team:'Cowboys', city:'Dallas, TX', pros:'AT&T Stadium is the most impressive stadium in the NFL. Great team, huge atmosphere', cons:'Having to cheer for the Cowboys', flight:'yes', flightTime:'~10.5h', temps:{sep:32,oct:26,nov:19,dec:15}, nhl:'Dallas Stars', nba:'Dallas Mavericks', mlb:'Texas Rangers', mls:'FC Dallas', college:'TCU Horned Frogs' },
+  { div:'NFC East', team:'Giants', city:'New York, NY', pros:'New York City — endless things to do, eat, see', cons:'MetLife Stadium is in New Jersey, miles from Manhattan', flight:'yes', flightTime:'~7.5h', temps:{sep:25,oct:18,nov:13,dec:7}, nhl:'Rangers / Islanders / Devils', nba:'Knicks / Nets', mlb:'Yankees / Mets', mls:'NY Red Bulls / NYCFC', college:'—' },
+  { div:'NFC East', team:'Eagles', city:'Philadelphia, PA', pros:'Passionate fans, incredible food (cheesesteaks!), walkable city, great culture', cons:'Notoriously rough crowd if you\'re supporting the visitors', flight:'yes', flightTime:'~7.5h', temps:{sep:26,oct:20,nov:13,dec:8}, nhl:'Philadelphia Flyers', nba:'Philadelphia 76ers', mlb:'Philadelphia Phillies', mls:'Philadelphia Union', college:'Temple Owls' },
+  { div:'NFC East', team:'Commanders', city:'Washington D.C.', pros:'Rich history and museums (mostly free), great food scene, political atmosphere', cons:'Stadium is not in the city — Landover, MD. Limited game-day area', flight:'yes', flightTime:'~8h', temps:{sep:27,oct:21,nov:15,dec:9}, nhl:'Washington Capitals', nba:'Washington Wizards', mlb:'Washington Nationals', mls:'DC United', college:'Georgetown Hoyas' },
+  { div:'NFC North', team:'Bears', city:'Chicago, IL', pros:'Caleb Williams era is exciting. Deep dish pizza, world-class architecture, great music scene', cons:'Can get expensive, potentially chilly late in season', flight:'yes', flightTime:'~9h', temps:{sep:25,oct:17,nov:10,dec:3}, nhl:'Chicago Blackhawks', nba:'Chicago Bulls', mlb:'Cubs / White Sox', mls:'Chicago Fire', college:'Northwestern Wildcats' },
+  { div:'NFC North', team:'Lions', city:'Detroit, MI', pros:'Fun team to watch, revitalised downtown area, great food scene emerging', cons:'Could be cold late in season — December games a risk', flight:'yes', flightTime:'~8.5h', temps:{sep:24,oct:15,nov:9,dec:3}, nhl:'Detroit Red Wings', nba:'Detroit Pistons', mlb:'Detroit Tigers', mls:'—', college:'Michigan Wolverines nearby' },
+  { div:'NFC North', team:'Packers', city:'Green Bay, WI', pros:'Lambeau Field is iconic. Historic franchise, unique shareholder ownership model', cons:'Very small town — Green Bay itself has limited things to do', flight:'no', flightTime:'~10h (via connect)', temps:{sep:21,oct:15,nov:8,dec:1}, nhl:'—', nba:'—', mlb:'—', mls:'—', college:'Wisconsin Badgers' },
+  { div:'NFC North', team:'Vikings', city:'Minneapolis, MN', pros:'US Bank Stadium is stunning. Justin Jefferson live. Great food and arts scene', cons:'Can be very cold in November/December', flight:'yes', flightTime:'~9h', temps:{sep:23,oct:15,nov:7,dec:-2}, nhl:'Minnesota Wild', nba:'Minnesota Timberwolves', mlb:'Minnesota Twins', mls:'Minnesota United', college:'Minnesota Gophers' },
+  { div:'NFC South', team:'Falcons', city:'Atlanta, GA', pros:'Mercedes-Benz Stadium is incredible, great food scene, warmer weather', cons:'Can feel like an anonymous sprawl outside the stadium area', flight:'yes', flightTime:'~9.5h', temps:{sep:29,oct:23,nov:18,dec:13}, nhl:'—', nba:'Atlanta Hawks', mlb:'Atlanta Braves', mls:'Atlanta United', college:'Georgia Tech' },
+  { div:'NFC South', team:'Panthers', city:'Charlotte, NC', pros:'Compact city, decent food and bar scene, reasonable prices', cons:'Team in a rebuilding phase, limited tourist appeal', flight:'yes', flightTime:'~9h', temps:{sep:28,oct:22,nov:17,dec:13}, nhl:'Carolina Hurricanes', nba:'Charlotte Hornets', mlb:'—', mls:'Charlotte FC', college:'UNC Charlotte' },
+  { div:'NFC South', team:'Saints', city:'New Orleans, LA', pros:'One of the great food and party cities in the world. French Quarter, jazz, incredible atmosphere', cons:'City can feel rough in places — worth doing your research on neighbourhoods', flight:'yes', flightTime:'~10h', temps:{sep:31,oct:27,nov:22,dec:18}, nhl:'—', nba:'New Orleans Pelicans', mlb:'—', mls:'—', college:'Tulane Green Wave' },
+  { div:'NFC South', team:'Buccaneers', city:'Tampa, FL', pros:'Warm weather guaranteed, Raymond James Stadium is fun, pirate ship!', cons:'Stadium not as impressive as others. Team has been average post-Brady', flight:'yes', flightNote:'BA flies direct but from Gatwick, not Heathrow', flightTime:'~10h', temps:{sep:32,oct:30,nov:26,dec:23}, nhl:'Tampa Bay Lightning', nba:'—', mlb:'Tampa Bay Rays', mls:'—', college:'USF Bulls' },
+  { div:'NFC West', team:'Cardinals', city:'Phoenix, AZ', pros:'Warm weather guaranteed. State Farm Stadium has a retractable grass field', cons:'Phoenix sprawl — very car-dependent city, limited walkable culture', flight:'yes', flightTime:'~11h', temps:{sep:38,oct:32,nov:25,dec:19}, nhl:'—', nba:'Phoenix Suns', mlb:'Arizona Diamondbacks', mls:'—', college:'Arizona State Sun Devils' },
+  { div:'NFC West', team:'Rams', city:'Los Angeles, CA', pros:'SoFi Stadium is stunning. LA food scene is world-class', cons:'Stadium in Inglewood — not central. LA can feel spread out and traffic is brutal', flight:'yes', flightTime:'~11h', temps:{sep:28,oct:26,nov:23,dec:20}, nhl:'LA Kings / Ducks', nba:'Lakers / Clippers', mlb:'Dodgers / Angels', mls:'LA Galaxy / LAFC', college:'UCLA / USC' },
+  { div:'NFC West', team:'49ers', city:'San Francisco, CA', pros:'One of the most beautiful cities in the US. Incredible food, tech culture, Alcatraz', cons:'Levi\'s Stadium is in Santa Clara — 45 min from the city', flight:'yes', flightTime:'~11h', temps:{sep:21,oct:19,nov:16,dec:14}, nhl:'San Jose Sharks', nba:'Golden State Warriors', mlb:'San Francisco Giants', mls:'San Jose Earthquakes', college:'Stanford Cardinal' },
+  { div:'NFC West', team:'Seahawks', city:'Seattle, WA', pros:'Lumen Field atmosphere is one of the best. Unique city, Pike Place Market, great seafood', cons:'Weather can be very wet in November/December. Team\'s recent form uncertain', flight:'yes', flightTime:'~10h', temps:{sep:22,oct:16,nov:11,dec:8}, nhl:'Seattle Kraken', nba:'—', mlb:'Seattle Mariners', mls:'Seattle Sounders', college:'Washington Huskies' },
+];
+
+// ============================================================
+// STATE
+// ============================================================
 let currentUser = null;
 let selections = Object.fromEntries(WEEKENDS.map(w => [w.key, null]));
+let s2selections = []; // array of game IDs
 let allSubmissions = [];
-let appSettings = { published: false, totalParticipants: 5, participantNames: [] };
+let s2Submissions = [];
+let schedule = []; // fetched NFL games
+let appSettings = { published:false, totalParticipants:5, participantNames:[], stage2Open:false, shortlistedWeekends:[], s2Threshold:2 };
 
+// ============================================================
 // SUPABASE
-async function sb(path, options = {}) {
+// ============================================================
+async function sb(path, options={}) {
   const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
-    headers: {
-      'apikey': SUPABASE_ANON_KEY,
-      'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-      'Content-Type': 'application/json',
-      'Prefer': 'return=representation',
-      ...options.headers,
-    },
+    headers: { 'apikey':SUPABASE_ANON_KEY, 'Authorization':`Bearer ${SUPABASE_ANON_KEY}`, 'Content-Type':'application/json', 'Prefer':'return=representation', ...options.headers },
     ...options,
   });
   const text = await res.text();
   return text ? JSON.parse(text) : null;
 }
-
-async function getSubmissions() {
-  return await sb('tt_availability?select=*&order=submitted_at.asc') || [];
+async function getSubmissions() { return await sb('tt_availability?select=*&order=submitted_at.asc') || []; }
+async function getS2Submissions() { return await sb('tt_shortlist?select=*&order=submitted_at.asc') || []; }
+async function getSchedule() {
+  const rows = await sb('tt_settings?key=eq.nfl_schedule&select=*');
+  if (rows && rows.length) { try { return JSON.parse(rows[0].value); } catch(e) {} }
+  return [];
 }
-
 async function getSettings() {
   try {
     const rows = await sb('tt_settings?key=eq.stage1&select=*');
     if (rows && rows.length) return JSON.parse(rows[0].value);
   } catch(e) {}
-  return { published: false, totalParticipants: 5, participantNames: [] };
+  return { published:false, totalParticipants:5, participantNames:[], stage2Open:false, shortlistedWeekends:[], s2Threshold:2 };
 }
-
 async function saveSettings(s) {
-  // Try update first, then insert if no row exists yet
   const existing = await sb('tt_settings?key=eq.stage1&select=key');
   if (existing && existing.length > 0) {
-    const res = await sb('tt_settings?key=eq.stage1', {
-      method: 'PATCH',
-      body: JSON.stringify({ value: JSON.stringify(s) }),
-    });
-    if (res === null || res === undefined) return; // PATCH returns empty on success
+    await sb('tt_settings?key=eq.stage1', { method:'PATCH', body:JSON.stringify({ value:JSON.stringify(s) }) });
   } else {
-    await sb('tt_settings', {
-      method: 'POST',
-      body: JSON.stringify({ key: 'stage1', value: JSON.stringify(s) }),
-    });
+    await sb('tt_settings', { method:'POST', body:JSON.stringify({ key:'stage1', value:JSON.stringify(s) }) });
+  }
+}
+async function saveSetting(key, value) {
+  const existing = await sb(`tt_settings?key=eq.${key}&select=key`);
+  if (existing && existing.length > 0) {
+    await sb(`tt_settings?key=eq.${key}`, { method:'PATCH', body:JSON.stringify({ value:JSON.stringify(value) }) });
+  } else {
+    await sb('tt_settings', { method:'POST', body:JSON.stringify({ key, value:JSON.stringify(value) }) });
   }
 }
 
+// ============================================================
 // INIT
+// ============================================================
 async function init() {
   try {
-    [appSettings, allSubmissions] = await Promise.all([getSettings(), getSubmissions()]);
+    [appSettings, allSubmissions, s2Submissions, schedule] = await Promise.all([getSettings(), getSubmissions(), getS2Submissions(), getSchedule()]);
   } catch(e) { console.warn('Init failed:', e); }
   populateNameDropdown();
 }
 init();
 
+// ============================================================
 // NAME DROPDOWN
+// ============================================================
 function populateNameDropdown() {
   const loading = document.getElementById('name-loading');
   const notSet = document.getElementById('name-not-set');
   const wrap = document.getElementById('name-select-wrap');
   const sel = document.getElementById('name-select');
   const names = appSettings.participantNames || [];
-
   loading.style.display = 'none';
-  if (!names.length) {
-    notSet.style.display = 'block';
-    wrap.style.display = 'none';
-  } else {
-    notSet.style.display = 'none';
-    wrap.style.display = 'block';
-    sel.innerHTML = '<option value="">— select your name —</option>' +
-      names.map(n => `<option value="${n}">${n}</option>`).join('');
+  if (!names.length) { notSet.style.display='block'; wrap.style.display='none'; }
+  else {
+    notSet.style.display='none'; wrap.style.display='block';
+    sel.innerHTML = '<option value="">— select your name —</option>' + names.map(n=>`<option value="${n}">${n}</option>`).join('');
   }
 }
 
 const proceedBtn = document.getElementById('proceed-btn');
-document.getElementById('name-select').addEventListener('change', function() {
-  proceedBtn.disabled = !this.value;
-});
+document.getElementById('name-select').addEventListener('change', function(){ proceedBtn.disabled = !this.value; });
 proceedBtn.addEventListener('click', proceed);
 
 async function proceed() {
@@ -552,377 +731,558 @@ async function proceed() {
   if (!name) return;
   proceedBtn.disabled = true;
   proceedBtn.textContent = 'Checking...';
-  try {
-    [appSettings, allSubmissions] = await Promise.all([getSettings(), getSubmissions()]);
-  } catch(e) {}
+  try { [appSettings, allSubmissions, s2Submissions, schedule] = await Promise.all([getSettings(), getSubmissions(), getS2Submissions(), getSchedule()]); } catch(e) {}
 
   currentUser = name;
-  const total = (appSettings.participantNames || []).length || appSettings.totalParticipants || 5;
-  const userIn = allSubmissions.some(s => s.name.toLowerCase() === name.toLowerCase());
+  const total = (appSettings.participantNames||[]).length || appSettings.totalParticipants || 5;
+  const s1done = allSubmissions.length;
+  const userS1in = allSubmissions.some(s => s.name.toLowerCase()===name.toLowerCase());
+  const userS2in = s2Submissions.some(s => s.name.toLowerCase()===name.toLowerCase());
 
-  if (userIn) {
-    if (appSettings.published) {
-      showResultsScreen();
-    } else if (allSubmissions.length >= total) {
-      showScreen('waiting-screen');
-      document.getElementById('waiting-done').textContent = allSubmissions.length;
-      document.getElementById('waiting-total').textContent = total;
+  // Route based on current stage
+  if (appSettings.stage2Open) {
+    // Stage 2 is active
+    updateStageDots(2);
+    if (userS2in) {
+      // Already submitted stage 2
+      showScreen('stage2-already');
+      document.getElementById('s2-already-name').textContent = name;
+      setProgress('s2-progress-fill-2','s2-progress-done-2','s2-progress-total-2', s2Submissions.length, total);
     } else {
-      showScreen('already-screen');
-      document.getElementById('already-name').textContent = name;
-      setProgress('progress-fill-2', 'progress-done-2', 'progress-total-2', allSubmissions.length, total);
+      showScreen('stage2-screen');
+      document.getElementById('s2-greeting').textContent = `Hey ${name} — pick your games`;
+      renderGames();
+      renderCribSheet();
     }
-  } else {
+  } else if (!userS1in) {
+    // Still needs to do Stage 1
+    updateStageDots(1);
     document.getElementById('avail-greeting').textContent = `Hey ${name} — pick your weekends`;
     showScreen('availability-screen');
+  } else if (appSettings.published) {
+    updateStageDots(1);
+    showScreen('results-screen');
+    renderResultsScreen();
+  } else if (s1done >= total) {
+    updateStageDots(1);
+    showScreen('waiting-screen');
+    document.getElementById('waiting-done').textContent = s1done;
+    document.getElementById('waiting-total').textContent = total;
+  } else {
+    updateStageDots(1);
+    showScreen('already-screen');
+    document.getElementById('already-name').textContent = name;
+    setProgress('progress-fill-2','progress-done-2','progress-total-2', s1done, total);
   }
 
   proceedBtn.textContent = 'ENTER →';
   proceedBtn.disabled = !sel.value;
 }
 
-// RENDER WEEKENDS
+function updateStageDots(stage) {
+  for(let i=1;i<=4;i++) {
+    const dot = document.getElementById(`dot-${i}`);
+    dot.className = 'stage-dot' + (i===stage?' active':i<stage?' done':'');
+  }
+  const labels = {1:'01 // AVAILABILITY',2:'02 // SHORTLIST',3:'03 // VOTE',4:'04 // PLAN'};
+  document.getElementById('stage-label').textContent = labels[stage]||'';
+}
+
+// ============================================================
+// STAGE 1 WEEKENDS
+// ============================================================
 function renderWeekends() {
   const container = document.getElementById('weekends-container');
   const byMonth = {};
-  WEEKENDS.forEach(w => {
-    if (!byMonth[w.monthKey]) byMonth[w.monthKey] = { label: w.month, weeks: [] };
-    byMonth[w.monthKey].weeks.push(w);
-  });
+  WEEKENDS.forEach(w => { if(!byMonth[w.monthKey]) byMonth[w.monthKey]={label:w.month,weeks:[]}; byMonth[w.monthKey].weeks.push(w); });
   container.innerHTML = '';
   Object.values(byMonth).forEach(group => {
-    const div = document.createElement('div');
-    div.className = 'month-group';
+    const div = document.createElement('div'); div.className='month-group';
     div.innerHTML = `<div class="month-label">${group.label}</div>`;
-    const grid = document.createElement('div');
-    grid.className = 'weekends-grid';
+    const grid = document.createElement('div'); grid.className='weekends-grid';
     group.weeks.forEach(w => {
-      const tile = document.createElement('div');
-      tile.className = 'weekend-tile';
-      tile.id = `tile-${w.key}`;
+      const tile = document.createElement('div'); tile.className='weekend-tile'; tile.id=`tile-${w.key}`;
       tile.innerHTML = `<div class="wk-num">WK ${String(w.week).padStart(2,'0')}</div><div class="wk-dates">${w.label}</div><div class="wk-status" id="status-${w.key}">— no response</div><div class="wk-indicator" id="ind-${w.key}"></div>`;
-      tile.addEventListener('click', () => cycleState(w.key));
+      tile.addEventListener('click', ()=>cycleState(w.key));
       grid.appendChild(tile);
     });
-    div.appendChild(grid);
-    container.appendChild(div);
+    div.appendChild(grid); container.appendChild(div);
   });
 }
 
-const STATES = [null, 'available', 'preferred-not', 'unavailable'];
-const LABELS = { null: '— no response', 'available': '✓ available', 'preferred-not': '~ prefer not, but can', 'unavailable': '✕ can\'t do' };
-const CLASSES = { null: '', 'available': 'state-available', 'preferred-not': 'state-preferred-not', 'unavailable': 'state-unavailable' };
+const STATES=[null,'available','preferred-not','unavailable'];
+const STATE_LABELS={null:'— no response','available':'✓ available','preferred-not':'~ prefer not, but can','unavailable':'✕ can\'t do'};
+const STATE_CLASSES={null:'','available':'state-available','preferred-not':'state-preferred-not','unavailable':'state-unavailable'};
 
 function cycleState(key) {
-  const next = STATES[(STATES.indexOf(selections[key]) + 1) % STATES.length];
+  const next = STATES[(STATES.indexOf(selections[key])+1)%STATES.length];
   selections[key] = next;
-  document.getElementById(`tile-${key}`).className = `weekend-tile ${CLASSES[next]}`;
-  document.getElementById(`status-${key}`).textContent = LABELS[next];
+  document.getElementById(`tile-${key}`).className = `weekend-tile ${STATE_CLASSES[next]}`;
+  document.getElementById(`status-${key}`).textContent = STATE_LABELS[next];
   updateSummary();
 }
-
 function updateSummary() {
   const vals = Object.values(selections);
-  const avail = vals.filter(s => s === 'available').length;
-  const pref = vals.filter(s => s === 'preferred-not').length;
-  const cant = vals.filter(s => s === 'unavailable').length;
-  document.getElementById('submit-summary').innerHTML =
-    `<span style="color:var(--green)">${avail} available</span> &nbsp;|&nbsp; <span style="color:var(--yellow)">${pref} prefer not</span> &nbsp;|&nbsp; <span style="color:var(--red)">${cant} can't do</span>`;
-  document.getElementById('submit-btn').disabled = avail === 0;
+  const avail=vals.filter(s=>s==='available').length, pref=vals.filter(s=>s==='preferred-not').length, cant=vals.filter(s=>s==='unavailable').length;
+  document.getElementById('submit-summary').innerHTML=`<span style="color:var(--green)">${avail} available</span> &nbsp;|&nbsp; <span style="color:var(--yellow)">${pref} prefer not</span> &nbsp;|&nbsp; <span style="color:var(--red)">${cant} can't do</span>`;
+  document.getElementById('submit-btn').disabled = avail===0;
 }
 
-// SUBMIT
 async function submitAvailability() {
-  const btn = document.getElementById('submit-btn');
-  btn.disabled = true;
-  btn.textContent = 'Saving...';
-  try {
-    await sb('tt_availability', { method: 'POST', body: JSON.stringify({ name: currentUser, selections: JSON.stringify(selections) }) });
-    allSubmissions = await getSubmissions();
-  } catch(e) { console.warn('Save failed:', e); }
-  const total = appSettings.totalParticipants || 5;
+  const btn = document.getElementById('submit-btn'); btn.disabled=true; btn.textContent='Saving...';
+  try { await sb('tt_availability',{method:'POST',body:JSON.stringify({name:currentUser,selections:JSON.stringify(selections)})}); allSubmissions=await getSubmissions(); } catch(e){console.warn(e);}
+  const total=(appSettings.participantNames||[]).length||appSettings.totalParticipants||5;
   showScreen('success-screen');
-  document.getElementById('success-name').textContent = currentUser;
-  setProgress('progress-fill', 'progress-done', 'progress-total', allSubmissions.length, total);
+  document.getElementById('success-name').textContent=currentUser;
+  setProgress('progress-fill','progress-done','progress-total',allSubmissions.length,total);
 }
 
-// RESULTS
-function showResultsScreen() {
-  showScreen('results-screen');
-  const total = allSubmissions.length;
-  const counts = Object.fromEntries(WEEKENDS.map(w => [w.key, { avail: 0, pref: 0, cant: 0 }]));
-  allSubmissions.forEach(sub => {
-    try {
-      const sel = typeof sub.selections === 'string' ? JSON.parse(sub.selections) : sub.selections;
-      Object.entries(sel).forEach(([k, v]) => {
-        if (!counts[k]) return;
-        if (v === 'available') counts[k].avail++;
-        else if (v === 'preferred-not') counts[k].pref++;
-        else if (v === 'unavailable') counts[k].cant++;
-      });
-    } catch(e) {}
+// ============================================================
+// STAGE 1 RESULTS
+// ============================================================
+function renderResultsScreen() {
+  const total=allSubmissions.length;
+  const counts={};
+  WEEKENDS.forEach(w=>counts[w.key]={avail:0,pref:0,cant:0});
+  allSubmissions.forEach(sub=>{
+    try { const sel=typeof sub.selections==='string'?JSON.parse(sub.selections):sub.selections; Object.entries(sel).forEach(([k,v])=>{ if(!counts[k])return; if(v==='available')counts[k].avail++; else if(v==='preferred-not')counts[k].pref++; else if(v==='unavailable')counts[k].cant++; }); } catch(e){}
   });
-
-  const allGood = WEEKENDS.filter(w => counts[w.key].avail === total && total > 0);
+  const allGood=WEEKENDS.filter(w=>counts[w.key].avail===total&&total>0);
   document.getElementById('results-summary').innerHTML = allGood.length
-    ? `<span>${allGood.length} weekend${allGood.length > 1 ? 's' : ''} where everyone is available</span> — highlighted in green below. Chris will decide which go through to Stage 2.`
-    : `No weekends where everyone is fully available. Best options shown below — Chris will pick which go through to Stage 2.`;
-
-  const byMonth = {};
-  WEEKENDS.forEach(w => {
-    const c = counts[w.key];
-    if (c.avail + c.pref === 0) return;
-    if (!byMonth[w.monthKey]) byMonth[w.monthKey] = { label: w.month, weeks: [] };
-    byMonth[w.monthKey].weeks.push(w);
-  });
-
-  const container = document.getElementById('results-months');
-  container.innerHTML = '';
-  Object.values(byMonth).forEach(group => {
-    const div = document.createElement('div');
-    div.className = 'month-group';
-    div.innerHTML = `<div class="month-label">${group.label}</div>`;
-    const grid = document.createElement('div');
-    grid.className = 'results-grid';
-    group.weeks.forEach(w => {
-      const c = counts[w.key];
-      const isAll = c.avail === total && total > 0;
-      const isMost = !isAll && c.avail >= Math.ceil(total / 2);
-      const pct = n => total > 0 ? Math.round((n / total) * 100) : 0;
-      const tile = document.createElement('div');
-      tile.className = `result-tile ${isAll ? 'all-good' : isMost ? 'most-good' : ''}`;
-      tile.innerHTML = `
-        <div class="r-week">WK ${w.week}</div>
-        <div class="r-dates">${w.label}</div>
-        ${isAll ? '<div class="r-badge">ALL IN</div>' : ''}
-        <div class="r-bars">
-          <div class="r-bar-row"><span class="r-bar-label" style="color:var(--green)">available</span><div class="r-bar-track"><div class="r-bar-fill" style="width:${pct(c.avail)}%;background:var(--green)"></div></div><span class="r-count">${c.avail}</span></div>
-          <div class="r-bar-row"><span class="r-bar-label" style="color:var(--yellow)">prefer not</span><div class="r-bar-track"><div class="r-bar-fill" style="width:${pct(c.pref)}%;background:var(--yellow)"></div></div><span class="r-count">${c.pref}</span></div>
-          <div class="r-bar-row"><span class="r-bar-label" style="color:var(--red)">can't do</span><div class="r-bar-track"><div class="r-bar-fill" style="width:${pct(c.cant)}%;background:var(--red)"></div></div><span class="r-count">${c.cant}</span></div>
-        </div>`;
+    ? `<span>${allGood.length} weekend${allGood.length>1?'s':''} where everyone is available</span> — highlighted in green below. Chris will pick which ones go to Stage 2.`
+    : `No weekends where everyone is fully available yet. Best options below — Chris will pick which go to Stage 2.`;
+  const byMonth={};
+  WEEKENDS.forEach(w=>{ const c=counts[w.key]; if(c.avail+c.pref===0)return; if(!byMonth[w.monthKey])byMonth[w.monthKey]={label:w.month,weeks:[]}; byMonth[w.monthKey].weeks.push(w); });
+  const container=document.getElementById('results-months'); container.innerHTML='';
+  Object.values(byMonth).forEach(group=>{
+    const div=document.createElement('div'); div.className='month-group';
+    div.innerHTML=`<div class="month-label">${group.label}</div>`;
+    const grid=document.createElement('div'); grid.className='results-grid';
+    group.weeks.forEach(w=>{
+      const c=counts[w.key], isAll=c.avail===total&&total>0, isMost=!isAll&&c.avail>=Math.ceil(total/2), pct=n=>total>0?Math.round((n/total)*100):0;
+      const tile=document.createElement('div'); tile.className=`result-tile ${isAll?'all-good':isMost?'most-good':''}`;
+      tile.innerHTML=`<div class="r-week">WK ${w.week}</div><div class="r-dates">${w.label}</div>${isAll?'<div class="r-badge">ALL IN</div>':''}<div class="r-bars"><div class="r-bar-row"><span class="r-bar-label" style="color:var(--green)">available</span><div class="r-bar-track"><div class="r-bar-fill" style="width:${pct(c.avail)}%;background:var(--green)"></div></div><span class="r-count">${c.avail}</span></div><div class="r-bar-row"><span class="r-bar-label" style="color:var(--yellow)">prefer not</span><div class="r-bar-track"><div class="r-bar-fill" style="width:${pct(c.pref)}%;background:var(--yellow)"></div></div><span class="r-count">${c.pref}</span></div><div class="r-bar-row"><span class="r-bar-label" style="color:var(--red)">can't do</span><div class="r-bar-track"><div class="r-bar-fill" style="width:${pct(c.cant)}%;background:var(--red)"></div></div><span class="r-count">${c.cant}</span></div></div>`;
       grid.appendChild(tile);
     });
-    div.appendChild(grid);
-    container.appendChild(div);
+    div.appendChild(grid); container.appendChild(div);
   });
 }
 
+// ============================================================
+// STAGE 2 — GAMES
+// ============================================================
+function renderGames() {
+  const container = document.getElementById('games-list'); container.innerHTML='';
+  const weekendKeys = appSettings.shortlistedWeekends || [];
+  const filteredWeekends = WEEKENDS.filter(w => weekendKeys.includes(w.key));
+
+  if (!schedule.length) {
+    container.innerHTML = '<p class="no-data" style="padding:20px 0">// Schedule not loaded yet — check back soon.</p>';
+    return;
+  }
+  if (!filteredWeekends.length) {
+    container.innerHTML = '<p class="no-data" style="padding:20px 0">// No weekends have been shortlisted yet — check back soon.</p>';
+    return;
+  }
+
+  filteredWeekends.forEach(wk => {
+    const games = schedule.filter(g => g.weekKey === wk.key);
+    if (!games.length) return;
+    const header = document.createElement('div'); header.className='game-weekend-header';
+    header.textContent = `WK ${wk.week} — ${wk.label}`;
+    container.appendChild(header);
+    games.forEach(game => {
+      const card = document.createElement('div'); card.className='game-card'; card.id=`game-${game.id}`;
+      const isSelected = s2selections.includes(game.id);
+      if (isSelected) card.classList.add('selected');
+      card.innerHTML = `<div class="game-week-badge">WK ${wk.week}</div><div class="game-teams"><div class="game-matchup">${game.away} @ ${game.home}</div><div class="game-meta">${game.date} · ${game.venue || game.home + ' stadium'}</div></div><div class="game-selector">${isSelected?'✓':''}</div>`;
+      card.addEventListener('click', ()=>toggleGame(game.id));
+      container.appendChild(card);
+    });
+  });
+  updateShortlistBar();
+}
+
+function toggleGame(id) {
+  const idx = s2selections.indexOf(id);
+  if (idx > -1) {
+    s2selections.splice(idx,1);
+  } else {
+    if (s2selections.length >= 5) return;
+    s2selections.push(id);
+  }
+  // Update card
+  const card = document.getElementById(`game-${id}`);
+  if (card) {
+    const isNow = s2selections.includes(id);
+    card.classList.toggle('selected', isNow);
+    card.querySelector('.game-selector').textContent = isNow ? '✓' : '';
+  }
+  updateShortlistBar();
+}
+
+function updateShortlistBar() {
+  const n = s2selections.length;
+  document.getElementById('shortlist-count').textContent = n;
+  for (let i=0;i<5;i++) { document.getElementById(`sd${i}`).classList.toggle('filled', i<n); }
+  document.getElementById('s2-submit-btn').disabled = n===0;
+  document.getElementById('s2-summary').textContent = n===0 ? 'Select up to 5 games above, then submit.' : `${n} game${n>1?'s':''} selected. Submit when you\'re happy with your picks.`;
+}
+
+async function submitShortlist() {
+  const btn = document.getElementById('s2-submit-btn'); btn.disabled=true; btn.textContent='Saving...';
+  try {
+    await sb('tt_shortlist',{method:'POST',body:JSON.stringify({name:currentUser,games:JSON.stringify(s2selections)})});
+    s2Submissions = await getS2Submissions();
+  } catch(e){console.warn(e);}
+  const total=(appSettings.participantNames||[]).length||appSettings.totalParticipants||5;
+  showScreen('stage2-success');
+  document.getElementById('s2-success-name').textContent=currentUser;
+  setProgress('s2-progress-fill','s2-progress-done','s2-progress-total',s2Submissions.length,total);
+}
+
+// ============================================================
+// STAGE 2 — TABS
+// ============================================================
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  document.getElementById(`tab-${tab}`).classList.add('active');
+  document.getElementById(`pane-${tab}`).classList.add('active');
+}
+
+// ============================================================
+// CRIB SHEET
+// ============================================================
+function renderCribSheet() {
+  const container = document.getElementById('crib-sheet-content');
+  const divs = [...new Set(CRIB_DATA.map(t=>t.div))];
+  container.innerHTML = '';
+  divs.forEach(div => {
+    const header = document.createElement('div'); header.className='division-header'; header.textContent=div;
+    container.appendChild(header);
+    const grid = document.createElement('div'); grid.className='crib-grid';
+    CRIB_DATA.filter(t=>t.div===div).forEach(t => {
+      const flightClass = t.flight==='yes'?'flight-yes':t.flight==='no'?'flight-no':t.flight==='partial'?'flight-partial':'flight-alt';
+      const flightLabel = t.flight==='yes'?'✈ Direct':t.flight==='no'?'✗ No direct':t.flight==='partial'?'~ Partial':'✈ Via alt';
+      const flightTitle = t.flightNote ? `title="${t.flightNote}"` : '';
+      const sportTags = [
+        t.nhl&&t.nhl!=='—'?`<span class="sport-tag">NHL: ${t.nhl}</span>`:'',
+        t.nba&&t.nba!=='—'?`<span class="sport-tag">NBA: ${t.nba}</span>`:'',
+        t.mlb&&t.mlb!=='—'?`<span class="sport-tag">MLB: ${t.mlb}</span>`:'',
+        t.mls&&t.mls!=='—'?`<span class="sport-tag">MLS: ${t.mls}</span>`:'',
+        t.college&&t.college!=='—'?`<span class="sport-tag">CFB: ${t.college}</span>`:'',
+      ].filter(Boolean).join('');
+      const card = document.createElement('div'); card.className='crib-card';
+      card.innerHTML=`
+        <div class="crib-card-header">
+          <div><div class="crib-team">${t.team}</div><div class="crib-city">${t.city}</div></div>
+          <span class="flight-badge ${flightClass}" ${flightTitle}>${flightLabel}</span>
+        </div>
+        <div class="crib-body">
+          <div class="crib-pros-cons">
+            <div class="crib-pros"><div class="crib-pc-label">PROS</div><div class="crib-pc-text">${t.pros}</div></div>
+            <div class="crib-cons"><div class="crib-pc-label">CONS</div><div class="crib-pc-text">${t.cons}</div></div>
+          </div>
+          ${sportTags?`<div class="crib-sports">${sportTags}</div>`:''}
+          <div class="crib-footer">
+            <div class="crib-temp"><div class="crib-temp-month">SEP</div><div class="crib-temp-val">${t.temps.sep}°</div></div>
+            <div class="crib-temp"><div class="crib-temp-month">OCT</div><div class="crib-temp-val">${t.temps.oct}°</div></div>
+            <div class="crib-temp"><div class="crib-temp-month">NOV</div><div class="crib-temp-val">${t.temps.nov}°</div></div>
+            <div class="crib-temp"><div class="crib-temp-month">DEC</div><div class="crib-temp-val">${t.temps.dec}°</div></div>
+            <div class="crib-flight-time">✈ ${t.flightTime}</div>
+          </div>
+        </div>`;
+      grid.appendChild(card);
+    });
+    container.appendChild(grid);
+  });
+}
+
+// ============================================================
+// ESPN SCHEDULE FETCH
+// ============================================================
+async function fetchSchedule(year) {
+  const statusEl = document.getElementById('schedule-status');
+  statusEl.textContent = `// Fetching ${year} schedule...`;
+  try {
+    const games = [];
+    // Fetch weeks 1-18
+    for (let week=1; week<=18; week++) {
+      const url = `https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=${week}&dates=${year}`;
+      const res = await fetch(url);
+      const data = await res.json();
+      (data.events||[]).forEach(ev => {
+        const comp = ev.competitions?.[0];
+        if (!comp) return;
+        const home = comp.competitors?.find(c=>c.homeAway==='home');
+        const away = comp.competitors?.find(c=>c.homeAway==='away');
+        const date = new Date(comp.date);
+        // Find which NFL weekend this falls in
+        const wkKey = getWeekendKey(date, year);
+        games.push({
+          id: ev.id,
+          weekKey: wkKey,
+          espnWeek: week,
+          home: home?.team?.displayName||'Home',
+          away: away?.team?.displayName||'Away',
+          homeAbbr: home?.team?.abbreviation||'',
+          awayAbbr: away?.team?.abbreviation||'',
+          date: date.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'}),
+          venue: comp.venue?.fullName||'',
+        });
+      });
+    }
+    schedule = games;
+    await saveSetting('nfl_schedule', games);
+    statusEl.textContent = `// ✓ ${games.length} games loaded from ${year} schedule`;
+    renderAdminWeekendChecks();
+  } catch(e) {
+    statusEl.textContent = `// Error: ${e.message}`;
+  }
+}
+
+function getWeekendKey(date, year) {
+  // Match game date to nearest NFL weekend
+  const week1Thu = new Date(year===2026?2026:2025, year===2026?8:8, year===2026?10:4);
+  for (let w=0;w<18;w++) {
+    const thu = new Date(week1Thu); thu.setDate(week1Thu.getDate()+w*7);
+    const mon = new Date(thu); mon.setDate(thu.getDate()+4);
+    if (date >= thu && date <= mon) return `wk${w+1}`;
+  }
+  return null;
+}
+
+// ============================================================
 // ADMIN LOGIN
-function openAdminLogin() {
-  document.getElementById('admin-overlay').classList.add('open');
-  setTimeout(() => document.getElementById('pin-input').focus(), 100);
-}
-function closeAdminLogin() {
-  document.getElementById('admin-overlay').classList.remove('open');
-  document.getElementById('pin-input').value = '';
-  document.getElementById('pin-error').style.display = 'none';
-}
+// ============================================================
+function openAdminLogin() { document.getElementById('admin-overlay').classList.add('open'); setTimeout(()=>document.getElementById('pin-input').focus(),100); }
+function closeAdminLogin() { document.getElementById('admin-overlay').classList.remove('open'); document.getElementById('pin-input').value=''; document.getElementById('pin-error').style.display='none'; }
 async function checkPin() {
-  if (document.getElementById('pin-input').value.trim() === ADMIN_PIN) {
+  if (document.getElementById('pin-input').value.trim()===ADMIN_PIN) {
     closeAdminLogin();
     hideAll();
-    const adminEl = document.getElementById('admin-screen');
-    adminEl.classList.remove('hidden');
-    adminEl.style.display = 'block';
+    const el=document.getElementById('admin-screen'); el.classList.remove('hidden'); el.style.display='block';
     await loadAdmin();
-  } else {
-    document.getElementById('pin-error').style.display = 'block';
-    document.getElementById('pin-input').value = '';
-  }
+  } else { document.getElementById('pin-error').style.display='block'; document.getElementById('pin-input').value=''; }
 }
 function exitAdmin() {
   hideAll();
-  const nameScreen = document.getElementById('name-screen');
-  nameScreen.classList.remove('hidden');
-  nameScreen.style.display = 'block';
-  populateNameDropdown();
-  proceedBtn.disabled = true;
+  const ns=document.getElementById('name-screen'); ns.classList.remove('hidden'); ns.style.display='block';
+  populateNameDropdown(); proceedBtn.disabled=true;
 }
 
+// ============================================================
 // ADMIN DASHBOARD
+// ============================================================
 async function loadAdmin() {
-  try {
-    [appSettings, allSubmissions] = await Promise.all([getSettings(), getSubmissions()]);
-  } catch(e) {}
-  const total = (appSettings.participantNames || []).length || appSettings.totalParticipants || 5;
-  const done = allSubmissions.length;
+  try { [appSettings, allSubmissions, s2Submissions, schedule] = await Promise.all([getSettings(), getSubmissions(), getS2Submissions(), getSchedule()]); } catch(e){}
+  const total=(appSettings.participantNames||[]).length||appSettings.totalParticipants||5;
+  const done=allSubmissions.length;
 
-  const statusEl = document.getElementById('admin-stage-status');
-  if (appSettings.published) {
-    statusEl.innerHTML = '<span class="status-badge published">● RESULTS PUBLISHED</span>';
-  } else if (done >= total) {
-    statusEl.innerHTML = '<span class="status-badge locked">● ALL SUBMITTED — AWAITING PUBLISH</span>';
-  } else {
-    statusEl.innerHTML = `<span class="status-badge open">● OPEN — ${done}/${total} submitted</span>`;
-  }
+  // Stage 1 status
+  const statusEl=document.getElementById('admin-stage-status');
+  statusEl.innerHTML = appSettings.published?'<span class="status-badge published">● RESULTS PUBLISHED</span>':done>=total?'<span class="status-badge locked">● ALL SUBMITTED — AWAITING PUBLISH</span>':`<span class="status-badge open">● OPEN — ${done}/${total} submitted</span>`;
+  document.getElementById('publish-btn').style.display=appSettings.published?'none':'inline-block';
+  document.getElementById('unpublish-btn').style.display=appSettings.published?'inline-block':'none';
+  document.getElementById('sub-count').textContent=done;
+  document.getElementById('sub-total').textContent=total;
 
-  document.getElementById('publish-btn').style.display = appSettings.published ? 'none' : 'inline-block';
-  document.getElementById('unpublish-btn').style.display = appSettings.published ? 'inline-block' : 'none';
-  document.getElementById('sub-count').textContent = done;
-  document.getElementById('sub-total').textContent = total;
+  // Stage 2 status
+  const s2El=document.getElementById('admin-s2-status');
+  s2El.innerHTML = appSettings.stage2Open?'<span class="status-badge open">● OPEN</span>':'<span class="status-badge locked">● CLOSED</span>';
+  document.getElementById('open-s2-btn').style.display=appSettings.stage2Open?'none':'inline-block';
+  document.getElementById('close-s2-btn').style.display=appSettings.stage2Open?'inline-block':'none';
+  document.getElementById('s2-threshold').value=appSettings.s2Threshold||2;
+
   renderNamesList();
-
-  // Participant list
-  const el = document.getElementById('participant-list');
-  const pending = Math.max(0, total - done);
-  el.innerHTML = allSubmissions.map(s =>
-    `<div class="participant-row"><span class="participant-name">${s.name}</span><span class="participant-status status-done">✓ SUBMITTED</span></div>`
-  ).join('') + Array(pending).fill(`<div class="participant-row"><span class="participant-name" style="color:var(--muted)">— pending</span><span class="participant-status status-pending">WAITING</span></div>`).join('');
-
-  if (!el.innerHTML) el.innerHTML = '<p class="no-data">No submissions yet.</p>';
-
+  renderParticipantList(allSubmissions, total);
   renderHeatmap();
   renderBestWeekends();
+  renderAdminWeekendChecks();
+  renderS2AdminSection(s2Submissions, total);
 }
 
-function renderHeatmap() {
-  const threshold = parseInt(document.getElementById('threshold-select').value);
-  const el = document.getElementById('heatmap-grid');
-  const total = allSubmissions.length;
-  if (!total) { el.innerHTML = '<p class="no-data">No data yet.</p>'; return; }
+function renderParticipantList(subs, total) {
+  const el=document.getElementById('participant-list');
+  const pending=Math.max(0,total-subs.length);
+  el.innerHTML=subs.map(s=>`<div class="participant-row"><span class="participant-name">${s.name}</span><button class="action-btn danger" style="padding:3px 10px;font-size:10px" onclick="deleteS1Submission('${s.id}','${s.name}')">DELETE</button><span class="participant-status status-done">✓ SUBMITTED</span></div>`).join('')+Array(pending).fill(`<div class="participant-row"><span class="participant-name" style="color:var(--muted)">— pending</span><span class="participant-status status-pending">WAITING</span></div>`).join('');
+  if(!el.innerHTML) el.innerHTML='<p class="no-data">No submissions yet.</p>';
+}
 
-  const counts = Object.fromEntries(WEEKENDS.map(w => [w.key, { avail: 0, pref: 0 }]));
-  allSubmissions.forEach(sub => {
-    try {
-      const sel = typeof sub.selections === 'string' ? JSON.parse(sub.selections) : sub.selections;
-      Object.entries(sel).forEach(([k, v]) => {
-        if (!counts[k]) return;
-        if (v === 'available') counts[k].avail++;
-        if (v === 'preferred-not') counts[k].pref++;
-      });
-    } catch(e) {}
+async function deleteS1Submission(id, name) {
+  if (!confirm(`Delete submission from ${name}?`)) return;
+  try { await sb(`tt_availability?id=eq.${id}`,{method:'DELETE'}); allSubmissions=await getSubmissions(); await loadAdmin(); } catch(e){alert('Delete failed: '+e.message);}
+}
+
+function renderAdminWeekendChecks() {
+  const el=document.getElementById('admin-weekend-checks'); el.innerHTML='';
+  const selected=appSettings.shortlistedWeekends||[];
+  WEEKENDS.forEach(w=>{
+    const hasGames=schedule.some(g=>g.weekKey===w.key);
+    const isChecked=selected.includes(w.key);
+    const item=document.createElement('label'); item.className=`weekend-check-item${isChecked?' checked':''}`;
+    item.innerHTML=`<input type="checkbox" value="${w.key}" ${isChecked?'checked':''} onchange="toggleWeekendCheck(this)"> WK ${w.week} — ${w.label}${hasGames?'':' <span style="color:var(--muted);font-size:9px">(no games)</span>'}`;
+    el.appendChild(item);
   });
+}
 
-  const filtered = WEEKENDS.filter(w => counts[w.key].avail >= threshold);
-  if (!filtered.length) { el.innerHTML = '<p class="no-data">No weekends meet the threshold. Try lowering it.</p>'; return; }
+function toggleWeekendCheck(cb) {
+  cb.closest('label').classList.toggle('checked', cb.checked);
+}
 
-  el.innerHTML = filtered.map(w => {
-    const c = counts[w.key];
-    const pct = Math.round((c.avail / total) * 100);
-    return `<div class="heatmap-tile ${c.avail === total ? 'best' : ''}">
-      <div class="h-week">WK ${w.week}</div>
-      <div class="h-dates">${w.label}</div>
-      <div class="h-bar-wrap"><div class="h-bar" style="width:${pct}%"></div></div>
-      <div class="h-count">${c.avail} avail · ${c.pref} pref-not</div>
+async function saveShortlistedWeekends() {
+  const checked=[...document.querySelectorAll('#admin-weekend-checks input:checked')].map(i=>i.value);
+  appSettings.shortlistedWeekends=checked;
+  try { await saveSettings(appSettings); const msg=document.getElementById('weekends-save-msg'); msg.style.display='inline'; setTimeout(()=>msg.style.display='none',2000); } catch(e){alert('Save failed: '+e.message);}
+}
+
+function renderS2AdminSection(subs, total) {
+  document.getElementById('s2-sub-count').textContent=subs.length;
+  document.getElementById('s2-sub-total').textContent=total;
+  const listEl=document.getElementById('s2-participant-list');
+  const pending=Math.max(0,total-subs.length);
+  listEl.innerHTML=subs.map(s=>`<div class="participant-row"><span class="participant-name">${s.name}</span><button class="action-btn danger" style="padding:3px 10px;font-size:10px" onclick="deleteS2Submission('${s.id}','${s.name}')">DELETE</button><span class="participant-status status-done">✓ SUBMITTED</span></div>`).join('')+Array(pending).fill(`<div class="participant-row"><span class="participant-name" style="color:var(--muted)">— pending</span><span class="participant-status status-pending">WAITING</span></div>`).join('');
+  if(!listEl.innerHTML) listEl.innerHTML='<p class="no-data">No stage 2 submissions yet.</p>';
+
+  // Game tally
+  const tallyEl=document.getElementById('s2-game-tally');
+  if (!subs.length) { tallyEl.innerHTML='<p class="no-data">No data yet.</p>'; return; }
+  const gameCounts={};
+  subs.forEach(sub=>{
+    try { const games=typeof sub.games==='string'?JSON.parse(sub.games):sub.games; games.forEach(id=>{ gameCounts[id]=(gameCounts[id]||0)+1; }); } catch(e){}
+  });
+  const threshold=appSettings.s2Threshold||2;
+  const sorted=Object.entries(gameCounts).sort((a,b)=>b[1]-a[1]);
+  if(!sorted.length) { tallyEl.innerHTML='<p class="no-data">No votes yet.</p>'; return; }
+  tallyEl.innerHTML=sorted.map(([id,count])=>{
+    const game=schedule.find(g=>g.id===id)||{};
+    const pct=Math.round((count/subs.length)*100);
+    const passes=count>=threshold;
+    return `<div class="game-vote-row">
+      <div class="game-vote-matchup">${game.away||'?'} @ ${game.home||id} ${passes?'<span style="color:var(--green);font-size:9px">● THROUGH</span>':''}</div>
+      <div class="game-vote-bar"><div class="game-vote-track"><div class="game-vote-fill" style="width:${pct}%"></div></div><span class="game-vote-count">${count} vote${count>1?'s':''}</span></div>
     </div>`;
   }).join('');
 }
 
-function renderBestWeekends() {
-  const el = document.getElementById('best-weekends');
-  if (!allSubmissions.length) { el.innerHTML = '<p class="no-data">No data yet.</p>'; return; }
-  const counts = Object.fromEntries(WEEKENDS.map(w => [w.key, 0]));
-  allSubmissions.forEach(sub => {
-    try {
-      const sel = typeof sub.selections === 'string' ? JSON.parse(sub.selections) : sub.selections;
-      Object.entries(sel).forEach(([k, v]) => { if (v === 'available') counts[k]++; });
-    } catch(e) {}
-  });
-  const perfect = WEEKENDS.filter(w => counts[w.key] === allSubmissions.length);
-  el.innerHTML = perfect.length
-    ? perfect.map(w => `<div class="participant-row"><span class="participant-name">${w.label} <span style="color:var(--muted);font-size:10px">WK ${w.week}</span></span><span class="participant-status status-done">ALL AVAILABLE</span></div>`).join('')
-    : '<p class="no-data">No weekends where everyone is available yet.</p>';
+async function deleteS2Submission(id, name) {
+  if (!confirm(`Delete Stage 2 submission from ${name}?`)) return;
+  try { await sb(`tt_shortlist?id=eq.${id}`,{method:'DELETE'}); s2Submissions=await getS2Submissions(); await loadAdmin(); } catch(e){alert('Delete failed: '+e.message);}
 }
 
+function renderHeatmap() {
+  const threshold=parseInt(document.getElementById('threshold-select').value);
+  const el=document.getElementById('heatmap-grid'); const total=allSubmissions.length;
+  if(!total){el.innerHTML='<p class="no-data">No data yet.</p>';return;}
+  const counts=Object.fromEntries(WEEKENDS.map(w=>[w.key,{avail:0,pref:0}]));
+  allSubmissions.forEach(sub=>{try{const sel=typeof sub.selections==='string'?JSON.parse(sub.selections):sub.selections;Object.entries(sel).forEach(([k,v])=>{if(!counts[k])return;if(v==='available')counts[k].avail++;if(v==='preferred-not')counts[k].pref++;});}catch(e){}});
+  const filtered=WEEKENDS.filter(w=>counts[w.key].avail>=threshold);
+  if(!filtered.length){el.innerHTML='<p class="no-data">No weekends meet the threshold.</p>';return;}
+  el.innerHTML=filtered.map(w=>{const c=counts[w.key];const pct=Math.round((c.avail/total)*100);return`<div class="heatmap-tile ${c.avail===total?'best':''}"><div class="h-week">WK ${w.week}</div><div class="h-dates">${w.label}</div><div class="h-bar-wrap"><div class="h-bar" style="width:${pct}%"></div></div><div class="h-count">${c.avail} avail · ${c.pref} pref-not</div></div>`;}).join('');
+}
+
+function renderBestWeekends() {
+  const el=document.getElementById('best-weekends');
+  if(!allSubmissions.length){el.innerHTML='<p class="no-data">No data yet.</p>';return;}
+  const counts=Object.fromEntries(WEEKENDS.map(w=>[w.key,0]));
+  allSubmissions.forEach(sub=>{try{const sel=typeof sub.selections==='string'?JSON.parse(sub.selections):sub.selections;Object.entries(sel).forEach(([k,v])=>{if(v==='available')counts[k]++;});}catch(e){}});
+  const perfect=WEEKENDS.filter(w=>counts[w.key]===allSubmissions.length);
+  el.innerHTML=perfect.length?perfect.map(w=>`<div class="participant-row"><span class="participant-name">${w.label} <span style="color:var(--muted);font-size:10px">WK ${w.week}</span></span><span class="participant-status status-done">ALL AVAILABLE</span></div>`).join(''):'<p class="no-data">No weekends where everyone is available yet.</p>';
+}
+
+// ============================================================
 // ADMIN ACTIONS
-
-
-// NAME MANAGEMENT
+// ============================================================
 function renderNamesList() {
-  const names = appSettings.participantNames || [];
-  const el = document.getElementById('names-list');
-  if (!names.length) {
-    el.innerHTML = '<p class="no-data">No names added yet.</p>';
-    return;
-  }
-  el.innerHTML = names.map((n, i) =>
-    `<div class="participant-row">
-      <span class="participant-name">${n}</span>
-      <button class="action-btn danger" style="padding:3px 10px;font-size:10px" onclick="removeName(${i})">REMOVE</button>
-    </div>`
-  ).join('');
+  const names=appSettings.participantNames||[];
+  const el=document.getElementById('names-list');
+  el.innerHTML=names.length?names.map((n,i)=>`<div class="participant-row"><span class="participant-name">${n}</span><button class="action-btn danger" style="padding:3px 10px;font-size:10px" onclick="removeName(${i})">REMOVE</button></div>`).join(''):'<p class="no-data">No names added yet.</p>';
 }
 
 async function addName() {
-  const input = document.getElementById('new-name-input');
-  const name = input.value.trim();
-  if (!name) return;
-  const names = appSettings.participantNames || [];
-  if (names.map(n => n.toLowerCase()).includes(name.toLowerCase())) {
-    alert('That name is already in the list.');
-    return;
-  }
-  names.push(name);
-  appSettings.participantNames = names;
-  appSettings.totalParticipants = names.length;
+  const input=document.getElementById('new-name-input'); const name=input.value.trim();
+  if(!name)return;
+  const names=appSettings.participantNames||[];
+  if(names.map(n=>n.toLowerCase()).includes(name.toLowerCase())){alert('Already in the list.');return;}
+  names.push(name); appSettings.participantNames=names; appSettings.totalParticipants=names.length;
   try {
     await saveSettings(appSettings);
-    // Verify it saved by reading back
-    const check = await getSettings();
-    if (!check.participantNames || !check.participantNames.includes(name)) {
-      throw new Error('Save appeared to succeed but data was not found on re-read.');
-    }
-    input.value = '';
-    renderNamesList();
-    document.getElementById('sub-total').textContent = names.length;
-  } catch(e) {
-    // Roll back local state
-    names.pop();
-    appSettings.participantNames = names;
-    appSettings.totalParticipants = names.length;
-    alert('Could not save name. Error: ' + e.message);
-  }
+    const check=await getSettings();
+    if(!check.participantNames||!check.participantNames.includes(name)) throw new Error('Save appeared to succeed but data not found on re-read.');
+    input.value=''; renderNamesList(); document.getElementById('sub-total').textContent=names.length;
+  } catch(e){ names.pop(); appSettings.participantNames=names; appSettings.totalParticipants=names.length; alert('Could not save: '+e.message); }
 }
 
 async function removeName(index) {
-  const names = appSettings.participantNames || [];
-  const removed = names[index];
-  if (!confirm(`Remove "${removed}" from the list?`)) return;
-  names.splice(index, 1);
-  appSettings.participantNames = names;
-  appSettings.totalParticipants = names.length;
-  try {
-    await saveSettings(appSettings);
-    renderNamesList();
-    document.getElementById('sub-total').textContent = names.length;
-  } catch(e) { alert('Save failed: ' + e.message); }
+  const names=appSettings.participantNames||[];
+  if(!confirm(`Remove "${names[index]}"?`))return;
+  names.splice(index,1); appSettings.participantNames=names; appSettings.totalParticipants=names.length;
+  try { await saveSettings(appSettings); renderNamesList(); document.getElementById('sub-total').textContent=names.length; } catch(e){alert('Save failed: '+e.message);}
 }
 
 async function publishResults() {
-  if (!confirm('Publish results? The group will be able to see the availability breakdown.')) return;
-  appSettings.published = true;
-  try { await saveSettings(appSettings); await loadAdmin(); } catch(e) { alert('Failed: ' + e.message); }
+  if(!confirm('Publish Stage 1 results? The group will see the availability breakdown.'))return;
+  appSettings.published=true;
+  try{await saveSettings(appSettings);await loadAdmin();}catch(e){alert('Failed: '+e.message);}
 }
-
 async function unpublishResults() {
-  if (!confirm('Unpublish? Participants will see the waiting screen again.')) return;
-  appSettings.published = false;
-  try { await saveSettings(appSettings); await loadAdmin(); } catch(e) { alert('Failed: ' + e.message); }
+  if(!confirm('Unpublish? Participants will see the waiting screen again.'))return;
+  appSettings.published=false;
+  try{await saveSettings(appSettings);await loadAdmin();}catch(e){alert('Failed: '+e.message);}
 }
-
+async function openStage2() {
+  if(!confirm('Open Stage 2? Participants will be taken straight to the shortlist when they visit the app.'))return;
+  appSettings.stage2Open=true;
+  try{await saveSettings(appSettings);await loadAdmin();}catch(e){alert('Failed: '+e.message);}
+}
+async function closeStage2() {
+  if(!confirm('Close Stage 2?'))return;
+  appSettings.stage2Open=false;
+  try{await saveSettings(appSettings);await loadAdmin();}catch(e){alert('Failed: '+e.message);}
+}
+async function saveThreshold() {
+  appSettings.s2Threshold=parseInt(document.getElementById('s2-threshold').value);
+  try{await saveSettings(appSettings);const msg=document.getElementById('threshold-save-msg');msg.style.display='inline';setTimeout(()=>msg.style.display='none',2000);}catch(e){alert('Failed: '+e.message);}
+}
 async function resetSubmissions() {
-  if (!confirm('Delete ALL stage 1 submissions? This cannot be undone.')) return;
-  try {
-    await sb('tt_availability?id=neq.00000000-0000-0000-0000-000000000000', { method: 'DELETE' });
-    appSettings.published = false;
-    await saveSettings(appSettings);
-    allSubmissions = [];
-    await loadAdmin();
-  } catch(e) { alert('Reset failed: ' + e.message); }
+  if(!confirm('Delete ALL Stage 1 submissions? Cannot be undone.'))return;
+  try{await sb('tt_availability?id=neq.00000000-0000-0000-0000-000000000000',{method:'DELETE'});appSettings.published=false;await saveSettings(appSettings);allSubmissions=[];await loadAdmin();}catch(e){alert('Reset failed: '+e.message);}
+}
+async function resetStage2() {
+  if(!confirm('Delete ALL Stage 2 submissions? Cannot be undone.'))return;
+  try{await sb('tt_shortlist?id=neq.00000000-0000-0000-0000-000000000000',{method:'DELETE'});s2Submissions=[];await loadAdmin();}catch(e){alert('Reset failed: '+e.message);}
+}
+async function saveShortlistedWeekends() {
+  const checked=[...document.querySelectorAll('#admin-weekend-checks input:checked')].map(i=>i.value);
+  appSettings.shortlistedWeekends=checked;
+  try{await saveSettings(appSettings);const msg=document.getElementById('weekends-save-msg');msg.style.display='inline';setTimeout(()=>msg.style.display='none',2000);}catch(e){alert('Save failed: '+e.message);}
 }
 
+// ============================================================
+// HOME BUTTON
+// ============================================================
+function goHome() {
+  currentUser=null; s2selections=[];
+  selections=Object.fromEntries(WEEKENDS.map(w=>[w.key,null]));
+  hideAll();
+  const ns=document.getElementById('name-screen'); ns.classList.remove('hidden'); ns.style.display='block';
+  document.getElementById('name-select').value='';
+  proceedBtn.disabled=true;
+  updateStageDots(1);
+}
+
+// ============================================================
 // UTIL
-function setProgress(fillId, doneId, totalId, done, total) {
-  document.getElementById(fillId).style.width = `${Math.min(100, (done/total)*100)}%`;
-  document.getElementById(doneId).textContent = done;
-  document.getElementById(totalId).textContent = total;
-}
+// ============================================================
+function setProgress(fillId,doneId,totalId,done,total){document.getElementById(fillId).style.width=`${Math.min(100,(done/total)*100)}%`;document.getElementById(doneId).textContent=done;document.getElementById(totalId).textContent=total;}
+const ALL_SCREENS=['name-screen','availability-screen','success-screen','already-screen','waiting-screen','results-screen','stage2-screen','stage2-success','stage2-already','admin-screen'];
+function hideAll(){ALL_SCREENS.forEach(id=>{const el=document.getElementById(id);if(el){el.style.display='none';el.classList.add('hidden');el.classList.remove('fade-in');}});}
+function showScreen(id){hideAll();const el=document.getElementById(id);if(el){el.style.display='block';el.classList.remove('hidden');el.classList.add('fade-in');}}
 
-const ALL_SCREENS = ['name-screen','availability-screen','success-screen','already-screen','waiting-screen','results-screen','admin-screen'];
-function hideAll() { ALL_SCREENS.forEach(id => { const el = document.getElementById(id); if(el){ el.style.display='none'; el.classList.add('hidden'); el.classList.remove('fade-in'); } }); }
-function showScreen(id) { hideAll(); const el = document.getElementById(id); if(el){ el.style.display='block'; el.classList.remove('hidden'); el.classList.add('fade-in'); } }
-function show(id) { const el = document.getElementById(id); if(el){ el.style.display='block'; el.classList.remove('hidden'); } }
-
+// ============================================================
+// INIT RENDER
+// ============================================================
 renderWeekends();
 updateSummary();
 </script>
