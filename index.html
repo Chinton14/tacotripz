@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TacoTripz // 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f0f0f;
+    --bg2: #161616;
+    --bg3: #1e1e1e;
+    --border: #2a2a2a;
+    --orange: #ff5500;
+    --orange-dim: rgba(255,85,0,0.15);
+    --orange-mid: rgba(255,85,0,0.35);
+    --text: #e8e8e8;
+    --muted: #666;
+    --mono: 'Share Tech Mono', monospace;
+    --sans: 'Rajdhani', sans-serif;
+    --green: #00cc66;
+    --red: #cc2200;
+    --yellow: #ffaa00;
+    --green-dim: rgba(0,204,102,0.15);
+    --red-dim: rgba(204,34,0,0.15);
+    --yellow-dim: rgba(255,170,0,0.15);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--mono);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  .header {
+    border-bottom: 1px solid var(--border);
+    padding: 18px 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 100;
+  }
+
+  .logo { display: flex; align-items: baseline; }
+  .logo-taco { color: var(--orange); font-family: var(--sans); font-size: 22px; font-weight: 700; letter-spacing: 1px; }
+  .logo-tripz { color: var(--text); font-family: var(--sans); font-size: 22px; font-weight: 700; letter-spacing: 1px; }
+  .logo-year { color: var(--muted); font-size: 11px; font-family: var(--mono); margin-left: 10px; }
+
+  .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+  .stage-indicator { display: flex; gap: 4px; align-items: center; }
+  .stage-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: background 0.3s; }
+  .stage-dot.active { background: var(--orange); }
+  .stage-dot.done { background: var(--muted); }
+  .stage-label { font-size: 10px; color: var(--muted); font-family: var(--mono); margin-left: 8px; }
+
+  .admin-btn { background: none; border: 1px solid var(--border); color: var(--muted); font-family: var(--mono); font-size: 10px; padding: 4px 10px; cursor: pointer; border-radius: 2px; transition: all 0.2s; }
+  .admin-btn:hover { border-color: var(--orange); color: var(--orange); }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 32px 24px; }
+
+  .section-header { margin-bottom: 28px; }
+  .section-tag { font-size: 10px; color: var(--orange); letter-spacing: 2px; margin-bottom: 6px; }
+  .section-title { font-family: var(--sans); font-size: 28px; font-weight: 700; color: var(--text); letter-spacing: 0.5px; }
+  .section-sub { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.6; }
+
+  /* NAME SCREEN */
+  #name-screen { max-width: 420px; margin: 60px auto; text-align: center; }
+  .taco-icon { font-size: 48px; margin-bottom: 24px; display: block; }
+  .name-title { font-family: var(--sans); font-size: 32px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+  .name-sub { font-size: 12px; color: var(--muted); margin-bottom: 32px; line-height: 1.7; }
+
+  .name-field { display: flex; margin-bottom: 16px; border: 1px solid var(--border); border-radius: 3px; overflow: hidden; transition: border-color 0.2s; }
+  .name-field:focus-within { border-color: var(--orange); }
+  .name-prompt { background: var(--bg3); padding: 12px 14px; font-size: 13px; color: var(--orange); border-right: 1px solid var(--border); white-space: nowrap; }
+  .name-input { flex: 1; background: var(--bg2); border: none; outline: none; color: var(--text); font-family: var(--mono); font-size: 14px; padding: 12px 14px; caret-color: var(--orange); }
+  .name-input::placeholder { color: var(--muted); }
+
+  .proceed-btn { width: 100%; background: var(--orange); border: none; color: #fff; font-family: var(--sans); font-size: 15px; font-weight: 700; letter-spacing: 2px; padding: 13px; cursor: pointer; border-radius: 3px; transition: opacity 0.2s; text-transform: uppercase; }
+  .proceed-btn:hover { opacity: 0.88; }
+  .proceed-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+  /* LEGEND */
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; padding: 12px 14px; background: var(--bg2); border: 1px solid var(--border); border-radius: 3px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted); }
+  .legend-swatch { width: 12px; height: 12px; border-radius: 2px; }
+
+  /* MONTH GROUP */
+  .month-group { margin-bottom: 24px; }
+  .month-label { font-size: 10px; color: var(--orange); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+  .weekends-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); gap: 8px; }
+
+  /* WEEKEND TILE */
+  .weekend-tile { border: 1px solid var(--border); border-radius: 3px; padding: 10px 12px; cursor: pointer; transition: all 0.15s; user-select: none; position: relative; background: var(--bg2); }
+  .weekend-tile:hover { border-color: var(--muted); }
+  .weekend-tile .wk-num { font-size: 9px; color: var(--muted); letter-spacing: 1px; margin-bottom: 3px; }
+  .weekend-tile .wk-dates { font-size: 13px; color: var(--text); }
+  .weekend-tile .wk-status { font-size: 9px; margin-top: 6px; color: var(--muted); transition: color 0.15s; }
+  .weekend-tile .wk-indicator { position: absolute; top: 8px; right: 10px; width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: background 0.15s; }
+
+  .weekend-tile.state-available { border-color: var(--green); background: var(--green-dim); }
+  .weekend-tile.state-available .wk-status { color: var(--green); }
+  .weekend-tile.state-available .wk-indicator { background: var(--green); }
+
+  .weekend-tile.state-unavailable { border-color: var(--red); background: var(--red-dim); opacity: 0.7; }
+  .weekend-tile.state-unavailable .wk-status { color: var(--red); }
+  .weekend-tile.state-unavailable .wk-indicator { background: var(--red); }
+  .weekend-tile.state-unavailable .wk-dates { text-decoration: line-through; color: var(--muted); }
+
+  .weekend-tile.state-preferred-not { border-color: var(--yellow); background: var(--yellow-dim); }
+  .weekend-tile.state-preferred-not .wk-status { color: var(--yellow); }
+  .weekend-tile.state-preferred-not .wk-indicator { background: var(--yellow); }
+
+  /* SUBMIT AREA */
+  .submit-area { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .submit-summary { flex: 1; font-size: 11px; color: var(--muted); line-height: 1.8; }
+  .submit-btn { background: var(--orange); border: none; color: #fff; font-family: var(--sans); font-size: 14px; font-weight: 700; letter-spacing: 2px; padding: 12px 28px; cursor: pointer; border-radius: 3px; transition: opacity 0.2s; text-transform: uppercase; white-space: nowrap; }
+  .submit-btn:hover { opacity: 0.88; }
+  .submit-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+  /* SUCCESS */
+  #success-screen { max-width: 440px; margin: 80px auto; text-align: center; display: none; }
+  .success-icon { font-size: 48px; margin-bottom: 20px; }
+  .success-title { font-family: var(--sans); font-size: 28px; font-weight: 700; color: var(--green); margin-bottom: 10px; }
+  .success-msg { font-size: 12px; color: var(--muted); line-height: 1.8; margin-bottom: 28px; }
+
+  .progress-block { background: var(--bg2); border: 1px solid var(--border); border-radius: 3px; padding: 16px 20px; text-align: left; }
+  .progress-label { font-size: 10px; color: var(--orange); letter-spacing: 2px; margin-bottom: 10px; }
+  .progress-bar-wrap { height: 4px; background: var(--bg3); border-radius: 2px; margin-bottom: 8px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: var(--orange); border-radius: 2px; transition: width 0.6s ease; }
+  .progress-count { font-size: 11px; color: var(--muted); }
+  .progress-count span { color: var(--text); }
+
+  /* ALREADY / WAITING */
+  #already-screen { max-width: 440px; margin: 80px auto; text-align: center; display: none; }
+  #waiting-screen { max-width: 440px; margin: 80px auto; text-align: center; display: none; }
+  .holding-title { font-family: var(--sans); font-size: 26px; font-weight: 700; color: var(--text); margin-bottom: 10px; margin-top: 24px; }
+  .holding-msg { font-size: 12px; color: var(--muted); line-height: 1.8; margin-bottom: 24px; }
+
+  /* RESULTS */
+  #results-screen { display: none; }
+  .results-intro { background: var(--bg2); border: 1px solid var(--border); border-left: 3px solid var(--orange); border-radius: 3px; padding: 14px 16px; margin-bottom: 24px; font-size: 12px; color: var(--muted); line-height: 1.8; }
+  .results-intro span { color: var(--text); }
+  .results-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; margin-bottom: 8px; }
+
+  .result-tile { border: 1px solid var(--border); border-radius: 3px; padding: 12px 14px; background: var(--bg2); position: relative; }
+  .result-tile.all-good { border-color: var(--green); background: var(--green-dim); }
+  .result-tile.most-good { border-color: var(--yellow); background: var(--yellow-dim); }
+  .result-tile .r-week { font-size: 9px; color: var(--muted); letter-spacing: 1px; margin-bottom: 3px; }
+  .result-tile .r-dates { font-size: 13px; color: var(--text); margin-bottom: 10px; }
+  .result-tile .r-bars { display: flex; flex-direction: column; gap: 4px; }
+  .result-tile .r-bar-row { display: flex; align-items: center; gap: 6px; }
+  .result-tile .r-bar-label { font-size: 9px; color: var(--muted); width: 58px; flex-shrink: 0; }
+  .result-tile .r-bar-track { flex: 1; height: 3px; background: var(--bg3); border-radius: 2px; }
+  .result-tile .r-bar-fill { height: 100%; border-radius: 2px; }
+  .result-tile .r-count { font-size: 9px; color: var(--muted); min-width: 16px; text-align: right; }
+  .result-tile .r-badge { position: absolute; top: 8px; right: 10px; font-size: 8px; padding: 2px 6px; border-radius: 2px; background: var(--green-dim); color: var(--green); border: 1px solid rgba(0,204,102,0.3); }
+
+  /* ADMIN OVERLAY */
+  .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 500; display: none; align-items: center; justify-content: center; }
+  .overlay.open { display: flex; }
+  .modal { background: var(--bg2); border: 1px solid var(--border); border-radius: 4px; width: 100%; max-width: 480px; margin: 16px; overflow: hidden; }
+  .modal-header { background: var(--bg3); border-bottom: 1px solid var(--border); padding: 14px 18px; display: flex; align-items: center; gap: 10px; }
+  .modal-title { font-size: 12px; color: var(--orange); letter-spacing: 2px; flex: 1; }
+  .modal-close { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 16px; padding: 0 4px; }
+  .modal-close:hover { color: var(--text); }
+  .modal-body { padding: 20px 18px; }
+  .pin-field { display: flex; margin-bottom: 14px; border: 1px solid var(--border); border-radius: 3px; overflow: hidden; transition: border-color 0.2s; }
+  .pin-field:focus-within { border-color: var(--orange); }
+  .pin-prompt { background: var(--bg3); padding: 11px 12px; font-size: 12px; color: var(--orange); border-right: 1px solid var(--border); white-space: nowrap; }
+  .pin-input { flex: 1; background: transparent; border: none; outline: none; color: var(--text); font-family: var(--mono); font-size: 18px; padding: 11px 14px; letter-spacing: 6px; caret-color: var(--orange); }
+  .pin-btn { width: 100%; background: var(--orange); border: none; color: #fff; font-family: var(--sans); font-size: 14px; font-weight: 700; letter-spacing: 2px; padding: 11px; cursor: pointer; border-radius: 3px; text-transform: uppercase; }
+  .pin-error { font-size: 11px; color: var(--red); margin-top: 8px; display: none; }
+
+  /* ADMIN SCREEN */
+  #admin-screen { display: none; }
+  .admin-section { margin-bottom: 36px; }
+  .admin-section-title { font-size: 10px; color: var(--orange); letter-spacing: 2px; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+  .admin-back-btn { background: none; border: 1px solid var(--border); color: var(--muted); font-family: var(--mono); font-size: 10px; padding: 5px 12px; cursor: pointer; border-radius: 2px; margin-bottom: 24px; transition: all 0.2s; display: inline-flex; align-items: center; gap: 6px; }
+  .admin-back-btn:hover { border-color: var(--orange); color: var(--orange); }
+
+  .setting-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--bg3); font-size: 12px; flex-wrap: wrap; }
+  .setting-label { flex: 1; color: var(--muted); min-width: 160px; }
+
+  .action-btn { background: none; border: 1px solid var(--border); color: var(--muted); font-family: var(--mono); font-size: 11px; padding: 7px 14px; cursor: pointer; border-radius: 2px; transition: all 0.2s; margin-right: 6px; }
+  .action-btn:hover { border-color: var(--orange); color: var(--orange); }
+  .action-btn.primary { background: var(--orange); border-color: var(--orange); color: #fff; }
+  .action-btn.primary:hover { opacity: 0.85; }
+  .action-btn.danger { border-color: var(--red); color: var(--red); }
+  .action-btn.danger:hover { background: var(--red-dim); }
+
+  .status-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; padding: 4px 10px; border-radius: 2px; }
+  .status-badge.open { background: var(--green-dim); color: var(--green); border: 1px solid rgba(0,204,102,0.3); }
+  .status-badge.published { background: var(--orange-dim); color: var(--orange); border: 1px solid var(--orange-mid); }
+  .status-badge.locked { background: var(--bg3); color: var(--muted); border: 1px solid var(--border); }
+
+  .participant-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--bg3); font-size: 12px; }
+  .participant-name { flex: 1; color: var(--text); }
+  .participant-status { font-size: 10px; padding: 3px 8px; border-radius: 2px; }
+  .status-done { background: var(--green-dim); color: var(--green); border: 1px solid rgba(0,204,102,0.3); }
+  .status-pending { background: var(--bg3); color: var(--muted); border: 1px solid var(--border); }
+
+  .threshold-control { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; font-size: 11px; color: var(--muted); flex-wrap: wrap; }
+  .threshold-control select { background: var(--bg3); border: 1px solid var(--border); color: var(--text); font-family: var(--mono); font-size: 11px; padding: 4px 8px; border-radius: 2px; outline: none; }
+
+  .heatmap-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 6px; }
+  .heatmap-tile { border-radius: 3px; padding: 10px 12px; border: 1px solid var(--border); background: var(--bg2); }
+  .heatmap-tile.best { border-color: var(--green); background: var(--green-dim); }
+  .heatmap-tile .h-week { font-size: 9px; color: var(--muted); margin-bottom: 2px; }
+  .heatmap-tile .h-dates { font-size: 11px; color: var(--text); margin-bottom: 6px; }
+  .heatmap-tile .h-bar-wrap { height: 3px; background: var(--bg3); border-radius: 2px; margin-bottom: 4px; }
+  .heatmap-tile .h-bar { height: 100%; border-radius: 2px; background: var(--orange); }
+  .heatmap-tile .h-count { font-size: 9px; color: var(--muted); }
+
+  .no-data { font-size: 12px; color: var(--muted); padding: 16px 0; }
+
+  .count-input { background: var(--bg3); border: 1px solid var(--border); color: var(--text); font-family: var(--mono); font-size: 12px; padding: 5px 8px; border-radius: 2px; outline: none; width: 60px; }
+  .count-input:focus { border-color: var(--orange); }
+
+  .hidden { display: none !important; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .fade-in { animation: fadeIn 0.3s ease; }
+
+  @media (max-width: 600px) {
+    .header { padding: 14px 16px; }
+    .container { padding: 24px 14px; }
+    .weekends-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">
+    <span class="logo-taco">Taco</span><span class="logo-tripz">Tripz</span>
+    <span class="logo-year">// 2026</span>
+  </div>
+  <div class="header-right">
+    <div class="stage-indicator">
+      <div class="stage-dot active"></div>
+      <div class="stage-dot"></div>
+      <div class="stage-dot"></div>
+      <div class="stage-dot"></div>
+      <span class="stage-label">01 // AVAILABILITY</span>
+    </div>
+    <button class="admin-btn" onclick="openAdminLogin()">ADMIN ⚙</button>
+  </div>
+</header>
+
+<!-- NAME SCREEN -->
+<div id="name-screen" class="container fade-in">
+  <span class="taco-icon">🌮</span>
+  <p class="name-title">Who are you?</p>
+  <p class="name-sub">Select your name to submit your availability, check back on progress, or view results once they're published.</p>
+  <div id="name-loading" style="font-size:12px;color:var(--muted);margin-bottom:24px">// Loading...</div>
+  <div id="name-not-set" style="display:none;font-size:12px;color:var(--muted);margin-bottom:24px;padding:14px;background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--orange);border-radius:3px">
+    // Names haven't been set up yet — check back soon or contact Chris.
+  </div>
+  <div id="name-select-wrap" style="display:none">
+    <div class="name-field">
+      <span class="name-prompt">name &gt;</span>
+      <select class="name-input" id="name-select" style="cursor:pointer;appearance:auto">
+        <option value="">— select your name —</option>
+      </select>
+    </div>
+    <button class="proceed-btn" id="proceed-btn" disabled>ENTER &rarr;</button>
+  </div>
+</div>
+
+<!-- AVAILABILITY SCREEN -->
+<div id="availability-screen" class="container hidden fade-in">
+  <div class="section-header">
+    <div class="section-tag">// STAGE 01 — AVAILABILITY</div>
+    <div class="section-title" id="avail-greeting">Pick your weekends</div>
+    <div class="section-sub">Click each weekend to cycle through your availability. Mark at least one as available before submitting.</div>
+  </div>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--green)"></div><span>Available — click once</span></div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--yellow)"></div><span>Prefer not, but can — click twice</span></div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--red)"></div><span>Can't do — click three times</span></div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--border)"></div><span>No response — click to reset</span></div>
+  </div>
+  <div id="weekends-container"></div>
+  <div class="submit-area">
+    <div class="submit-summary" id="submit-summary">Select your availability above, then submit when done.</div>
+    <button class="submit-btn" id="submit-btn" disabled onclick="submitAvailability()">SUBMIT →</button>
+  </div>
+</div>
+
+<!-- SUCCESS SCREEN -->
+<div id="success-screen" class="container">
+  <div class="success-icon">✓</div>
+  <p class="success-title">Submitted!</p>
+  <p class="success-msg">You're in, <span id="success-name"></span>.<br>Come back here once everyone's submitted to see the results.</p>
+  <div class="progress-block">
+    <div class="progress-label">// WAITING ON THE GANG</div>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progress-fill" style="width:0%"></div></div>
+    <div class="progress-count"><span id="progress-done">0</span> of <span id="progress-total">5</span> submitted</div>
+  </div>
+</div>
+
+<!-- ALREADY SUBMITTED -->
+<div id="already-screen" class="container">
+  <div style="font-size:48px">👀</div>
+  <p class="holding-title">Already submitted!</p>
+  <p class="holding-msg">You're locked in, <span id="already-name"></span>. Results will appear here once everyone's done and Chris has published them.</p>
+  <div class="progress-block">
+    <div class="progress-label">// WAITING ON THE GANG</div>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progress-fill-2" style="width:0%"></div></div>
+    <div class="progress-count"><span id="progress-done-2">0</span> of <span id="progress-total-2">5</span> submitted</div>
+  </div>
+</div>
+
+<!-- WAITING FOR PUBLISH -->
+<div id="waiting-screen" class="container">
+  <div style="font-size:48px;margin-bottom:20px">⏳</div>
+  <p class="holding-title">All in — waiting on Chris</p>
+  <p class="holding-msg">Everyone's submitted. Chris is reviewing the results and will publish them shortly.</p>
+  <div class="progress-block">
+    <div class="progress-label">// SUBMISSIONS COMPLETE</div>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:100%"></div></div>
+    <div class="progress-count"><span id="waiting-done">5</span> of <span id="waiting-total">5</span> submitted</div>
+  </div>
+</div>
+
+<!-- RESULTS SCREEN -->
+<div id="results-screen" class="container">
+  <div class="section-header">
+    <div class="section-tag">// STAGE 01 — RESULTS</div>
+    <div class="section-title">Weekend availability</div>
+    <div class="section-sub">Here's how the group stacks up. Chris will pick the best weekends and open Stage 2.</div>
+  </div>
+  <div class="results-intro" id="results-summary"></div>
+  <div id="results-months"></div>
+</div>
+
+<!-- ADMIN LOGIN -->
+<div class="overlay" id="admin-overlay">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title">// ADMIN ACCESS</span>
+      <button class="modal-close" onclick="closeAdminLogin()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="pin-field">
+        <span class="pin-prompt">PIN &gt;</span>
+        <input class="pin-input" id="pin-input" type="password" maxlength="6" placeholder="••••" onkeydown="if(event.key==='Enter')checkPin()">
+      </div>
+      <p class="pin-error" id="pin-error">// incorrect PIN. try again.</p>
+      <button class="pin-btn" onclick="checkPin()">ENTER ADMIN →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN SCREEN -->
+<div id="admin-screen" class="container">
+  <button class="admin-back-btn" onclick="exitAdmin()">← BACK TO APP</button>
+  <div class="section-header">
+    <div class="section-tag">// ADMIN DASHBOARD</div>
+    <div class="section-title">TacoTripz control panel</div>
+  </div>
+
+  <div class="admin-section">
+    <div class="admin-section-title">SETTINGS</div>
+    <div class="setting-row">
+      <span class="setting-label">Stage 1 status</span>
+      <span id="admin-stage-status"></span>
+    </div>
+    <div class="setting-row">
+      <span class="setting-label">Publish results to group</span>
+      <div>
+        <button class="action-btn primary" id="publish-btn" onclick="publishResults()">PUBLISH RESULTS →</button>
+        <button class="action-btn danger" id="unpublish-btn" style="display:none" onclick="unpublishResults()">UNPUBLISH</button>
+      </div>
+    </div>
+    <div class="setting-row">
+      <span class="setting-label">Reset all submissions</span>
+      <button class="action-btn danger" onclick="resetSubmissions()">RESET STAGE 1</button>
+    </div>
+  </div>
+
+  <div class="admin-section">
+    <div class="admin-section-title">PARTICIPANT NAMES</div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:14px;padding:10px 12px;background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--orange);border-radius:3px">
+      // Set these before sharing the link with the group. Users will pick their name from a dropdown — no free-text entry.
+    </div>
+    <div id="names-list" style="margin-bottom:12px"></div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <div class="name-field" style="flex:1;margin:0">
+        <span class="name-prompt" style="padding:8px 12px;font-size:12px">name &gt;</span>
+        <input type="text" id="new-name-input" class="name-input" placeholder="add a name..." maxlength="30" style="padding:8px 12px;font-size:12px" onkeydown="if(event.key==='Enter')addName()">
+      </div>
+      <button class="action-btn" onclick="addName()" style="white-space:nowrap">ADD +</button>
+    </div>
+  </div>
+
+  <div class="admin-section">
+    <div class="admin-section-title">SUBMISSIONS (<span id="sub-count">0</span> of <span id="sub-total">5</span>)</div>
+    <div id="participant-list"></div>
+  </div>
+
+  <div class="admin-section">
+    <div class="admin-section-title">WEEKEND HEATMAP</div>
+    <div class="threshold-control">
+      <span>Show weekends where at least</span>
+      <select id="threshold-select" onchange="renderHeatmap()">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3" selected>3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <span>people are available</span>
+    </div>
+    <div class="heatmap-grid" id="heatmap-grid"></div>
+  </div>
+
+  <div class="admin-section">
+    <div class="admin-section-title">BEST WEEKENDS (ALL AVAILABLE)</div>
+    <div id="best-weekends"></div>
+  </div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://ufkhpwweuthndrskdmxi.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_0iWFoBfoGU9p-0swkPJ_9A_AUyu_NJf';
+const ADMIN_PIN = '3729';
+
+// Generate NFL 2026 weekends — Week 1: Thu 10 Sep 2026
+function generateNFLWeekends() {
+  const week1Thu = new Date(2026, 8, 10);
+  return Array.from({ length: 18 }, (_, w) => {
+    const thu = new Date(week1Thu);
+    thu.setDate(week1Thu.getDate() + w * 7);
+    const sun = new Date(thu);
+    sun.setDate(thu.getDate() + 3);
+    const fmt = d => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+    return {
+      week: w + 1,
+      key: `wk${w + 1}`,
+      label: `${fmt(thu)} – ${fmt(sun)}`,
+      month: sun.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' }),
+      monthKey: `${sun.getFullYear()}-${sun.getMonth()}`,
+    };
+  });
+}
+
+const WEEKENDS = generateNFLWeekends();
+let currentUser = null;
+let selections = Object.fromEntries(WEEKENDS.map(w => [w.key, null]));
+let allSubmissions = [];
+let appSettings = { published: false, totalParticipants: 5, participantNames: [] };
+
+// SUPABASE
+async function sb(path, options = {}) {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
+    headers: {
+      'apikey': SUPABASE_ANON_KEY,
+      'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+      'Content-Type': 'application/json',
+      'Prefer': 'return=representation',
+      ...options.headers,
+    },
+    ...options,
+  });
+  const text = await res.text();
+  return text ? JSON.parse(text) : null;
+}
+
+async function getSubmissions() {
+  return await sb('tt_availability?select=*&order=submitted_at.asc') || [];
+}
+
+async function getSettings() {
+  try {
+    const rows = await sb('tt_settings?key=eq.stage1&select=*');
+    if (rows && rows.length) return JSON.parse(rows[0].value);
+  } catch(e) {}
+  return { published: false, totalParticipants: 5, participantNames: [] };
+}
+
+async function saveSettings(s) {
+  await sb('tt_settings', {
+    method: 'POST',
+    headers: { 'Prefer': 'resolution=merge-duplicates,return=representation' },
+    body: JSON.stringify({ key: 'stage1', value: JSON.stringify(s) }),
+  });
+}
+
+// INIT
+async function init() {
+  try {
+    [appSettings, allSubmissions] = await Promise.all([getSettings(), getSubmissions()]);
+  } catch(e) { console.warn('Init failed:', e); }
+  populateNameDropdown();
+}
+init();
+
+// NAME DROPDOWN
+function populateNameDropdown() {
+  const loading = document.getElementById('name-loading');
+  const notSet = document.getElementById('name-not-set');
+  const wrap = document.getElementById('name-select-wrap');
+  const sel = document.getElementById('name-select');
+  const names = appSettings.participantNames || [];
+
+  loading.style.display = 'none';
+  if (!names.length) {
+    notSet.style.display = 'block';
+    wrap.style.display = 'none';
+  } else {
+    notSet.style.display = 'none';
+    wrap.style.display = 'block';
+    sel.innerHTML = '<option value="">— select your name —</option>' +
+      names.map(n => `<option value="${n}">${n}</option>`).join('');
+  }
+}
+
+const proceedBtn = document.getElementById('proceed-btn');
+document.getElementById('name-select').addEventListener('change', function() {
+  proceedBtn.disabled = !this.value;
+});
+proceedBtn.addEventListener('click', proceed);
+
+async function proceed() {
+  const sel = document.getElementById('name-select');
+  const name = sel ? sel.value : '';
+  if (!name) return;
+  proceedBtn.disabled = true;
+  proceedBtn.textContent = 'Checking...';
+  try {
+    [appSettings, allSubmissions] = await Promise.all([getSettings(), getSubmissions()]);
+  } catch(e) {}
+
+  currentUser = name;
+  const total = (appSettings.participantNames || []).length || appSettings.totalParticipants || 5;
+  const userIn = allSubmissions.some(s => s.name.toLowerCase() === name.toLowerCase());
+
+  if (userIn) {
+    if (appSettings.published) {
+      showResultsScreen();
+    } else if (allSubmissions.length >= total) {
+      showScreen('waiting-screen');
+      document.getElementById('waiting-done').textContent = allSubmissions.length;
+      document.getElementById('waiting-total').textContent = total;
+    } else {
+      showScreen('already-screen');
+      document.getElementById('already-name').textContent = name;
+      setProgress('progress-fill-2', 'progress-done-2', 'progress-total-2', allSubmissions.length, total);
+    }
+  } else {
+    document.getElementById('avail-greeting').textContent = `Hey ${name} — pick your weekends`;
+    showScreen('availability-screen');
+  }
+
+  proceedBtn.textContent = 'ENTER →';
+  proceedBtn.disabled = !sel.value;
+}
+
+// RENDER WEEKENDS
+function renderWeekends() {
+  const container = document.getElementById('weekends-container');
+  const byMonth = {};
+  WEEKENDS.forEach(w => {
+    if (!byMonth[w.monthKey]) byMonth[w.monthKey] = { label: w.month, weeks: [] };
+    byMonth[w.monthKey].weeks.push(w);
+  });
+  container.innerHTML = '';
+  Object.values(byMonth).forEach(group => {
+    const div = document.createElement('div');
+    div.className = 'month-group';
+    div.innerHTML = `<div class="month-label">${group.label}</div>`;
+    const grid = document.createElement('div');
+    grid.className = 'weekends-grid';
+    group.weeks.forEach(w => {
+      const tile = document.createElement('div');
+      tile.className = 'weekend-tile';
+      tile.id = `tile-${w.key}`;
+      tile.innerHTML = `<div class="wk-num">WK ${String(w.week).padStart(2,'0')}</div><div class="wk-dates">${w.label}</div><div class="wk-status" id="status-${w.key}">— no response</div><div class="wk-indicator" id="ind-${w.key}"></div>`;
+      tile.addEventListener('click', () => cycleState(w.key));
+      grid.appendChild(tile);
+    });
+    div.appendChild(grid);
+    container.appendChild(div);
+  });
+}
+
+const STATES = [null, 'available', 'preferred-not', 'unavailable'];
+const LABELS = { null: '— no response', 'available': '✓ available', 'preferred-not': '~ prefer not, but can', 'unavailable': '✕ can\'t do' };
+const CLASSES = { null: '', 'available': 'state-available', 'preferred-not': 'state-preferred-not', 'unavailable': 'state-unavailable' };
+
+function cycleState(key) {
+  const next = STATES[(STATES.indexOf(selections[key]) + 1) % STATES.length];
+  selections[key] = next;
+  document.getElementById(`tile-${key}`).className = `weekend-tile ${CLASSES[next]}`;
+  document.getElementById(`status-${key}`).textContent = LABELS[next];
+  updateSummary();
+}
+
+function updateSummary() {
+  const vals = Object.values(selections);
+  const avail = vals.filter(s => s === 'available').length;
+  const pref = vals.filter(s => s === 'preferred-not').length;
+  const cant = vals.filter(s => s === 'unavailable').length;
+  document.getElementById('submit-summary').innerHTML =
+    `<span style="color:var(--green)">${avail} available</span> &nbsp;|&nbsp; <span style="color:var(--yellow)">${pref} prefer not</span> &nbsp;|&nbsp; <span style="color:var(--red)">${cant} can't do</span>`;
+  document.getElementById('submit-btn').disabled = avail === 0;
+}
+
+// SUBMIT
+async function submitAvailability() {
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Saving...';
+  try {
+    await sb('tt_availability', { method: 'POST', body: JSON.stringify({ name: currentUser, selections: JSON.stringify(selections) }) });
+    allSubmissions = await getSubmissions();
+  } catch(e) { console.warn('Save failed:', e); }
+  const total = appSettings.totalParticipants || 5;
+  showScreen('success-screen');
+  document.getElementById('success-name').textContent = currentUser;
+  setProgress('progress-fill', 'progress-done', 'progress-total', allSubmissions.length, total);
+}
+
+// RESULTS
+function showResultsScreen() {
+  showScreen('results-screen');
+  const total = allSubmissions.length;
+  const counts = Object.fromEntries(WEEKENDS.map(w => [w.key, { avail: 0, pref: 0, cant: 0 }]));
+  allSubmissions.forEach(sub => {
+    try {
+      const sel = typeof sub.selections === 'string' ? JSON.parse(sub.selections) : sub.selections;
+      Object.entries(sel).forEach(([k, v]) => {
+        if (!counts[k]) return;
+        if (v === 'available') counts[k].avail++;
+        else if (v === 'preferred-not') counts[k].pref++;
+        else if (v === 'unavailable') counts[k].cant++;
+      });
+    } catch(e) {}
+  });
+
+  const allGood = WEEKENDS.filter(w => counts[w.key].avail === total && total > 0);
+  document.getElementById('results-summary').innerHTML = allGood.length
+    ? `<span>${allGood.length} weekend${allGood.length > 1 ? 's' : ''} where everyone is available</span> — highlighted in green below. Chris will decide which go through to Stage 2.`
+    : `No weekends where everyone is fully available. Best options shown below — Chris will pick which go through to Stage 2.`;
+
+  const byMonth = {};
+  WEEKENDS.forEach(w => {
+    const c = counts[w.key];
+    if (c.avail + c.pref === 0) return;
+    if (!byMonth[w.monthKey]) byMonth[w.monthKey] = { label: w.month, weeks: [] };
+    byMonth[w.monthKey].weeks.push(w);
+  });
+
+  const container = document.getElementById('results-months');
+  container.innerHTML = '';
+  Object.values(byMonth).forEach(group => {
+    const div = document.createElement('div');
+    div.className = 'month-group';
+    div.innerHTML = `<div class="month-label">${group.label}</div>`;
+    const grid = document.createElement('div');
+    grid.className = 'results-grid';
+    group.weeks.forEach(w => {
+      const c = counts[w.key];
+      const isAll = c.avail === total && total > 0;
+      const isMost = !isAll && c.avail >= Math.ceil(total / 2);
+      const pct = n => total > 0 ? Math.round((n / total) * 100) : 0;
+      const tile = document.createElement('div');
+      tile.className = `result-tile ${isAll ? 'all-good' : isMost ? 'most-good' : ''}`;
+      tile.innerHTML = `
+        <div class="r-week">WK ${w.week}</div>
+        <div class="r-dates">${w.label}</div>
+        ${isAll ? '<div class="r-badge">ALL IN</div>' : ''}
+        <div class="r-bars">
+          <div class="r-bar-row"><span class="r-bar-label" style="color:var(--green)">available</span><div class="r-bar-track"><div class="r-bar-fill" style="width:${pct(c.avail)}%;background:var(--green)"></div></div><span class="r-count">${c.avail}</span></div>
+          <div class="r-bar-row"><span class="r-bar-label" style="color:var(--yellow)">prefer not</span><div class="r-bar-track"><div class="r-bar-fill" style="width:${pct(c.pref)}%;background:var(--yellow)"></div></div><span class="r-count">${c.pref}</span></div>
+          <div class="r-bar-row"><span class="r-bar-label" style="color:var(--red)">can't do</span><div class="r-bar-track"><div class="r-bar-fill" style="width:${pct(c.cant)}%;background:var(--red)"></div></div><span class="r-count">${c.cant}</span></div>
+        </div>`;
+      grid.appendChild(tile);
+    });
+    div.appendChild(grid);
+    container.appendChild(div);
+  });
+}
+
+// ADMIN LOGIN
+function openAdminLogin() {
+  document.getElementById('admin-overlay').classList.add('open');
+  setTimeout(() => document.getElementById('pin-input').focus(), 100);
+}
+function closeAdminLogin() {
+  document.getElementById('admin-overlay').classList.remove('open');
+  document.getElementById('pin-input').value = '';
+  document.getElementById('pin-error').style.display = 'none';
+}
+async function checkPin() {
+  if (document.getElementById('pin-input').value.trim() === ADMIN_PIN) {
+    closeAdminLogin();
+    hideAll();
+    document.getElementById('admin-screen').style.display = 'block';
+    await loadAdmin();
+  } else {
+    document.getElementById('pin-error').style.display = 'block';
+    document.getElementById('pin-input').value = '';
+  }
+}
+function exitAdmin() {
+  hideAll();
+  show('name-screen');
+  nameInput.value = '';
+  proceedBtn.disabled = true;
+}
+
+// ADMIN DASHBOARD
+async function loadAdmin() {
+  try {
+    [appSettings, allSubmissions] = await Promise.all([getSettings(), getSubmissions()]);
+  } catch(e) {}
+  const total = (appSettings.participantNames || []).length || appSettings.totalParticipants || 5;
+  const done = allSubmissions.length;
+
+  const statusEl = document.getElementById('admin-stage-status');
+  if (appSettings.published) {
+    statusEl.innerHTML = '<span class="status-badge published">● RESULTS PUBLISHED</span>';
+  } else if (done >= total) {
+    statusEl.innerHTML = '<span class="status-badge locked">● ALL SUBMITTED — AWAITING PUBLISH</span>';
+  } else {
+    statusEl.innerHTML = `<span class="status-badge open">● OPEN — ${done}/${total} submitted</span>`;
+  }
+
+  document.getElementById('publish-btn').style.display = appSettings.published ? 'none' : 'inline-block';
+  document.getElementById('unpublish-btn').style.display = appSettings.published ? 'inline-block' : 'none';
+  document.getElementById('sub-count').textContent = done;
+  document.getElementById('sub-total').textContent = total;
+  renderNamesList();
+
+  // Participant list
+  const el = document.getElementById('participant-list');
+  const pending = Math.max(0, total - done);
+  el.innerHTML = allSubmissions.map(s =>
+    `<div class="participant-row"><span class="participant-name">${s.name}</span><span class="participant-status status-done">✓ SUBMITTED</span></div>`
+  ).join('') + Array(pending).fill(`<div class="participant-row"><span class="participant-name" style="color:var(--muted)">— pending</span><span class="participant-status status-pending">WAITING</span></div>`).join('');
+
+  if (!el.innerHTML) el.innerHTML = '<p class="no-data">No submissions yet.</p>';
+
+  renderHeatmap();
+  renderBestWeekends();
+}
+
+function renderHeatmap() {
+  const threshold = parseInt(document.getElementById('threshold-select').value);
+  const el = document.getElementById('heatmap-grid');
+  const total = allSubmissions.length;
+  if (!total) { el.innerHTML = '<p class="no-data">No data yet.</p>'; return; }
+
+  const counts = Object.fromEntries(WEEKENDS.map(w => [w.key, { avail: 0, pref: 0 }]));
+  allSubmissions.forEach(sub => {
+    try {
+      const sel = typeof sub.selections === 'string' ? JSON.parse(sub.selections) : sub.selections;
+      Object.entries(sel).forEach(([k, v]) => {
+        if (!counts[k]) return;
+        if (v === 'available') counts[k].avail++;
+        if (v === 'preferred-not') counts[k].pref++;
+      });
+    } catch(e) {}
+  });
+
+  const filtered = WEEKENDS.filter(w => counts[w.key].avail >= threshold);
+  if (!filtered.length) { el.innerHTML = '<p class="no-data">No weekends meet the threshold. Try lowering it.</p>'; return; }
+
+  el.innerHTML = filtered.map(w => {
+    const c = counts[w.key];
+    const pct = Math.round((c.avail / total) * 100);
+    return `<div class="heatmap-tile ${c.avail === total ? 'best' : ''}">
+      <div class="h-week">WK ${w.week}</div>
+      <div class="h-dates">${w.label}</div>
+      <div class="h-bar-wrap"><div class="h-bar" style="width:${pct}%"></div></div>
+      <div class="h-count">${c.avail} avail · ${c.pref} pref-not</div>
+    </div>`;
+  }).join('');
+}
+
+function renderBestWeekends() {
+  const el = document.getElementById('best-weekends');
+  if (!allSubmissions.length) { el.innerHTML = '<p class="no-data">No data yet.</p>'; return; }
+  const counts = Object.fromEntries(WEEKENDS.map(w => [w.key, 0]));
+  allSubmissions.forEach(sub => {
+    try {
+      const sel = typeof sub.selections === 'string' ? JSON.parse(sub.selections) : sub.selections;
+      Object.entries(sel).forEach(([k, v]) => { if (v === 'available') counts[k]++; });
+    } catch(e) {}
+  });
+  const perfect = WEEKENDS.filter(w => counts[w.key] === allSubmissions.length);
+  el.innerHTML = perfect.length
+    ? perfect.map(w => `<div class="participant-row"><span class="participant-name">${w.label} <span style="color:var(--muted);font-size:10px">WK ${w.week}</span></span><span class="participant-status status-done">ALL AVAILABLE</span></div>`).join('')
+    : '<p class="no-data">No weekends where everyone is available yet.</p>';
+}
+
+// ADMIN ACTIONS
+
+
+// NAME MANAGEMENT
+function renderNamesList() {
+  const names = appSettings.participantNames || [];
+  const el = document.getElementById('names-list');
+  if (!names.length) {
+    el.innerHTML = '<p class="no-data">No names added yet.</p>';
+    return;
+  }
+  el.innerHTML = names.map((n, i) =>
+    `<div class="participant-row">
+      <span class="participant-name">${n}</span>
+      <button class="action-btn danger" style="padding:3px 10px;font-size:10px" onclick="removeName(${i})">REMOVE</button>
+    </div>`
+  ).join('');
+}
+
+async function addName() {
+  const input = document.getElementById('new-name-input');
+  const name = input.value.trim();
+  if (!name) return;
+  const names = appSettings.participantNames || [];
+  if (names.map(n => n.toLowerCase()).includes(name.toLowerCase())) {
+    alert('That name is already in the list.');
+    return;
+  }
+  names.push(name);
+  appSettings.participantNames = names;
+  appSettings.totalParticipants = names.length;
+  try {
+    await saveSettings(appSettings);
+    input.value = '';
+    renderNamesList();
+    document.getElementById('sub-total').textContent = names.length;
+  } catch(e) { alert('Save failed: ' + e.message); }
+}
+
+async function removeName(index) {
+  const names = appSettings.participantNames || [];
+  const removed = names[index];
+  if (!confirm(`Remove "${removed}" from the list?`)) return;
+  names.splice(index, 1);
+  appSettings.participantNames = names;
+  appSettings.totalParticipants = names.length;
+  try {
+    await saveSettings(appSettings);
+    renderNamesList();
+    document.getElementById('sub-total').textContent = names.length;
+  } catch(e) { alert('Save failed: ' + e.message); }
+}
+
+async function publishResults() {
+  if (!confirm('Publish results? The group will be able to see the availability breakdown.')) return;
+  appSettings.published = true;
+  try { await saveSettings(appSettings); await loadAdmin(); } catch(e) { alert('Failed: ' + e.message); }
+}
+
+async function unpublishResults() {
+  if (!confirm('Unpublish? Participants will see the waiting screen again.')) return;
+  appSettings.published = false;
+  try { await saveSettings(appSettings); await loadAdmin(); } catch(e) { alert('Failed: ' + e.message); }
+}
+
+async function resetSubmissions() {
+  if (!confirm('Delete ALL stage 1 submissions? This cannot be undone.')) return;
+  try {
+    await sb('tt_availability?id=neq.00000000-0000-0000-0000-000000000000', { method: 'DELETE' });
+    appSettings.published = false;
+    await saveSettings(appSettings);
+    allSubmissions = [];
+    await loadAdmin();
+  } catch(e) { alert('Reset failed: ' + e.message); }
+}
+
+// UTIL
+function setProgress(fillId, doneId, totalId, done, total) {
+  document.getElementById(fillId).style.width = `${Math.min(100, (done/total)*100)}%`;
+  document.getElementById(doneId).textContent = done;
+  document.getElementById(totalId).textContent = total;
+}
+
+const ALL_SCREENS = ['name-screen','availability-screen','success-screen','already-screen','waiting-screen','results-screen','admin-screen'];
+function hideAll() { ALL_SCREENS.forEach(id => { const el = document.getElementById(id); if(el){ el.style.display='none'; el.classList.add('hidden'); } }); }
+function showScreen(id) { hideAll(); const el = document.getElementById(id); if(el){ el.style.display='block'; el.classList.remove('hidden'); el.classList.add('fade-in'); } }
+function show(id) { const el = document.getElementById(id); if(el){ el.style.display='block'; el.classList.remove('hidden'); } }
+
+renderWeekends();
+updateSummary();
+</script>
+</body>
+</html>
