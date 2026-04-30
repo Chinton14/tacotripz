@@ -334,6 +334,95 @@
 
   /* SUDDEN DEATH RESULTS */
   #sudden-results { display: none; }
+
+  /* STAGE 4 — PLANNING */
+  #stage4-screen { display: none; }
+  .plan-header-bar { background: var(--bg2); border: 1px solid var(--border); border-left: 3px solid var(--orange); border-radius: 3px; padding: 16px 18px; margin-bottom: 24px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .plan-game-info { flex: 1; }
+  .plan-game-title { font-family: var(--sans); font-size: 20px; font-weight: 700; color: var(--text); }
+  .plan-game-meta { font-size: 11px; color: var(--muted); margin-top: 3px; }
+  .plan-action-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  .plan-tabs { display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: 24px; overflow-x: auto; }
+  .plan-tab-btn { background: none; border: 1px solid var(--border); border-bottom: 2px solid transparent; color: var(--muted); font-family: var(--mono); font-size: 12px; letter-spacing: 1px; padding: 10px 16px; cursor: pointer; transition: all 0.2s; margin-bottom: -1px; border-radius: 3px 3px 0 0; white-space: nowrap; }
+  .plan-tab-btn:hover { color: var(--text); }
+  .plan-tab-btn.active { color: var(--orange); border-bottom-color: var(--orange); background: var(--bg2); }
+  .plan-pane { display: none; }
+  .plan-pane.active { display: block; }
+
+  /* CITY CARD in planning */
+  .plan-city-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 3px; padding: 16px 18px; margin-bottom: 20px; }
+  .plan-city-title { font-family: var(--sans); font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+  .plan-city-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 14px; }
+  .plan-city-section { font-size: 11px; color: var(--text); line-height: 1.7; }
+  .plan-city-label { font-size: 9px; color: var(--orange); letter-spacing: 2px; margin-bottom: 4px; }
+  .plan-city-temps { display: flex; gap: 10px; margin-top: 10px; }
+  .plan-city-temp { text-align: center; background: var(--bg3); padding: 6px 10px; border-radius: 3px; }
+  .plan-city-temp-month { font-size: 8px; color: var(--muted); }
+  .plan-city-temp-val { font-size: 13px; color: var(--text); }
+  .whats-on-btn { background: none; border: 1px solid var(--orange); color: var(--orange); font-family: var(--mono); font-size: 11px; padding: 7px 14px; border-radius: 2px; cursor: pointer; transition: all 0.2s; }
+  .whats-on-btn:hover { background: var(--orange-dim); }
+  .whats-on-results { margin-top: 14px; }
+  .whats-on-event { padding: 8px 0; border-bottom: 1px solid var(--bg3); font-size: 11px; color: var(--text); display: flex; gap: 10px; align-items: center; }
+  .whats-on-sport { font-size: 9px; padding: 2px 6px; border-radius: 2px; background: var(--bg3); color: var(--muted); border: 1px solid var(--border); white-space: nowrap; }
+
+  /* FLIGHTS TAB */
+  .flight-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 3px; padding: 14px 16px; margin-bottom: 8px; }
+  .flight-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .flight-person { font-family: var(--sans); font-size: 15px; font-weight: 600; color: var(--text); flex: 1; }
+  .flight-fields { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px; }
+  .field-group { display: flex; flex-direction: column; gap: 3px; }
+  .field-label { font-size: 9px; color: var(--muted); letter-spacing: 1px; }
+  .field-input { background: var(--bg3); border: 1px solid var(--border); border-radius: 2px; color: var(--text); font-family: var(--mono); font-size: 11px; padding: 6px 8px; outline: none; width: 100%; transition: border-color 0.2s; }
+  .field-input:focus { border-color: var(--orange); }
+  .field-input::placeholder { color: var(--muted); opacity: 0.6; }
+
+  /* HOTEL TAB */
+  .hotel-form { background: var(--bg2); border: 1px solid var(--border); border-radius: 3px; padding: 16px 18px; margin-bottom: 16px; }
+  .hotel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; margin-bottom: 12px; }
+  .hotel-notes { width: 100%; background: var(--bg3); border: 1px solid var(--border); border-radius: 2px; color: var(--text); font-family: var(--mono); font-size: 11px; padding: 8px 10px; outline: none; resize: vertical; min-height: 60px; }
+  .hotel-notes:focus { border-color: var(--orange); }
+
+  /* TICKETS TAB */
+  .ticket-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 3px; padding: 14px 16px; margin-bottom: 8px; }
+  .ticket-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
+
+  /* TASKS TAB */
+  .task-item { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--bg3); }
+  .task-check { width: 16px; height: 16px; accent-color: var(--orange); cursor: pointer; flex-shrink: 0; }
+  .task-text { flex: 1; font-size: 12px; color: var(--text); }
+  .task-text.done { text-decoration: line-through; color: var(--muted); }
+  .task-owner { font-size: 10px; color: var(--muted); padding: 2px 7px; background: var(--bg3); border-radius: 2px; white-space: nowrap; }
+  .task-delete { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 13px; padding: 0 4px; }
+  .task-delete:hover { color: var(--red); }
+  .add-task-row { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+  .add-task-input { flex: 2; min-width: 140px; background: var(--bg3); border: 1px solid var(--border); border-radius: 2px; color: var(--text); font-family: var(--mono); font-size: 11px; padding: 7px 10px; outline: none; }
+  .add-task-input:focus { border-color: var(--orange); }
+  .add-task-select { flex: 1; min-width: 100px; background: var(--bg3); border: 1px solid var(--border); border-radius: 2px; color: var(--text); font-family: var(--mono); font-size: 11px; padding: 7px 8px; outline: none; }
+
+  /* ITINERARY TAB */
+  .itinerary-day { background: var(--bg2); border: 1px solid var(--border); border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .itinerary-day-header { background: var(--bg3); padding: 10px 14px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--border); }
+  .itinerary-day-label { font-size: 11px; color: var(--orange); letter-spacing: 1px; flex: 1; }
+  .itinerary-day-date { font-size: 11px; color: var(--muted); }
+  .itinerary-events { padding: 8px 14px; }
+  .itinerary-event { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--bg3); align-items: flex-start; }
+  .itinerary-event:last-child { border-bottom: none; }
+  .itinerary-time { font-size: 10px; color: var(--orange); white-space: nowrap; min-width: 44px; margin-top: 2px; }
+  .itinerary-desc { flex: 1; font-size: 11px; color: var(--text); }
+  .itinerary-event-delete { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 12px; }
+  .itinerary-event-delete:hover { color: var(--red); }
+  .add-event-row { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+  .add-event-time { width: 80px; background: var(--bg3); border: 1px solid var(--border); border-radius: 2px; color: var(--text); font-family: var(--mono); font-size: 11px; padding: 6px 8px; outline: none; }
+  .add-event-input { flex: 1; min-width: 120px; background: var(--bg3); border: 1px solid var(--border); border-radius: 2px; color: var(--text); font-family: var(--mono); font-size: 11px; padding: 6px 8px; outline: none; }
+  .add-event-time:focus, .add-event-input:focus { border-color: var(--orange); }
+
+  /* SAVE STATUS */
+  .save-status { font-size: 10px; color: var(--green); display: none; margin-left: 8px; }
+
+  /* STAGE DOT CLICK */
+  .stage-dot { cursor: pointer !important; }
+  .stage-dot:hover { opacity: 0.75; }
   .hidden { display: none !important; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
   .fade-in { animation: fadeIn 0.3s ease; }
@@ -637,6 +726,123 @@
   <div id="sd-winner-banner"></div>
 </div>
 
+
+<!-- STAGE 4: PLANNING -->
+<div id="stage4-screen" class="container">
+
+  <!-- Game/city header bar -->
+  <div class="plan-header-bar">
+    <div class="plan-game-info">
+      <div class="plan-game-title" id="plan-game-title">TBC</div>
+      <div class="plan-game-meta" id="plan-game-meta"></div>
+    </div>
+    <div class="plan-action-btns">
+      <a id="splitwise-link" href="https://splitwise.com" target="_blank" class="action-btn" style="text-decoration:none;display:inline-flex;align-items:center;gap:5px">💰 Splitwise</a>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="plan-tabs">
+    <button class="plan-tab-btn active" onclick="switchPlanTab('city')" id="ptab-city">🗺 CITY</button>
+    <button class="plan-tab-btn" onclick="switchPlanTab('flights')" id="ptab-flights">✈ FLIGHTS</button>
+    <button class="plan-tab-btn" onclick="switchPlanTab('hotel')" id="ptab-hotel">🏨 HOTEL</button>
+    <button class="plan-tab-btn" onclick="switchPlanTab('tickets')" id="ptab-tickets">🎟 TICKETS</button>
+    <button class="plan-tab-btn" onclick="switchPlanTab('itinerary')" id="ptab-itinerary">📅 ITINERARY</button>
+    <button class="plan-tab-btn" onclick="switchPlanTab('tasks')" id="ptab-tasks">✅ TASKS</button>
+  </div>
+
+  <!-- CITY TAB -->
+  <div class="plan-pane active" id="ppane-city">
+    <div class="plan-city-card" id="plan-city-card">
+      <div class="plan-city-title" id="plan-city-title">—</div>
+      <div class="plan-city-grid" id="plan-city-grid"></div>
+      <div id="plan-city-sports"></div>
+      <div class="plan-city-temps" id="plan-city-temps"></div>
+      <div style="margin-top:14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+        <button class="whats-on-btn" onclick="fetchWhatsOn()">🔍 WHAT'S ON WHILE WE'RE THERE?</button>
+        <span id="whats-on-status" style="font-size:11px;color:var(--muted)"></span>
+      </div>
+      <div class="whats-on-results" id="whats-on-results"></div>
+    </div>
+  </div>
+
+  <!-- FLIGHTS TAB -->
+  <div class="plan-pane" id="ppane-flights">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
+      <span style="font-size:11px;color:var(--muted)">// Log each person's flight details. Auto-saves as you type.</span>
+      <span class="save-status" id="flights-save-status">saved ✓</span>
+    </div>
+    <div id="flights-list"></div>
+  </div>
+
+  <!-- HOTEL TAB -->
+  <div class="plan-pane" id="ppane-hotel">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
+      <span style="font-size:11px;color:var(--muted)">// Log the hotel details once booked. Auto-saves as you type.</span>
+      <span class="save-status" id="hotel-save-status">saved ✓</span>
+    </div>
+    <div class="hotel-form">
+      <div class="hotel-grid">
+        <div class="field-group"><div class="field-label">HOTEL NAME</div><input class="field-input" id="hotel-name" placeholder="e.g. Marriott Downtown" oninput="autoSavePlan()"></div>
+        <div class="field-group"><div class="field-label">CHECK-IN</div><input class="field-input" id="hotel-checkin" type="date" oninput="autoSavePlan()"></div>
+        <div class="field-group"><div class="field-label">CHECK-OUT</div><input class="field-input" id="hotel-checkout" type="date" oninput="autoSavePlan()"></div>
+        <div class="field-group"><div class="field-label">COST PER PERSON (£)</div><input class="field-input" id="hotel-cost" type="number" placeholder="0" oninput="autoSavePlan()"></div>
+        <div class="field-group"><div class="field-label">BOOKING REF</div><input class="field-input" id="hotel-ref" placeholder="ABC123" oninput="autoSavePlan()"></div>
+        <div class="field-group"><div class="field-label">BOOKED BY</div>
+          <select class="field-input" id="hotel-booked-by" onchange="autoSavePlan()">
+            <option value="">— select —</option>
+          </select>
+        </div>
+      </div>
+      <div class="field-label" style="margin-bottom:4px">NOTES</div>
+      <textarea class="hotel-notes" id="hotel-notes" placeholder="Any useful info — address, parking, breakfast included..." oninput="autoSavePlan()"></textarea>
+    </div>
+  </div>
+
+  <!-- TICKETS TAB -->
+  <div class="plan-pane" id="ppane-tickets">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
+      <span style="font-size:11px;color:var(--muted)">// Log each person's ticket details once purchased. Auto-saves.</span>
+      <span class="save-status" id="tickets-save-status">saved ✓</span>
+    </div>
+    <div id="tickets-list"></div>
+  </div>
+
+  <!-- ITINERARY TAB -->
+  <div class="plan-pane" id="ppane-itinerary">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
+      <span style="font-size:11px;color:var(--muted)">// Build the trip day by day. Click + to add events to each day.</span>
+      <span class="save-status" id="itinerary-save-status">saved ✓</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap">
+      <span style="font-size:11px;color:var(--muted)">Trip start date:</span>
+      <input type="date" class="field-input" id="trip-start-date" style="width:160px" onchange="renderItinerary();autoSavePlan()">
+      <span style="font-size:11px;color:var(--muted)">Number of days:</span>
+      <select class="field-input" id="trip-days" style="width:80px" onchange="renderItinerary();autoSavePlan()">
+        <option value="4">4</option><option value="5" selected>5</option>
+        <option value="6">6</option><option value="7">7</option>
+      </select>
+    </div>
+    <div id="itinerary-days"></div>
+  </div>
+
+  <!-- TASKS TAB -->
+  <div class="plan-pane" id="ppane-tasks">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
+      <span style="font-size:11px;color:var(--muted)">// Shared to-do list. Tick when done, assign to whoever's sorting it.</span>
+      <span class="save-status" id="tasks-save-status">saved ✓</span>
+    </div>
+    <div id="tasks-list"></div>
+    <div class="add-task-row">
+      <input class="add-task-input" id="new-task-input" placeholder="add a task..." onkeydown="if(event.key==='Enter')addTask()">
+      <select class="add-task-select" id="new-task-owner">
+        <option value="">— owner —</option>
+      </select>
+      <button class="action-btn primary" onclick="addTask()">ADD +</button>
+    </div>
+  </div>
+
+</div>
 <!-- ADMIN LOGIN -->
 <div class="overlay" id="admin-overlay">
   <div class="modal">
@@ -788,6 +994,33 @@
     </div>
   </div>
 
+
+  <!-- Stage 4 Settings -->
+  <div class="admin-section">
+    <div class="admin-section-title">STAGE 4 — PLANNING</div>
+    <div class="setting-row">
+      <span class="setting-label">Status</span>
+      <span id="admin-s4-status"></span>
+    </div>
+    <div class="setting-row">
+      <span class="setting-label">Winning game</span>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <select id="s4-winner-select" style="background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:11px;padding:5px 8px;border-radius:2px;outline:none;min-width:240px">
+          <option value="">— select winning game —</option>
+        </select>
+        <button class="action-btn" onclick="saveWinnerGame()">SAVE</button>
+        <span id="winner-save-msg" style="font-size:10px;color:var(--green);display:none">saved ✓</span>
+      </div>
+    </div>
+    <div class="setting-row">
+      <span class="setting-label">Open Stage 4 planning</span>
+      <div>
+        <button class="action-btn success" id="open-s4-btn" onclick="openStage4()">OPEN STAGE 4 →</button>
+        <button class="action-btn danger" id="close-s4-btn" style="display:none" onclick="closeStage4()">CLOSE STAGE 4</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Participant Names -->
   <div class="admin-section">
     <div class="admin-section-title">PARTICIPANT NAMES</div>
@@ -911,12 +1144,13 @@ let s2selections = []; // array of game IDs
 let allSubmissions = [];
 let s2Submissions = [];
 let schedule = []; // fetched NFL games
-let appSettings = { published:false, totalParticipants:5, participantNames:[], stage2Open:false, shortlistedWeekends:[], s2Threshold:2, stage3Open:false, voteGameIds:[], s3Published:false, suddenOpen:false, suddenGameIds:[], suddenPublished:false };
+let appSettings = { published:false, totalParticipants:5, participantNames:[], stage2Open:false, shortlistedWeekends:[], s2Threshold:2, stage3Open:false, voteGameIds:[], s3Published:false, suddenOpen:false, suddenGameIds:[], suddenPublished:false, stage4Open:false, winnerGameId:null };
 let s3Submissions = [];
 let suddenSubmissions = [];
 let voteSlots = [null, null, null]; // [gameId, gameId, gameId]
 let selectedVoteGame = null; // game awaiting slot assignment
 let selectedSuddenGame = null;
+let planData = { hotel:{}, flights:{}, tickets:{}, tasks:[], itinerary:{}, tripStartDate:'', tripDays:5 };
 
 // ============================================================
 // SUPABASE
@@ -933,6 +1167,13 @@ async function getSubmissions() { return await sb('tt_availability?select=*&orde
 async function getS2Submissions() { return await sb('tt_shortlist?select=*&order=submitted_at.asc') || []; }
 async function getS3Submissions() { return await sb('tt_votes?select=*&order=submitted_at.asc') || []; }
 async function getSuddenSubmissions() { return await sb('tt_sudden?select=*&order=submitted_at.asc') || []; }
+async function getPlanData() {
+  try {
+    const rows = await sb('tt_settings?key=eq.plan_data&select=*');
+    if (rows && rows.length) return JSON.parse(rows[0].value);
+  } catch(e) {}
+  return { hotel:{}, flights:{}, tickets:{}, tasks:[], itinerary:{}, tripStartDate:'', tripDays:5 };
+}
 async function getSchedule() {
   const rows = await sb('tt_settings?key=eq.nfl_schedule&select=*');
   if (rows && rows.length) { try { return JSON.parse(rows[0].value); } catch(e) {} }
@@ -967,7 +1208,7 @@ async function saveSetting(key, value) {
 // ============================================================
 async function init() {
   try {
-    [appSettings, allSubmissions, s2Submissions, s3Submissions, suddenSubmissions, schedule] = await Promise.all([getSettings(), getSubmissions(), getS2Submissions(), getS3Submissions(), getSuddenSubmissions(), getSchedule()]);
+    [appSettings, allSubmissions, s2Submissions, s3Submissions, suddenSubmissions, schedule, planData] = await Promise.all([getSettings(), getSubmissions(), getS2Submissions(), getS3Submissions(), getSuddenSubmissions(), getSchedule(), getPlanData()]);
   } catch(e) { console.warn('Init failed:', e); }
   populateNameDropdown();
 }
@@ -1000,7 +1241,7 @@ async function proceed() {
   if (!name) return;
   proceedBtn.disabled = true;
   proceedBtn.textContent = 'Checking...';
-  try { [appSettings, allSubmissions, s2Submissions, s3Submissions, suddenSubmissions, schedule] = await Promise.all([getSettings(), getSubmissions(), getS2Submissions(), getS3Submissions(), getSuddenSubmissions(), getSchedule()]); } catch(e) {}
+  try { [appSettings, allSubmissions, s2Submissions, s3Submissions, suddenSubmissions, schedule, planData] = await Promise.all([getSettings(), getSubmissions(), getS2Submissions(), getS3Submissions(), getSuddenSubmissions(), getSchedule(), getPlanData()]); } catch(e) {}
 
   currentUser = name;
   const total = (appSettings.participantNames||[]).length || appSettings.totalParticipants || 5;
@@ -1012,7 +1253,11 @@ async function proceed() {
   const userSDin = suddenSubmissions.some(s => s.name.toLowerCase()===name.toLowerCase());
 
   // Route based on current stage
-  if (appSettings.suddenOpen) {
+  if (appSettings.stage4Open) {
+    updateStageDots(4);
+    showScreen('stage4-screen');
+    renderPlanningScreen();
+  } else if (appSettings.suddenOpen) {
     // Sudden death active
     updateStageDots(3);
     if (appSettings.suddenPublished) {
@@ -1377,7 +1622,7 @@ function exitAdmin() {
 // ADMIN DASHBOARD
 // ============================================================
 async function loadAdmin() {
-  try { [appSettings, allSubmissions, s2Submissions, s3Submissions, suddenSubmissions, schedule] = await Promise.all([getSettings(), getSubmissions(), getS2Submissions(), getS3Submissions(), getSuddenSubmissions(), getSchedule()]); } catch(e){}
+  try { [appSettings, allSubmissions, s2Submissions, s3Submissions, suddenSubmissions, schedule, planData] = await Promise.all([getSettings(), getSubmissions(), getS2Submissions(), getS3Submissions(), getSuddenSubmissions(), getSchedule(), getPlanData()]); } catch(e){}
   const total=(appSettings.participantNames||[]).length||appSettings.totalParticipants||5;
   const done=allSubmissions.length;
 
@@ -1417,6 +1662,7 @@ async function loadAdmin() {
   document.getElementById('publish-sudden-btn').style.display = (appSettings.suddenOpen && !appSettings.suddenPublished) ? 'inline-block' : 'none';
   renderAdminS3Games();
   renderS3AdminTally();
+  renderAdminS4();
 }
 
 function renderParticipantList(subs, total) {
@@ -1927,6 +2173,424 @@ async function resetStage3() {
   } catch(e) { alert('Reset failed: ' + e.message); }
 }
 
+
+// ============================================================
+// STAGE 4 — PLANNING
+// ============================================================
+function renderPlanningScreen() {
+  // Set winning game header
+  const winGame = appSettings.winnerGameId ? schedule.find(g => g.id === appSettings.winnerGameId) : null;
+  document.getElementById('plan-game-title').textContent = winGame ? `${winGame.away} @ ${winGame.home}` : 'Game TBC';
+  document.getElementById('plan-game-meta').textContent = winGame ? `${winGame.date} · ${winGame.venue}` : '';
+
+  // Find city data from crib sheet
+  const cityData = winGame ? findCribCity(winGame.home) : null;
+  renderPlanCityCard(cityData, winGame);
+  renderFlightsTab();
+  renderTicketsTab();
+  renderTasksTab();
+  renderItinerary();
+  loadPlanFields();
+  populatePlanSelects();
+}
+
+function findCribCity(homeTeam) {
+  // Match home team name to crib sheet
+  return CRIB_DATA.find(c => homeTeam && homeTeam.toLowerCase().includes(c.team.toLowerCase())) || null;
+}
+
+function renderPlanCityCard(city, game) {
+  if (!city) {
+    document.getElementById('plan-city-title').textContent = 'City info not available yet';
+    document.getElementById('plan-city-grid').innerHTML = '';
+    document.getElementById('plan-city-sports').innerHTML = '';
+    document.getElementById('plan-city-temps').innerHTML = '';
+    return;
+  }
+  document.getElementById('plan-city-title').innerHTML = `${city.team} · ${city.city} <span class="flight-badge ${city.flight==='yes'?'flight-yes':city.flight==='no'?'flight-no':'flight-partial'}">${city.flight==='yes'?'✈ Direct Flight':city.flight==='no'?'✗ No Direct Flight':'~ Partial Direct'}</span>`;
+  document.getElementById('plan-city-grid').innerHTML = `
+    <div class="plan-city-section"><div class="plan-city-label">PROS</div>${city.pros}</div>
+    <div class="plan-city-section"><div class="plan-city-label">CONS</div>${city.cons}</div>`;
+  const sports = [city.nhl,city.nba,city.mlb,city.mls,city.college].filter(s=>s&&s!=='—');
+  document.getElementById('plan-city-sports').innerHTML = sports.length
+    ? `<div style="margin-top:10px"><div class="plan-city-label" style="margin-bottom:4px">OTHER SPORTS TEAMS</div><div class="crib-sports">${sports.map(s=>`<span class="sport-tag">${s}</span>`).join('')}</div></div>` : '';
+  document.getElementById('plan-city-temps').innerHTML = ['sep','oct','nov','dec'].map(m =>
+    `<div class="plan-city-temp"><div class="plan-city-temp-month">${m.toUpperCase()}</div><div class="plan-city-temp-val">${city.temps[m]}°</div></div>`
+  ).join('');
+}
+
+// What's on search
+async function fetchWhatsOn() {
+  const statusEl = document.getElementById('whats-on-status');
+  const resultsEl = document.getElementById('whats-on-results');
+  const winGame = appSettings.winnerGameId ? schedule.find(g => g.id === appSettings.winnerGameId) : null;
+  const city = winGame ? findCribCity(winGame.home) : null;
+
+  if (!city) { statusEl.textContent = '// No city data available yet.'; return; }
+  if (!planData.tripStartDate) { statusEl.textContent = '// Set your trip start date in the Itinerary tab first.'; return; }
+
+  statusEl.textContent = `// Searching for events in ${city.city}...`;
+  resultsEl.innerHTML = '';
+
+  const startDate = new Date(planData.tripStartDate);
+  const endDate = new Date(startDate);
+  endDate.setDate(startDate.getDate() + (planData.tripDays || 5));
+
+  const events = [];
+
+  // Search ESPN for each sport the city has
+  const sportAPIs = [
+    { sport:'football', league:'nfl', label:'NFL' },
+    { sport:'basketball', league:'nba', label:'NBA' },
+    { sport:'hockey', league:'nhl', label:'NHL' },
+    { sport:'baseball', league:'mlb', label:'MLB' },
+    { sport:'soccer', league:'usa.1', label:'MLS' },
+  ];
+
+  for (const api of sportAPIs) {
+    try {
+      const year = startDate.getFullYear();
+      const url = `https://site.api.espn.com/apis/site/v2/sports/${api.sport}/${api.league}/scoreboard?dates=${year}`;
+      const res = await fetch(url);
+      const data = await res.json();
+      (data.events || []).forEach(ev => {
+        const comp = ev.competitions?.[0];
+        if (!comp) return;
+        const evDate = new Date(comp.date);
+        if (evDate < startDate || evDate > endDate) return;
+        const home = comp.competitors?.find(c => c.homeAway === 'home');
+        const away = comp.competitors?.find(c => c.homeAway === 'away');
+        if (!home || !away) return;
+        // Check if home team is from our city (rough match)
+        const homeTeamName = home.team?.displayName || '';
+        const cityMatches = city.city.split(',')[0].toLowerCase();
+        const teamMatches = [city.nhl,city.nba,city.mlb,city.mls].filter(Boolean).join(' ').toLowerCase();
+        if (homeTeamName.toLowerCase().includes(cityMatches) ||
+            teamMatches.includes(homeTeamName.toLowerCase().split(' ').pop())) {
+          events.push({
+            sport: api.label,
+            matchup: `${away.team.displayName} @ ${home.team.displayName}`,
+            date: evDate.toLocaleDateString('en-GB', {weekday:'short',day:'numeric',month:'short'}),
+            venue: comp.venue?.fullName || '',
+          });
+        }
+      });
+    } catch(e) {}
+  }
+
+  statusEl.textContent = events.length ? `// Found ${events.length} event${events.length!==1?'s':''} during your trip` : '// No home games found during your trip dates.';
+  if (events.length) {
+    resultsEl.innerHTML = events.map(e =>
+      `<div class="whats-on-event"><span class="whats-on-sport">${e.sport}</span><span>${e.matchup}</span><span style="color:var(--muted);font-size:10px;margin-left:auto">${e.date}</span></div>`
+    ).join('');
+  }
+}
+
+// PLAN TAB SWITCHING
+function switchPlanTab(tab) {
+  document.querySelectorAll('.plan-tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.plan-pane').forEach(p => p.classList.remove('active'));
+  document.getElementById(`ptab-${tab}`).classList.add('active');
+  document.getElementById(`ppane-${tab}`).classList.add('active');
+}
+
+// FLIGHTS
+function renderFlightsTab() {
+  const names = appSettings.participantNames || [];
+  const list = document.getElementById('flights-list');
+  list.innerHTML = names.map(name => {
+    const f = (planData.flights || {})[name] || {};
+    return `<div class="flight-card">
+      <div class="flight-card-header"><div class="flight-person">${name}</div></div>
+      <div style="margin-bottom:8px;font-size:10px;color:var(--orange);letter-spacing:1px">OUTBOUND</div>
+      <div class="flight-fields" style="margin-bottom:12px">
+        <div class="field-group"><div class="field-label">AIRLINE</div><input class="field-input" placeholder="e.g. British Airways" value="${f.outAirline||''}" oninput="updateFlight('${name}','outAirline',this.value)"></div>
+        <div class="field-group"><div class="field-label">FLIGHT NO.</div><input class="field-input" placeholder="BA001" value="${f.outFlight||''}" oninput="updateFlight('${name}','outFlight',this.value)"></div>
+        <div class="field-group"><div class="field-label">DEPARTS</div><input class="field-input" type="datetime-local" value="${f.outDeparts||''}" oninput="updateFlight('${name}','outDeparts',this.value)"></div>
+        <div class="field-group"><div class="field-label">ARRIVES</div><input class="field-input" type="datetime-local" value="${f.outArrives||''}" oninput="updateFlight('${name}','outArrives',this.value)"></div>
+        <div class="field-group"><div class="field-label">COST (£)</div><input class="field-input" type="number" placeholder="0" value="${f.outCost||''}" oninput="updateFlight('${name}','outCost',this.value)"></div>
+      </div>
+      <div style="margin-bottom:8px;font-size:10px;color:var(--orange);letter-spacing:1px">RETURN</div>
+      <div class="flight-fields">
+        <div class="field-group"><div class="field-label">AIRLINE</div><input class="field-input" placeholder="e.g. British Airways" value="${f.retAirline||''}" oninput="updateFlight('${name}','retAirline',this.value)"></div>
+        <div class="field-group"><div class="field-label">FLIGHT NO.</div><input class="field-input" placeholder="BA002" value="${f.retFlight||''}" oninput="updateFlight('${name}','retFlight',this.value)"></div>
+        <div class="field-group"><div class="field-label">DEPARTS</div><input class="field-input" type="datetime-local" value="${f.retDeparts||''}" oninput="updateFlight('${name}','retDeparts',this.value)"></div>
+        <div class="field-group"><div class="field-label">ARRIVES</div><input class="field-input" type="datetime-local" value="${f.retArrives||''}" oninput="updateFlight('${name}','retArrives',this.value)"></div>
+        <div class="field-group"><div class="field-label">COST (£)</div><input class="field-input" type="number" placeholder="0" value="${f.retCost||''}" oninput="updateFlight('${name}','retCost',this.value)"></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function updateFlight(name, field, value) {
+  if (!planData.flights) planData.flights = {};
+  if (!planData.flights[name]) planData.flights[name] = {};
+  planData.flights[name][field] = value;
+  autoSavePlan();
+}
+
+// TICKETS
+function renderTicketsTab() {
+  const names = appSettings.participantNames || [];
+  const list = document.getElementById('tickets-list');
+  list.innerHTML = names.map(name => {
+    const t = (planData.tickets || {})[name] || {};
+    return `<div class="ticket-card">
+      <div class="flight-card-header" style="margin-bottom:10px"><div class="flight-person">${name}</div></div>
+      <div class="ticket-grid">
+        <div class="field-group"><div class="field-label">SECTION</div><input class="field-input" placeholder="e.g. 114" value="${t.section||''}" oninput="updateTicket('${name}','section',this.value)"></div>
+        <div class="field-group"><div class="field-label">ROW</div><input class="field-input" placeholder="e.g. G" value="${t.row||''}" oninput="updateTicket('${name}','row',this.value)"></div>
+        <div class="field-group"><div class="field-label">SEAT</div><input class="field-input" placeholder="e.g. 12" value="${t.seat||''}" oninput="updateTicket('${name}','seat',this.value)"></div>
+        <div class="field-group"><div class="field-label">COST (£)</div><input class="field-input" type="number" placeholder="0" value="${t.cost||''}" oninput="updateTicket('${name}','cost',this.value)"></div>
+        <div class="field-group"><div class="field-label">PURCHASED VIA</div><input class="field-input" placeholder="e.g. TickPick" value="${t.via||''}" oninput="updateTicket('${name}','via',this.value)"></div>
+        <div class="field-group"><div class="field-label">STATUS</div>
+          <select class="field-input" onchange="updateTicket('${name}','status',this.value)">
+            <option value="pending" ${(t.status||'pending')==='pending'?'selected':''}>Pending</option>
+            <option value="booked" ${t.status==='booked'?'selected':''}>✓ Booked</option>
+          </select>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function updateTicket(name, field, value) {
+  if (!planData.tickets) planData.tickets = {};
+  if (!planData.tickets[name]) planData.tickets[name] = {};
+  planData.tickets[name][field] = value;
+  autoSavePlan();
+}
+
+// TASKS
+function renderTasksTab() {
+  const tasks = planData.tasks || [];
+  const list = document.getElementById('tasks-list');
+  list.innerHTML = tasks.length ? tasks.map((t, i) =>
+    `<div class="task-item">
+      <input type="checkbox" class="task-check" ${t.done?'checked':''} onchange="toggleTask(${i},this.checked)">
+      <span class="task-text ${t.done?'done':''}">${t.text}</span>
+      ${t.owner?`<span class="task-owner">${t.owner}</span>`:''}
+      <button class="task-delete" onclick="deleteTask(${i})">✕</button>
+    </div>`
+  ).join('') : '<p class="no-data">No tasks yet — add one below.</p>';
+}
+
+function addTask() {
+  const input = document.getElementById('new-task-input');
+  const owner = document.getElementById('new-task-owner').value;
+  const text = input.value.trim();
+  if (!text) return;
+  if (!planData.tasks) planData.tasks = [];
+  planData.tasks.push({ text, owner, done: false });
+  input.value = '';
+  renderTasksTab();
+  autoSavePlan();
+}
+
+function toggleTask(i, done) {
+  if (planData.tasks && planData.tasks[i]) {
+    planData.tasks[i].done = done;
+    renderTasksTab();
+    autoSavePlan();
+  }
+}
+
+function deleteTask(i) {
+  if (!confirm('Delete this task?')) return;
+  planData.tasks.splice(i, 1);
+  renderTasksTab();
+  autoSavePlan();
+}
+
+// ITINERARY
+function renderItinerary() {
+  const startInput = document.getElementById('trip-start-date');
+  const daysInput = document.getElementById('trip-days');
+  if (!startInput || !daysInput) return;
+
+  const startStr = startInput.value || planData.tripStartDate || '';
+  const days = parseInt(daysInput.value || planData.tripDays || 5);
+  planData.tripStartDate = startStr;
+  planData.tripDays = days;
+
+  const container = document.getElementById('itinerary-days');
+  if (!container) return;
+
+  const startDate = startStr ? new Date(startStr) : null;
+  const dayLabels = ['Thursday','Friday','Saturday','Sunday','Monday','Tuesday','Wednesday'];
+
+  container.innerHTML = '';
+  for (let d = 0; d < days; d++) {
+    const dayKey = `day${d}`;
+    const events = (planData.itinerary || {})[dayKey] || [];
+    let dateLabel = '';
+    if (startDate) {
+      const dt = new Date(startDate); dt.setDate(startDate.getDate() + d);
+      dateLabel = dt.toLocaleDateString('en-GB', {weekday:'long', day:'numeric', month:'short'});
+    } else {
+      dateLabel = `Day ${d+1}`;
+    }
+
+    const dayDiv = document.createElement('div'); dayDiv.className = 'itinerary-day';
+    dayDiv.innerHTML = `
+      <div class="itinerary-day-header">
+        <div class="itinerary-day-label">${dateLabel}</div>
+      </div>
+      <div class="itinerary-events" id="iday-${dayKey}">
+        ${events.map((ev, i) => `
+          <div class="itinerary-event">
+            <div class="itinerary-time">${ev.time||'—'}</div>
+            <div class="itinerary-desc">${ev.desc}</div>
+            <button class="itinerary-event-delete" onclick="deleteItineraryEvent('${dayKey}',${i})">✕</button>
+          </div>`).join('')}
+        ${!events.length ? '<div style="font-size:11px;color:var(--muted);padding:6px 0">No events yet</div>' : ''}
+      </div>
+      <div style="padding:0 14px 10px">
+        <div class="add-event-row">
+          <input type="time" class="add-event-time" id="itime-${dayKey}" placeholder="10:00">
+          <input type="text" class="add-event-input" id="idesc-${dayKey}" placeholder="add an event..." onkeydown="if(event.key==='Enter')addItineraryEvent('${dayKey}')">
+          <button class="action-btn" onclick="addItineraryEvent('${dayKey}')">ADD +</button>
+        </div>
+      </div>`;
+    container.appendChild(dayDiv);
+  }
+}
+
+function addItineraryEvent(dayKey) {
+  const time = document.getElementById(`itime-${dayKey}`)?.value || '';
+  const desc = document.getElementById(`idesc-${dayKey}`)?.value.trim() || '';
+  if (!desc) return;
+  if (!planData.itinerary) planData.itinerary = {};
+  if (!planData.itinerary[dayKey]) planData.itinerary[dayKey] = [];
+  planData.itinerary[dayKey].push({ time, desc });
+  planData.itinerary[dayKey].sort((a,b) => (a.time||'').localeCompare(b.time||''));
+  renderItinerary();
+  autoSavePlan();
+}
+
+function deleteItineraryEvent(dayKey, idx) {
+  if (!confirm('Delete this event?')) return;
+  planData.itinerary[dayKey].splice(idx, 1);
+  renderItinerary();
+  autoSavePlan();
+}
+
+// LOAD/SAVE PLAN FIELDS
+function loadPlanFields() {
+  // Hotel
+  const h = planData.hotel || {};
+  ['name','checkin','checkout','cost','ref','notes'].forEach(f => {
+    const el = document.getElementById(`hotel-${f}`);
+    if (el) el.value = h[f] || '';
+  });
+  const bookedBy = document.getElementById('hotel-booked-by');
+  if (bookedBy && h.bookedBy) bookedBy.value = h.bookedBy;
+  // Trip dates
+  const sd = document.getElementById('trip-start-date');
+  const td = document.getElementById('trip-days');
+  if (sd) sd.value = planData.tripStartDate || '';
+  if (td) td.value = planData.tripDays || 5;
+}
+
+function populatePlanSelects() {
+  const names = appSettings.participantNames || [];
+  // Hotel booked-by
+  const hbb = document.getElementById('hotel-booked-by');
+  if (hbb) {
+    hbb.innerHTML = '<option value="">— select —</option>' + names.map(n=>`<option value="${n}">${n}</option>`).join('');
+    if ((planData.hotel||{}).bookedBy) hbb.value = planData.hotel.bookedBy;
+  }
+  // Task owner
+  const to = document.getElementById('new-task-owner');
+  if (to) to.innerHTML = '<option value="">— owner —</option>' + names.map(n=>`<option value="${n}">${n}</option>`).join('');
+}
+
+// Collect hotel fields into planData
+function collectHotelData() {
+  planData.hotel = {
+    name: document.getElementById('hotel-name')?.value || '',
+    checkin: document.getElementById('hotel-checkin')?.value || '',
+    checkout: document.getElementById('hotel-checkout')?.value || '',
+    cost: document.getElementById('hotel-cost')?.value || '',
+    ref: document.getElementById('hotel-ref')?.value || '',
+    bookedBy: document.getElementById('hotel-booked-by')?.value || '',
+    notes: document.getElementById('hotel-notes')?.value || '',
+  };
+}
+
+let savePlanTimer = null;
+function autoSavePlan() {
+  collectHotelData();
+  clearTimeout(savePlanTimer);
+  savePlanTimer = setTimeout(async () => {
+    try {
+      await saveSetting('plan_data', planData);
+      ['flights','hotel','tickets','itinerary','tasks'].forEach(tab => {
+        const el = document.getElementById(`${tab}-save-status`);
+        if (el) { el.style.display = 'inline'; setTimeout(() => el.style.display = 'none', 2000); }
+      });
+    } catch(e) { console.warn('Plan save failed:', e); }
+  }, 1000);
+}
+
+// ADMIN: Stage 4
+function renderAdminS4() {
+  const s4El = document.getElementById('admin-s4-status');
+  if (!s4El) return;
+  s4El.innerHTML = appSettings.stage4Open
+    ? '<span class="status-badge open">● OPEN</span>'
+    : '<span class="status-badge locked">● CLOSED</span>';
+  document.getElementById('open-s4-btn').style.display = appSettings.stage4Open ? 'none' : 'inline-block';
+  document.getElementById('close-s4-btn').style.display = appSettings.stage4Open ? 'inline-block' : 'none';
+
+  // Populate winner select with all vote games
+  const sel = document.getElementById('s4-winner-select');
+  if (sel) {
+    const voteIds = appSettings.voteGameIds || [];
+    const games = voteIds.map(id => schedule.find(g => g.id === id)).filter(Boolean);
+    sel.innerHTML = '<option value="">— select winning game —</option>' + games.map(g =>
+      `<option value="${g.id}" ${appSettings.winnerGameId===g.id?'selected':''}>${g.away} @ ${g.home} (${g.date})</option>`
+    ).join('');
+  }
+}
+
+async function saveWinnerGame() {
+  const sel = document.getElementById('s4-winner-select');
+  appSettings.winnerGameId = sel?.value || null;
+  try {
+    await saveSettings(appSettings);
+    const msg = document.getElementById('winner-save-msg');
+    msg.style.display = 'inline'; setTimeout(() => msg.style.display = 'none', 2000);
+  } catch(e) { alert('Save failed: ' + e.message); }
+}
+
+async function openStage4() {
+  if (!appSettings.winnerGameId) { alert('Please select the winning game first.'); return; }
+  if (!confirm('Open Stage 4 planning? Everyone will be taken to the planning screen.')) return;
+  appSettings.stage4Open = true;
+  try { await saveSettings(appSettings); await loadAdmin(); } catch(e) { alert('Failed: ' + e.message); }
+}
+
+async function closeStage4() {
+  if (!confirm('Close Stage 4?')) return;
+  appSettings.stage4Open = false;
+  try { await saveSettings(appSettings); await loadAdmin(); } catch(e) { alert('Failed: ' + e.message); }
+}
+
+// STAGE DOT CLICKS — show results for each stage
+function setupDotClicks() {
+  const dotActions = [
+    { id:'dot-1', action: () => { if(allSubmissions.length && appSettings.published) { currentUser='admin'; showScreen('results-screen'); renderResultsScreen(); } } },
+    { id:'dot-2', action: () => { if(appSettings.stage2Open || s2Submissions.length) { showScreen('stage2-already'); document.getElementById('s2-already-name').textContent=''; setProgress('s2-progress-fill-2','s2-progress-done-2','s2-progress-total-2',s2Submissions.length,(appSettings.participantNames||[]).length||5); } } },
+    { id:'dot-3', action: () => { if(appSettings.s3Published) { showScreen('stage3-results'); renderS3Results(); } else if(s3Submissions.length) { showScreen('stage3-already'); document.getElementById('s3-already-name').textContent=''; setProgress('s3-progress-fill-2','s3-progress-done-2','s3-progress-total-2',s3Submissions.length,(appSettings.participantNames||[]).length||5); } } },
+    { id:'dot-4', action: () => { if(appSettings.stage4Open) { showScreen('stage4-screen'); renderPlanningScreen(); } } },
+  ];
+  dotActions.forEach(({id, action}) => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('click', () => { try { action(); } catch(e) { console.warn(e); } });
+  });
+}
+
 // ============================================================
 // HOME BUTTON
 // ============================================================
@@ -1944,7 +2608,7 @@ function goHome() {
 // UTIL
 // ============================================================
 function setProgress(fillId,doneId,totalId,done,total){document.getElementById(fillId).style.width=`${Math.min(100,(done/total)*100)}%`;document.getElementById(doneId).textContent=done;document.getElementById(totalId).textContent=total;}
-const ALL_SCREENS=['name-screen','availability-screen','success-screen','already-screen','waiting-screen','results-screen','stage2-screen','stage2-success','stage2-already','stage3-screen','stage3-success','stage3-already','stage3-results','stage3-sudden','sudden-success','sudden-already','sudden-results','admin-screen'];
+const ALL_SCREENS=['name-screen','availability-screen','success-screen','already-screen','waiting-screen','results-screen','stage2-screen','stage2-success','stage2-already','stage3-screen','stage3-success','stage3-already','stage3-results','stage3-sudden','sudden-success','sudden-already','sudden-results','stage4-screen','admin-screen'];
 function hideAll(){ALL_SCREENS.forEach(id=>{const el=document.getElementById(id);if(el){el.style.display='none';el.classList.add('hidden');el.classList.remove('fade-in');}});}
 function showScreen(id){hideAll();const el=document.getElementById(id);if(el){el.style.display='block';el.classList.remove('hidden');el.classList.add('fade-in');}}
 
@@ -1953,6 +2617,7 @@ function showScreen(id){hideAll();const el=document.getElementById(id);if(el){el
 // ============================================================
 renderWeekends();
 updateSummary();
+setupDotClicks();
 </script>
 </body>
 </html>
