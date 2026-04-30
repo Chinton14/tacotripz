@@ -495,11 +495,20 @@ async function getSettings() {
 }
 
 async function saveSettings(s) {
-  await sb('tt_settings', {
-    method: 'POST',
-    headers: { 'Prefer': 'resolution=merge-duplicates,return=representation' },
-    body: JSON.stringify({ key: 'stage1', value: JSON.stringify(s) }),
-  });
+  // Try update first, then insert if no row exists yet
+  const existing = await sb('tt_settings?key=eq.stage1&select=key');
+  if (existing && existing.length > 0) {
+    const res = await sb('tt_settings?key=eq.stage1', {
+      method: 'PATCH',
+      body: JSON.stringify({ value: JSON.stringify(s) }),
+    });
+    if (res === null || res === undefined) return; // PATCH returns empty on success
+  } else {
+    await sb('tt_settings', {
+      method: 'POST',
+      body: JSON.stringify({ key: 'stage1', value: JSON.stringify(s) }),
+    });
+  }
 }
 
 // INIT
@@ -848,10 +857,21 @@ async function addName() {
   appSettings.totalParticipants = names.length;
   try {
     await saveSettings(appSettings);
+    // Verify it saved by reading back
+    const check = await getSettings();
+    if (!check.participantNames || !check.participantNames.includes(name)) {
+      throw new Error('Save appeared to succeed but data was not found on re-read.');
+    }
     input.value = '';
     renderNamesList();
     document.getElementById('sub-total').textContent = names.length;
-  } catch(e) { alert('Save failed: ' + e.message); }
+  } catch(e) {
+    // Roll back local state
+    names.pop();
+    appSettings.participantNames = names;
+    appSettings.totalParticipants = names.length;
+    alert('Could not save name. Error: ' + e.message);
+  }
 }
 
 async function removeName(index) {
